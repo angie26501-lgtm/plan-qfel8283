@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW"><head><meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>待辦清單【客戶版】阿志（詳細版）</title><style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--green:#3d7a55;--greenbg:#e7f2ea;--red:#a8423a;--redbg:#f7e3e1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;font-size:16px}
+.wrap{max-width:780px;margin:0 auto;padding:0 16px 90px}
+#gate{max-width:400px;margin:13vh auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+#gate h2{margin:0 0 6px;font-size:20px;color:var(--deep)}
+#gate .row{display:flex;gap:8px;margin:12px 0 6px}
+#gate input{flex:1;font:inherit;font-size:17px;padding:10px;border:1px solid var(--line);border-radius:8px}
+#gate button{font:inherit;font-weight:700;cursor:pointer;border-radius:8px;padding:10px 16px;border:1px solid var(--deep);background:var(--deep);color:#fff}
+#gate #eye{background:#fff;color:var(--deep)}
+#gate label{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--sub);cursor:pointer}
+#err{color:var(--red);font-size:14px;min-height:22px;margin:4px 0 0}
+#doc{display:none}
+.hud{position:sticky;top:0;z-index:20;background:#12343f;color:#fff;padding:11px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hud .pc{font-size:20px;font-weight:700;color:#ffd98a;flex:none}
+.hud .bar{flex:1;min-width:100px;height:9px;background:rgba(255,255,255,.22);border-radius:6px;overflow:hidden}
+.hud .bar i{display:block;height:100%;width:0;background:#ffd98a;transition:width .35s}
+.hud .nx{font-size:13px;opacity:.92}
+.hud button{font:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:6px 13px}
+h1{font-family:"Noto Serif TC",serif;color:var(--deep);font-size:27px;margin:18px 0 4px}
+p.sub{color:var(--sub);font-size:14px;margin:4px 0}
+.intro{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.intro b{color:var(--deep)}
+.intro ul{margin:8px 0 0;padding-left:20px}
+.intro li{font-size:15px;margin:5px 0}
+.task{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:14px;padding:16px 18px;margin:14px 0}
+.task.done{border-left-color:var(--green);background:#fbfdfb}
+.th{display:flex;gap:13px;align-items:flex-start;cursor:pointer;margin-bottom:6px}
+.th input.big{width:26px;height:26px;flex:none;margin-top:4px;accent-color:var(--green);cursor:pointer}
+.tt{font-family:"Noto Serif TC",serif;font-size:20px;font-weight:700;color:var(--deep);line-height:1.5}
+.task.done .tt{color:#24512f}
+.one{font-size:15px;color:var(--sub);margin:0 0 6px 39px}
+.why{background:var(--mist);border-radius:10px;padding:11px 14px;font-size:15px;margin:0 0 10px}
+.lbl{font-size:13.5px;font-weight:700;color:var(--sub);margin:12px 0 4px}
+ul.must{list-style:none;padding:0;margin:4px 0}
+ul.must li{font-size:15.5px;padding-left:27px;position:relative;margin:6px 0}
+ul.must li::before{content:"□";position:absolute;left:5px;color:var(--amber);font-weight:700}
+.bx{border-radius:10px;padding:11px 14px;font-size:14.5px;margin:10px 0;line-height:1.8}
+.bx>b:first-child{display:block;margin-bottom:3px}
+.bx.warn{background:var(--redbg);color:#7d2622}
+.bx.tip{background:var(--greenbg);color:#24512f}
+.bx.bring{background:var(--amberbg);color:#5a4012}
+.bx.opt{background:#fafcfc;border:1px dashed var(--line);color:var(--sub)}
+.script{background:#12343f;color:#fff;border-radius:12px;padding:14px 16px;margin:10px 0}
+.script .sl{font-size:12.5px;color:#9fd0dd;margin-bottom:6px}
+.script p{margin:0;font-size:16px;line-height:1.9;color:#eaf4f7}
+.script button{margin-top:10px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:8px 14px}
+.script button:hover{background:rgba(255,255,255,.26)}
+textarea{width:100%;min-height:72px;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;resize:vertical;background:#fdfefe}
+textarea:focus{outline:3px solid var(--amber);outline-offset:1px;background:#fff}
+.dn{font-size:13px;color:var(--green);margin-top:6px;font-weight:700}
+.eff{flex:none;font-size:12px;font-weight:700;color:#5a4012;background:var(--amberbg);border-radius:999px;padding:2px 10px;align-self:center;white-space:nowrap}
+.eff.pas{background:#eef3f4;color:var(--sub)}
+.task.pas{border-left-color:#9fb4bb;background:#fbfcfc}
+.task.pas .tt{color:#3f5860}
+.fields{display:grid;gap:9px;margin:6px 0 2px}
+.fbox{background:var(--amberbg);border:1px solid #e6d5ae;border-radius:10px;padding:12px 14px}
+.fr{display:flex;align-items:center;gap:10px;margin:7px 0}
+.fr label{flex:none;width:112px;font-size:14.5px;color:#5a4012;font-weight:700}
+.fr input{flex:1;min-width:0;font:inherit;font-size:16px;padding:9px 11px;border:1px solid #d9c18f;border-radius:8px;background:#fff;font-variant-numeric:tabular-nums}
+.fr input:focus{outline:3px solid var(--amber);outline-offset:1px}
+.fr .fu{flex:none;width:26px;font-size:14px;color:#5a4012}
+.fbox .fh{font-size:12.5px;color:#7a6234;margin:8px 0 0}
+@media (max-width:560px){.fr label{width:92px;font-size:13.5px}}
+.report{position:sticky;bottom:0;background:rgba(246,249,249,.97);backdrop-filter:blur(6px);border-top:2px solid var(--deep);padding:14px 16px;margin:24px -16px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.report .rt{flex:1;min-width:150px;font-size:14px;color:var(--sub)}
+.report button{font:inherit;font-size:16px;font-weight:700;cursor:pointer;border-radius:10px;padding:12px 20px;border:1px solid var(--deep);background:var(--deep);color:#fff}
+.report button:hover{background:#12343f}
+.report button.sec{background:#fff;color:var(--deep)}
+.report .rnote{flex:1 1 100%;font-size:12.5px;color:var(--sub);margin:2px 0 0;line-height:1.7}
+#toast{display:none;position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#12343f;color:#fff;padding:12px 22px;border-radius:999px;font-size:15px;z-index:60;max-width:90vw;text-align:center}
+.chat{margin:28px 0 8px;padding:20px 22px;border-radius:14px;background:linear-gradient(160deg,#fdf6e6,#fff);border:2px solid var(--amber)}
+.chat>b{display:block;font-family:"Noto Serif TC",serif;font-size:19px;color:#8a5a12;margin-bottom:8px}
+.chat p{font-size:15.5px;line-height:1.9;margin:8px 0;color:#5a4012}
+.chat p b{color:#6b4410}
+.chat p.last{margin-top:12px;padding-top:12px;border-top:1px dashed #e0cda0;font-weight:700;color:#8a5a12}
+.chat ul{margin:8px 0;padding-left:20px}
+.chat li{font-size:15px;line-height:1.85;margin:6px 0;color:#5a4012}
+.chat.priv{background:linear-gradient(160deg,#eef4f6,#fff);border-color:var(--deep);margin-top:14px}
+.chat.priv>b{color:var(--deep)}
+.chat.priv p,.chat.priv li{color:#2b4750}
+.chat.priv p b,.chat.priv li b{color:#12343f}
+.chat.priv p.last{border-top-color:#c3d8de;color:var(--deep)}
+p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;color:var(--deep);margin:22px 0 6px;padding:14px 16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fbfdfd}
+.disc{font-size:12.5px;color:var(--sub);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+@media print{.hud,.report,.script button,.fold>summary::after{display:none}.task{break-inside:avoid}.fold>div{display:block!important}}
+@media (max-width:560px){h1{font-size:23px}.tt{font-size:18px}.one{margin-left:0}.report{padding:12px}.report button{width:100%}.chat{padding:16px 18px}.chat>b{font-size:17px}}
+</style></head><body>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜我的待辦清單（詳細版）</span><span class="vv">v1.1 ・ 2026/09/25（台灣時間）</span></div>
+<div id="gate">
+<p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
+<h2>待辦清單【客戶版】阿志（詳細版）</h2><p class="sub">請輸入密碼檢視。</p>
+<div class="row"><input type="password" id="pw" placeholder="請輸入密碼" autocomplete="current-password"><button type="button" id="eye">顯示</button></div>
+<label><input type="checkbox" id="rm" checked> 記住這台裝置 30 天</label>
+<p id="err" aria-live="polite"></p>
+<button type="button" id="go" style="width:100%">進入</button></div>
+<div id="doc">
+<div class="hud"><span class="pc" id="pct">0 / 5</span><span class="bar"><i id="pbar"></i></span><span class="nx" id="nextup"></span>
+<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<div class="wrap">
+<h1>阿志，這是你的待辦清單</h1><p class="sub" id="stamp"></p>
+<div class="intro"><b>怎麼用這一頁</b><ul><li>做完一件就把<b>左邊的框打勾</b>，會自動記下完成日期。</li><li>辦好之後可以在「我的筆記」寫幾句，例如去哪家分行、對方怎麼說。</li><li>最下面有一顆<b>「複製進度回報給財顧芸」</b>，按一下就把你的進度整理好，貼到 LINE、<b>確認內容沒問題再傳給我</b>。</li><li>打勾和筆記都<b>存在你自己的手機／電腦裡</b>，我這邊看不到——<b>所以做完記得按一下回報傳給我，我再幫你記錄進進度表。</b>你不用自己整理，傳過來就好。</li><li>換手機或換電腦打開，這一頁會是空白的，那是正常的——<b>紀錄在我這邊，不會不見</b>。</li></ul></div>
+<div class="intro" style="background:linear-gradient(160deg,#fdf6e6,#fff);border-color:#e0cda0"><b>幾個共同的提醒</b><ul><li>有任何不確定的，<b>隨時拍照傳我</b>，我幫你看，不用自己猜。</li><li>這些資料補齊之後，<b>退休和保障的數字才會準</b>——現在很多還是用推估的。</li><li>沒有急迫的期限，<b>你方便的時候辦就好</b>。真的有時間壓力的我會提前跟你說。</li><li><b>安聯第一次扣款會扣兩個月 9月和10月（10,000 元）。</b>這是因為首期月繳保單會扣兩個月的保費，<b>屬於正常狀況，不是扣錯</b>——之後就會回到每月 5,000。看到帳上是 10,000 先別緊張，有疑問拍給我看。</li></ul></div>
+
+<div class="task" data-k="A"><label class="th"><input type="checkbox" class="big" data-k="A"><span class="tt">開外幣帳戶（中國信託）</span><span class="eff">剩兩項，可線上辦</span></label><div class="why">大水庫2（保誠鑫發達）是美元保單，保費要從外幣帳戶扣。沒有這個帳戶，這張就沒辦法開始——這也是 9/19 那天唯一沒能一起簽的原因。</div><div class="lbl">要做到的：</div><ul class="must"><li>✅ 開<b>外幣綜合存款帳戶</b>（要有美元）—— <b>已完成</b></li><li>✅ 開通<b>線上換匯</b>—— <b>已完成</b>（最關鍵的一項，過了）</li><li>⬜ 申請<b>網路銀行／手機 App</b>—— <b>還沒辦</b></li><li>⬜ 申請<b>晶片金融卡</b>—— 還沒辦</li></ul><div class="bx warn"><b>⚠️ 要注意</b><b>線上換匯有開通，這一關你過了 👍</b>但還差<b>網路銀行</b>——線上換匯是<b>在網銀或 App 裡面操作</b>的，沒開通網銀等於換匯功能還是用不了。這個通常可以線上申請，不一定要再跑分行，打客服問一下最快。</div><div class="bx tip"><b>💡 小提醒</b><b>晶片金融卡為什麼也要辦？</b>除了提款，它最實用的是：以後忘記網銀密碼，在家用金融卡＋讀卡機就能自己重設，不用再跑銀行。接下來 8 年你每季都要換匯一次，這張卡等於是你的備份鑰匙。</div><div class="bx bring"><b>🎒 要帶的東西</b>如果還是要臨櫃：身分證＋第二證件（健保卡或駕照）、印章、存摺。先打客服問能不能線上辦，可以的話就不用跑了。</div><div class="bx opt"><b>＋ 這項看你要不要</b>轉帳、匯款功能——平常用不到可以先不開，之後要用再補辦也可以。</div><div class="script"><div class="sl">可以直接照著講，或複製傳給對方</div><p>您好，我的外幣帳戶和線上換匯已經開好了，想再申請網路銀行和晶片金融卡，請問可以線上辦理嗎？謝謝。</p><button type="button" class="cpq" data-q="您好，我的外幣帳戶和線上換匯已經開好了，想再申請網路銀行和晶片金融卡，請問可以線上辦理嗎？謝謝。">📋 複製這段話</button></div><div class="lbl">我的筆記（自在留言，沒有也沒關係。簡單寫幾句就好，回報時會一起帶給財顧芸）</div><textarea data-k="A" placeholder="想寫再寫，例如：9/22 在礁溪分行辦好，換匯和金融卡都有開…"></textarea><div class="dn" data-k="A"></div></div><div class="task" data-k="B"><label class="th"><input type="checkbox" class="big" data-k="B"><span class="tt">跟人事單位確認投保薪資</span><span class="eff">問一句話</span></label><div class="why">你的軍人退休俸是退休後很重要的一筆收入。本俸我從薪餉單看到是 26,580，用這個算出滿 20 年後每月大約 29,238。但那是我的推估，正式數字還是要以人事單位為主。</div><div class="lbl">要做到的：</div><ul class="must"><li>問到<b>本俸額度</b>與<b>軍保保險俸額</b></li><li>如果可能，隨口問一下是否可以提供一份<b>滿 20 年的退除給與試算</b></li></ul><div class="lbl">問到／查到之後填在這裡（回報時會一起帶給財顧芸）</div><div class="fbox"><div class="fr"><label for="f-B-0">本俸額度</label><input id="f-B-0" data-fk="B" data-fi="0" inputmode="decimal" placeholder="例如 26580"><span class="fu">元</span></div><div class="fr"><label for="f-B-1">軍保保險俸額</label><input id="f-B-1" data-fk="B" data-fi="1" inputmode="decimal" placeholder="問到再填"><span class="fu">元</span></div><p class="fh">不確定或還沒問到就先空著，之後再補也可以。</p></div><div class="bx tip"><b>💡 小提醒</b><b>試算拿不到也沒關係。</b>本俸和軍保俸額才是我真正需要的，有這兩個我就能算。退除給與試算是加分題——他們願意做最好，那份是官方數字比我算的準；不方便的話就算了，不用讓你為難。</div><div class="script"><div class="sl">可以直接照著講，或複製傳給對方</div><p>您好，我想確認我目前的本俸額度和軍保保險俸額是多少？另外想順便請教，如果我服現役滿 20 年退伍，方便的話可以幫我做一份退除給與試算嗎？不方便也沒關係，謝謝！</p><button type="button" class="cpq" data-q="您好，我想確認我目前的本俸額度和軍保保險俸額是多少？另外想順便請教，如果我服現役滿 20 年退伍，方便的話可以幫我做一份退除給與試算嗎？不方便也沒關係，謝謝！">📋 複製這段話</button></div><div class="lbl">我的筆記（自在留言，沒有也沒關係。簡單寫幾句就好，回報時會一起帶給財顧芸）</div><textarea data-k="B" placeholder="想寫再寫，例如：9/22 在礁溪分行辦好，換匯和金融卡都有開…"></textarea><div class="dn" data-k="B"></div></div><div class="task" data-k="C"><label class="th"><input type="checkbox" class="big" data-k="C"><span class="tt">跟人事單位要「軍保保障內容表」</span><span class="eff">跟 B 同一趟</span></label><div class="why">你的保障盤點裡，軍保目前是空白的。拿到這張表，我才能把軍保的身故保額加進去，算出你真正的保障總額。</div><div class="lbl">要做到的：</div><ul class="must"><li>要一份<b>軍保的保障內容表</b>（身故、失能、退伍給付等）</li></ul><div class="bx tip"><b>💡 小提醒</b>這件可以跟上面那件<b>一起問</b>，一趟解決，不用跑兩次。</div><div class="lbl">我的筆記（自在留言，沒有也沒關係。簡單寫幾句就好，回報時會一起帶給財顧芸）</div><textarea data-k="C" placeholder="想寫再寫，例如：9/22 在礁溪分行辦好，換匯和金融卡都有開…"></textarea><div class="dn" data-k="C"></div></div><div class="task" data-k="D"><label class="th"><input type="checkbox" class="big" data-k="D"><span class="tt">提供房貸的三個數字</span><span class="eff">開 App 三分鐘</span></label><div class="why">保障盤點要看房貸還剩多少，才知道壽險的堤防夠不夠高。現在只知道大約 300 多萬，細節還缺。</div><div class="lbl">問到／查到之後填在這裡（回報時會一起帶給財顧芸）</div><div class="fbox"><div class="fr"><label for="f-D-0">目前餘額</label><input id="f-D-0" data-fk="D" data-fi="0" inputmode="decimal" placeholder="例如 3200000"><span class="fu">元</span></div><div class="fr"><label for="f-D-1">利率</label><input id="f-D-1" data-fk="D" data-fi="1" inputmode="decimal" placeholder="例如 2.1"><span class="fu">%</span></div><div class="fr"><label for="f-D-2">剩餘年限</label><input id="f-D-2" data-fk="D" data-fi="2" inputmode="decimal" placeholder="例如 22"><span class="fu">年</span></div><p class="fh">不確定或還沒問到就先空著，之後再補也可以。</p></div><div class="bx tip"><b>💡 小提醒</b>貸款銀行的 App 或網銀通常查得到，<b>拍照傳我就可以</b>，不用自己抄。也可以打電話跟貸款行問。</div><div class="lbl">我的筆記（自在留言，沒有也沒關係。簡單寫幾句就好，回報時會一起帶給財顧芸）</div><textarea data-k="D" placeholder="想寫再寫，例如：9/22 在礁溪分行辦好，換匯和金融卡都有開…"></textarea><div class="dn" data-k="D"></div></div><div class="task pas" data-k="E"><label class="th"><input type="checkbox" class="big" data-k="E"><span class="tt">收到保單後簽收</span><span class="eff pas">等通知，不用現在做</span></label><div class="why">法巴、安聯兩張核保通過，保單下來等你簽收之後才開始進入投資。</div><div class="lbl">要做到的：</div><ul class="must"><li>收到保單、<b>完成簽收</b></li><li>翻一下保單內容</li></ul><div class="bx warn"><b>⚠️ 要注意</b><b>簽收滿 10 天，才會正式進入投資。</b>這段時間也是你的契約撤銷期。<br>另外——<b>在真正投入之前，我們會再約一次</b>，把投資標的配置一起確認過，你點頭了才投入。這段時間我們可以再想想，不用急。</div><div class="bx tip"><b>💡 小提醒</b>收到保單跟我說一聲，我這邊也會記下日期。</div><div class="lbl">我的筆記（自在留言，沒有也沒關係。簡單寫幾句就好，回報時會一起帶給財顧芸）</div><textarea data-k="E" placeholder="想寫再寫，例如：9/22 在礁溪分行辦好，換匯和金融卡都有開…"></textarea><div class="dn" data-k="E"></div></div>
+<div class="chat"><b>除了這張清單，還有一件事 💬</b><p>日常生活裡只要遇到<b>跟錢有關的決定</b>——買車、換工作、家裡要添購什麼、朋友報了什麼、想調整保險或投資、或是突然多了一筆錢不知道怎麼放——<b>如果你願意，也都歡迎先跟我聊一下</b>。</p><p>不是要你每件事都問過我才能做。而是<b>多一個人一起想，有時候會看到原本沒想到的角度</b>，或者發現有更省、更適合的做法。有些事情早一步討論，跟事後才來調整，差很多。</p><p>想到就傳 LINE 給我，不用等到約時間。</p><p class="last">我們保持一個默契：<b>訊息傳了就好，兩邊都在時間允許的時候再回。</b><br>你不用擔心會不會打擾我，我也不會讓你覺得非得立刻回我——<b>不給彼此壓力，才走得長久</b> 😊</p></div>
+<div class="chat priv"><b>你的資料，我會守好 🔒</b><p>這份規劃裡有你的收入、保單、房貸、薪餉單這些很私人的東西。我想把我的做法跟你講清楚：</p><ul><li><b>未經你同意，不會把你的任何資料提供給第三方。</b>需要跟保險公司或銀行窗口確認什麼，我都會先跟你說。</li></ul><p class="last">這是我的本分，不需要你開口要求。有任何疑慮，隨時問我。</p></div>
+<p class="closing">目前先這樣，如有其他需求，我們再進行滾動式調整 😊</p>
+<div class="disc">
+<p>本頁為個人化服務說明，不構成投資建議。退休俸相關數字依公開法規與薪餉單推估，非官方數字，以人事單位正式退除給與試算為準。保險商品之權利義務以保單條款為準；投資型保單之帳戶價值可能因投資標的績效而增減，最高可能損失全部本金，由要保人自行承擔。外幣保單涉及匯率風險。各銀行開戶所需文件與規定，以該行公告為準。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p></div>
+<div class="report"><span class="rt" id="rt"></span>
+<button type="button" class="sec" id="clr">清空重來</button>
+<button type="button" id="rep">📋 複製進度回報給財顧芸</button>
+<p class="rnote">貼到 LINE 之後先看一下，內容沒問題再按傳送。有想補充的也可以直接在 LINE 裡加上去。</p></div>
+</div></div><div id="toast"></div>
+<script>
+var TASKS=[{"id": "A", "t": "開外幣帳戶（中國信託）"}, {"id": "B", "t": "跟人事單位確認投保薪資"}, {"id": "C", "t": "跟人事單位要「軍保保障內容表」"}, {"id": "D", "t": "提供房貸的三個數字"}, {"id": "E", "t": "收到保單後簽收"}];
+var SIMPLE=false;
+(function(){
+function $(i){return document.getElementById(i);}
+var PASS='0421',KEY='azhi-todo-unlock',DKEY='azhi-todo-data',DAYS=30;
+function PWN(v){return String(v||'').replace(/[\uFF01-\uFF5E]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[\s\u3000]/g,'');}
+function show(){$('gate').style.display='none';$('doc').style.display='block';init();}
+function ok(){try{var t=+localStorage.getItem(KEY);return t&&Date.now()<t;}catch(e){return false;}}
+$('eye').onclick=function(){var v=$('pw').type==='password';$('pw').type=v?'text':'password';this.textContent=v?'隱藏':'顯示';};
+function tryGo(){if(PWN($('pw').value)===PWN(PASS)){if($('rm').checked){try{localStorage.setItem(KEY,Date.now()+DAYS*864e5);}catch(e){}}show();}else{$('err').textContent='密碼不正確，請再試一次。';}}
+$('go').onclick=tryGo;$('pw').addEventListener('keydown',function(e){if(e.key==='Enter')tryGo();});
+if(ok())show();
+function twNow(withTime){
+ try{var o={timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'};
+  if(withTime){o.hour='2-digit';o.minute='2-digit';o.hour12=false;}
+  var q={};new Intl.DateTimeFormat('zh-TW',o).formatToParts(new Date()).forEach(function(x){q[x.type]=x.value;});
+  return q.year+'/'+q.month+'/'+q.day+(withTime?(' '+q.hour+':'+q.minute):'');
+ }catch(e){var n=new Date();return n.getFullYear()+'/'+('0'+(n.getMonth()+1)).slice(-2)+'/'+('0'+n.getDate()).slice(-2);}}
+var inited=false;
+function init(){
+ if(inited)return;inited=true;
+ $('stamp').textContent='更新於 2026/09/20（台灣時間）｜財顧芸整理';
+ $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
+ $('print').onclick=function(){window.print();};
+ if(SIMPLE){
+  $('fopen').onclick=function(){[].forEach.call(document.querySelectorAll('details.fold'),function(d){d.open=true;});};
+  $('fclose').onclick=function(){[].forEach.call(document.querySelectorAll('details.fold'),function(d){d.open=false;});};
+ }
+ var st={};try{st=JSON.parse(localStorage.getItem(DKEY))||{};}catch(e){st={};}
+ function save(){try{localStorage.setItem(DKEY,JSON.stringify(st));}catch(e){}}
+ function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},2600);}
+ function upd(){
+  var n=TASKS.filter(function(k){return st[k.id]&&st[k.id].done;}).length;
+  $('pct').textContent=n+' / '+TASKS.length;
+  $('pbar').style.width=(n/TASKS.length*100)+'%';
+  var nx=TASKS.filter(function(k){return !(st[k.id]&&st[k.id].done);})[0];
+  $('nextup').textContent=nx?('還沒做：'+nx.t):'全部做完了，謝謝你 🙌';
+  $('rt').innerHTML=n?('已完成 <b>'+n+'</b> 件 → 按右邊複製 → 貼到 LINE，<b>確認內容沒問題再傳給我</b>'):'做完一件就打勾 → 按右邊複製 → 貼到 LINE，<b>確認後再傳給我</b>';
+ }
+ TASKS.forEach(function(k){
+  var box=document.querySelector('.task[data-k="'+k.id+'"]');
+  var cb=box.querySelector('input.big'), ta=box.querySelector('textarea'), dn=box.querySelector('.dn');
+  var s=st[k.id]||{};
+  cb.checked=!!s.done; ta.value=s.note||''; box.classList.toggle('done',!!s.done);
+  dn.textContent=s.done&&s.at?('✓ 完成於 '+s.at):'';
+  cb.addEventListener('change',function(){
+   st[k.id]=st[k.id]||{}; st[k.id].done=cb.checked;
+   if(cb.checked){st[k.id].at=twNow(true);}else{delete st[k.id].at;}
+   box.classList.toggle('done',cb.checked);
+   dn.textContent=cb.checked?('✓ 完成於 '+st[k.id].at):'';
+   save();upd();});
+  ta.addEventListener('input',function(){st[k.id]=st[k.id]||{};st[k.id].note=ta.value;save();});
+  [].forEach.call(box.querySelectorAll('input[data-fk]'),function(inp){
+   var fi=inp.getAttribute('data-fi');
+   var fv=(s.fields||{})[fi]; if(fv)inp.value=fv;
+   inp.addEventListener('input',function(){
+    st[k.id]=st[k.id]||{}; st[k.id].fields=st[k.id].fields||{};
+    st[k.id].fields[fi]=inp.value; save();});
+  });
+ });
+ function copy(txt,cb2){
+  function okc(){cb2&&cb2();}
+  function fb(){var t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');okc();}catch(e){toast('複製失敗，長按文字手動複製');}document.body.removeChild(t);}
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(okc,fb);}else fb();}catch(e){fb();}}
+ [].forEach.call(document.querySelectorAll('.cpq'),function(b){
+  b.addEventListener('click',function(){var self=this;
+   copy(this.getAttribute('data-q'),function(){var o=self.textContent;self.textContent='✓ 已複製';setTimeout(function(){self.textContent=o;},1700);toast('已複製，可以直接貼過去');});});});
+ var FLDDEF={"B": [["本俸額度", "例如 26580", "元"], ["軍保保險俸額", "問到再填", "元"]], "D": [["目前餘額", "例如 3200000", "元"], ["利率", "例如 2.1", "%"], ["剩餘年限", "例如 22", "年"]]};
+ function FLD(L,k,s){
+  var defs=FLDDEF[k.id]; if(!defs)return;
+  var vals=(s&&s.fields)||{};
+  defs.forEach(function(d,i){var v=(vals[i]||'').trim(); if(v)L.push('　　'+d[0]+'：'+v+' '+d[2]);});
+ }
+ $('rep').onclick=function(){
+  var done=TASKS.filter(function(k){return st[k.id]&&st[k.id].done;});
+  var todo=TASKS.filter(function(k){return !(st[k.id]&&st[k.id].done);});
+  var L=['芸姐你好，進度回報 📋',''];
+  if(done.length){L.push('【已完成】');done.forEach(function(k){var s=st[k.id];
+   L.push('✅ '+k.t+(s.at?'（'+s.at+'）':''));
+   FLD(L,k,s);
+   if(s.note)L.push('　　'+s.note.replace(/\n/g,'\n　　'));});L.push('');}
+  if(todo.length){L.push('【還沒做】');todo.forEach(function(k){var s=st[k.id]||{};
+   L.push('⬜ '+k.t); FLD(L,k,s); if(s.note)L.push('　　'+s.note.replace(/\n/g,'\n　　'));});L.push('');}
+  L.push('（'+done.length+' / '+TASKS.length+' 完成，'+twNow(true)+'）');
+  L.push('麻煩你幫我記錄一下，謝謝 🙏');
+  copy(L.join('\n'),function(){
+   var o=$('rep').textContent;$('rep').textContent='✓ 已複製，貼上後確認再傳';
+   setTimeout(function(){$('rep').textContent=o;},3200);
+   toast('已複製！貼到 LINE 之後，先確認一下內容，沒問題再傳送給財顧芸 😊');});};
+ $('clr').onclick=function(){
+  if(!confirm('會清掉所有打勾和筆記，確定嗎？'))return;
+  st={};save();
+  TASKS.forEach(function(k){var box=document.querySelector('.task[data-k="'+k.id+'"]');
+   box.querySelector('input.big').checked=false;box.querySelector('textarea').value='';
+   [].forEach.call(box.querySelectorAll('input[data-fk]'),function(i2){i2.value='';});
+   box.classList.remove('done');box.querySelector('.dn').textContent='';});
+  upd();toast('已清空');};
+ upd();
+}
+})();
+</script></body></html>

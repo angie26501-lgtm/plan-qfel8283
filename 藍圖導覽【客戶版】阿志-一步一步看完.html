@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW"><head><meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>藍圖導覽【客戶版】阿志</title><style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;
+--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--green:#3d7a55;--greenbg:#e7f2ea;
+--red:#a8423a;--redbg:#f7e3e1;--sand:#c9962f;--sandbg:#fdf6e6;--night:#12343f;
+--w1:#1d5a6e;--w2:#3f8fa6;--w3:#7fb8c7;--w4:#b7791f}
+*{box-sizing:border-box}
+html,body{background:var(--paper)}
+body{margin:0;color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.85;font-size:16px}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 40px}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid #3d7a55;background:#e7f2ea;color:#1f4a2c;line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+#gate{max-width:400px;margin:13vh auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+#gate h2{margin:0 0 6px;font-size:20px;color:var(--deep)}
+#gate .row{display:flex;gap:8px;margin:12px 0 6px}
+#gate input{flex:1;font:inherit;font-size:17px;padding:10px;border:1px solid var(--line);border-radius:8px}
+#gate button{font:inherit;font-weight:700;cursor:pointer;border-radius:8px;padding:10px 16px;border:1px solid var(--deep);background:var(--deep);color:#fff}
+#gate #eye{background:#fff;color:var(--deep)}
+#gate label{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--sub);cursor:pointer}
+#err{color:var(--red);font-size:14px;min-height:22px;margin:4px 0 0}
+#doc{display:none}
+.hud{position:sticky;top:0;z-index:40;background:var(--night);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hud .t{flex:1;min-width:120px;font-size:13.5px;font-weight:700;color:#ffd98a}
+.hud button{font:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:5px 12px}
+h1{font-family:"Noto Serif TC",serif;color:var(--deep);font-size:26px;margin:18px 0 4px;text-wrap:balance}
+p.sub{color:var(--sub);font-size:14px;margin:4px 0 0}
+.howto{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:14px 17px;margin:14px 0 16px;font-size:14.5px}
+.howto b{color:var(--deep)}
+
+/* 時間軸列 */
+.rail{position:sticky;top:44px;z-index:35;background:rgba(246,249,249,.96);backdrop-filter:blur(6px);
+ border-bottom:1px solid var(--line);padding:9px 0 7px;margin:0 -16px 16px;padding-left:16px;padding-right:16px}
+.rline{position:relative;height:30px}
+.rline::before{content:"";position:absolute;left:0;right:0;top:13px;height:3px;background:var(--line);border-radius:2px}
+.rprog{position:absolute;left:0;top:13px;height:3px;background:var(--amber);border-radius:2px;transition:width .3s}
+.rdot{position:absolute;top:6px;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;
+ background:#fff;border:2.5px solid var(--line);cursor:pointer;padding:0;font-size:0;transition:.2s}
+.rdot.done{border-color:var(--amber);background:var(--amberbg)}
+.rdot.on{border-color:var(--amber);background:var(--amber);transform:translateX(-50%) scale(1.35);box-shadow:0 0 0 4px rgba(183,121,31,.2)}
+.rdot.key{border-width:3px}
+.rlab{display:flex;justify-content:space-between;font-size:12px;color:var(--sub);margin-top:1px}
+.rlab b{color:var(--amber)}
+
+/* 浮動卡 */
+.card{background:var(--card);border:2px solid var(--deep);border-radius:18px;padding:20px 22px;
+ box-shadow:0 10px 32px rgba(29,90,110,.13);position:relative;margin-bottom:16px}
+.card.big{border-color:var(--amber);box-shadow:0 12px 36px rgba(183,121,31,.2)}
+.card.green{border-color:var(--green)}.card.red{border-color:var(--red)}
+.card.sand{border-color:var(--sand)}.card.amber{border-color:var(--amber)}
+.card.w1{border-color:var(--w1)}.card.w2{border-color:var(--w2)}
+.card.w3{border-color:var(--w3)}.card.w4{border-color:var(--w4)}
+.chd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.cno{font-family:ui-monospace,monospace;font-size:12px;font-weight:700;color:#fff;background:var(--deep);border-radius:999px;padding:2px 11px}
+.card.big .cno{background:var(--amber)}.card.green .cno{background:var(--green)}
+.card.red .cno{background:var(--red)}.card.sand .cno{background:var(--sand)}
+.card.amber .cno{background:var(--amber)}
+.card.w1 .cno{background:var(--w1)}.card.w2 .cno{background:var(--w2)}
+.card.w3 .cno{background:var(--w3)}.card.w4 .cno{background:var(--w4)}
+.cch{font-size:12.5px;color:var(--sub)}
+.ch1{font-family:"Noto Serif TC",serif;font-size:24px;font-weight:700;color:var(--deep);line-height:1.45;margin:0 0 10px;text-wrap:balance}
+.card.big .ch1{color:#8a5a12}.card.green .ch1{color:#24512f}.card.red .ch1{color:#7d2622}
+.cp{font-size:15.5px;margin:10px 0}
+.cp b{color:var(--deep)}
+.card.big .cp b{color:#7a5410}.card.green .cp b{color:#24512f}.card.red .cp b{color:#7d2622}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+@media (max-width:520px){.nums{grid-template-columns:1fr}}
+.nums div{background:#f4f9fa;border:1px solid var(--line);border-radius:11px;padding:10px 8px;text-align:center}
+.nums .nl{display:block;font-size:12px;color:var(--sub);font-weight:700}
+.nums .nv{display:block;font-family:"Noto Serif TC",serif;font-size:21px;font-weight:700;color:var(--deep);
+ font-variant-numeric:tabular-nums;line-height:1.35}
+.nums .nu{font-size:13px;font-weight:400;color:var(--sub);margin-left:2px}
+.rows{display:grid;gap:7px;margin:13px 0}
+.rw{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.7;
+ background:#fafcfc;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.rw .k{flex:none;min-width:62px;font-weight:700;color:var(--deep);font-size:14px}
+.rw .m{flex:1;min-width:110px}
+.rw .v{flex:none;font-weight:700;color:var(--amber);font-size:14px;white-space:nowrap}
+@media (max-width:520px){.rw{flex-direction:column;gap:2px}.rw .v{color:var(--amber)}}
+.p2{background:var(--amberbg);border:1.5px solid #e0cda0;border-radius:12px;padding:13px 16px;
+ margin:13px 0 0;font-size:15px;line-height:1.95;color:#5a4012}
+.p2 b{color:#7a5410}
+.lk{display:inline-flex;align-items:center;gap:6px;margin-top:13px;font-size:13.5px;color:var(--deep);
+ text-decoration:none;border-bottom:1px dashed var(--deep);padding-bottom:1px}
+.ctrl{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:0 0 10px}
+.ctrl button{font:inherit;font-size:15.5px;font-weight:700;cursor:pointer;border-radius:11px;
+ padding:12px 20px;border:1px solid var(--deep);background:var(--deep);color:#fff}
+.ctrl button.sec{background:#fff;color:var(--deep)}
+.ctrl button:disabled{opacity:.35;cursor:default}
+.ctrl .sp{flex:1;min-width:6px}
+.jump{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px}
+.jump button{font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;border-radius:999px;
+ padding:5px 12px;border:1px solid var(--line);background:#fff;color:var(--sub)}
+.jump button.on{border-color:var(--amber);background:var(--amberbg);color:#8a5a12}
+.jump button.key{border-style:solid;border-color:#c9b48a}
+p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;color:var(--deep);
+ margin:24px 0 6px;padding:15px 16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fbfdfd}
+.disc{font-size:12.5px;color:#8a979c;margin-top:20px;border-top:1px solid var(--line);padding-top:12px;line-height:1.75}
+.disc p{margin:5px 0}
+@media print{.hud,.rail,.ctrl,.jump{display:none!important}}
+</style></head><body>
+<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜藍圖報告書・引導導覽</span><span class="vv">v1.2 ・ 2026/09/25（台灣時間）</span></div>
+<div id="gate">
+<p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
+<h2>藍圖導覽【客戶版】阿志</h2><p class="sub">請輸入密碼檢視。</p>
+<div class="row"><input type="password" id="pw" placeholder="請輸入密碼" autocomplete="current-password"><button type="button" id="eye">顯示</button></div>
+<label><input type="checkbox" id="rm" checked> 記住這台裝置 30 天</label>
+<p id="err" aria-live="polite"></p>
+<button type="button" id="go" style="width:100%">進入</button></div>
+
+<div id="doc">
+<div class="hud"><span class="t" id="hudt">阿志｜藍圖導覽</span>
+<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<div class="wrap">
+<h1>一步一步，把你的藍圖看完</h1>
+<p class="sub">更新於 2026/09/25（台灣時間）｜財顧芸整理</p>
+
+<div class="howto"><b>怎麼看這一頁</b><br>
+按<b>「下一步」</b>一站一站走，或點上面<b>時間軸的圓點</b>跳到任何一段。
+每一站都會告訴你<b>那個部分在講什麼、數字是多少</b>，需要細節的話，卡片下面有連回完整報告書的入口。<br>
+走完大約 <b>10 分鐘</b>。中途看不懂就停下來傳 LINE 給我 😊</div>
+
+<div class="rail">
+  <div class="rline" id="rline"><span class="rprog" id="rprog"></span></div>
+  <div class="rlab"><span id="rl0">起點</span><span id="rl1"><b>1</b> / 14</span><span id="rl2">效益</span></div>
+</div>
+
+<div class="jump" id="jump"></div>
+
+<div class="card" id="card">
+  <div class="chd"><span class="cno" id="cno">01</span><span class="cch" id="cch"></span></div>
+  <h2 class="ch1" id="ch1"></h2>
+  <div id="cbody"></div>
+  <div class="nums" id="nums"></div>
+  <div class="p2" id="p2"></div>
+  <a class="lk" id="lk" href="#" target="_blank" rel="noopener">📄 看完整報告書的這一章 →</a>
+</div>
+
+<div class="ctrl">
+  <button type="button" class="sec" id="prev">← 上一步</button>
+  <div class="sp"></div>
+  <button type="button" id="next">下一步 →</button>
+</div>
+
+<p class="closing">把人生的錢安排好，其他就是享受生活。</p>
+
+<div class="disc">
+<p>本頁為個人化服務說明，不構成投資建議，內容摘自《阿志－人生財務設計藍圖報告書》，完整說明與假設條件以該報告書為準。
+大A（法巴）以<b>假設年報酬 6%</b> 試算、大B（保誠）採 8 年期試算書「<b>假設中分紅</b>」之預估值、小A（安聯）為投資型保單，
+三者<b>均非保證</b>，帳戶價值可能因投資標的績效而增減，最高可能損失全部本金，由要保人自行承擔。
+軍人退休俸依公開法規與薪餉單本俸 26,580 推估，<b>非官方數字</b>，以人事單位正式退除給與試算為準；能否服現役滿 20 年尚未確定。
+保單借款額度依帳戶價值計算、利率得調整，須保單生效並累積價值後方可辦理。外幣保單涉及匯率風險。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p></div>
+</div></div>
+
+<script>
+(function(){
+var PASS="0421",KEY='azhi-guide-unlock',DAYS=30,S=[{"t": "起點", "c": "第一章", "tag": "deep", "h": "我們先看看你現在的位置", "p": ["在談任何規劃之前，先把現況攤開。這些數字不是評價，只是起點。", "每個月實際入帳 <b>58,483</b>，房貸繳 <b>14,000</b>，扣掉其他開銷之後，還剩下大約 <b>2 萬</b>。另外手邊有一筆 <b>50 萬</b>的存款。", "<b>這 2 萬和 50 萬，就是我們接下來要安排的全部。</b>不多，但夠開始。"], "n": [["每月實發", "58,483", "元"], ["房貸月付", "14,000", "元"], ["每月結餘", "20,000", "元"]]}, {"t": "人", "c": "第二章", "tag": "deep", "h": "財務規劃，先從「人」開始", "p": ["你最重視的三件事：<b>帶太太去日本、讓錢動起來、退休後有穩定的錢可以用。</b>", "還有兩件你目前不太擔心的事——<b>醫療險核保沒過</b>、<b>房貸還有 300 多萬</b>。", "你不擔心是有道理的，家裡接得住。但接住的人是太太和爸媽。<b>這件事我們後面會再回來談。</b>"], "n": [["最想先完成", "日本行", ""], ["預算", "10", "萬"], ["出發", "後年", ""]]}, {"t": "結構", "c": "第三章", "tag": "big", "key": 1, "h": "三個水庫，一個水桶", "p": ["大部分人存錢是「一次一個、慢慢來」——先結婚、再買車、再買房，輪到退休金的時候人已經五十幾歲。", "<b>所以這份規劃讓四件事同時起跑。</b>金額可以小，但每一條線都先跑起來，不斷點。", "從這裡開始，我會用代號稱呼它們，比較好記。"], "rows": [["大A", "法巴單筆 30 萬", "一次注入，之後不用再投錢"], ["大B", "保誠鑫發達美元保單", "年繳 8 年，65 歲起幫自己加薪"], ["小A", "安聯 10來旺", "每月 5,000，中期彈性"], ["水桶", "彈性資金", "每月 5,000，近期想做的事"]], "n": [["大水庫", "2", "座"], ["小水庫", "1", "座"], ["水桶", "1", "個"]]}, {"t": "大A", "c": "第三章", "tag": "w1", "h": "大A｜法巴單筆 30 萬", "p": ["用現有存款一次注入 <b>30 萬</b>，之後<b>不用再投一毛錢</b>，也不占每月的 2 萬結餘。", "投資標的選<b>累積型</b>——收益不撥出來，直接留在帳戶裡繼續滾。你不會每個月看到一筆錢入帳，但<b>本金會長大</b>。", "假設年報酬 6%，滾存 29 年到 65 歲約 <b>162.6 萬</b>（非保證）。"], "n": [["投入", "30", "萬"], ["每月支出", "0", "元"], ["65 歲估值", "162.6", "萬"]]}, {"t": "大B", "c": "第三章", "tag": "w2", "h": "大B｜保誠鑫發達", "p": ["每年繳 <b>USD 4,000</b>（約 12 萬），<b>繳 8 年</b>，從 36 歲到 43 歲。", "年繳比月繳便宜，而且<b>換匯時機由你自己挑</b>。建議每月存 1 萬進外幣帳戶，每季換一次美元。", "<b>這張不是拿來賺的，是拿來守的。</b>你的定期壽險 46 歲到期，這張 <b>43 歲就接手，而且終身有效</b>——中間沒有空窗。順便幫你把退休後的薪水存起來。", "65 歲起每年領回約 <b>USD 5,000</b>（依建議書試算，假設中分紅、非保證）——這就是「幫自己加薪」。"], "n": [["每期", "USD 4,000", ""], ["繳費年期", "8", "年"], ["角色", "守，不是攻", ""]]}, {"t": "小A", "c": "第三章", "tag": "w3", "h": "小A｜安聯 10來旺", "p": ["每月 <b>5,000</b>（目標保費 3,000＋超額 2,000），自動扣款，<b>繳到 55 歲</b>。", "這一筆是三個水庫裡<b>最有彈性</b>的，前幾年先蓄水，之後可以部分提領。", "壽險保障<b>已經含在裡面</b>，不需要另外再繳。"], "n": [["每月", "5,000", "元"], ["繳到", "55", "歲"], ["壽險保障", "內含", ""]]}, {"t": "水桶", "c": "第七章", "tag": "w4", "h": "水桶｜每月 5,000 的彈性資金", "p": ["水桶跟水庫最大的不同：<b>水桶是隨時可以提起來用的</b>。", "它不是為了滾多大，是為了<b>讓你在需要的時候不必去動水庫</b>。"], "rows": [["前 20 個月", "存日本旅遊基金", "10 萬"], ["旅遊之後", "繼續存，當醫療預備金", "持續累積"], ["一直用不到", "轉退休金，或下一個目標", "看那時的需要"]], "n": [["每月", "5,000", "元"], ["日本行", "10", "萬"], ["約需", "20", "個月"]]}, {"t": "50 萬", "c": "第九章", "tag": "sand", "key": 1, "h": "存款 50 萬怎麼放", "p": ["<b>30 萬</b>注入大A，<b>20 萬</b>留在手邊當預備金。", "但大B 是年繳，第一期要一次拿出約 <b>12 萬</b>。這筆先從預備金出——<b>手邊現金會從 20 萬變成 8 萬。</b>", "這 12 萬<b>不是花掉，是換個地方放</b>。往後八年每月存的那 1 萬，是拿去繳下一期的，所以預備金會一直停在 8 萬。<b>這是一個要清楚知道的選擇。</b>"], "n": [["進大A", "30", "萬"], ["大B 首期", "12", "萬"], ["手邊剩下", "8", "萬"]]}, {"t": "急用", "c": "第八章", "tag": "green", "key": 1, "h": "真的急用錢，有三條路", "p": ["順序很重要——先走第一條，不夠再往下。"], "rows": [["① 預備金", "最快、沒有成本，動用了慢慢補回來", "8 萬"], ["② 保單借款", "跟大A 借，可借帳戶價值 4 成，利率 4.46%。不用解約，幾天撥款，裡面的錢繼續滾", "約 12 萬"], ["③ 解約", "會損失累積成果，前幾年拿回來的比繳進去的少", "盡量不走"]], "p2": "<b>所以手邊那 8 萬，其實不只 8 萬。</b><br>8 萬現金 ＋ 大A 可借約 12 萬 ＝ <b>急用時可動用約 20 萬</b>，跟你原本的預備金一樣。只是其中 12 萬從「放在戶頭」變成「放在保單裡，需要時借出來」。", "n": [["手邊現金", "8", "萬"], ["大A 可借", "約 12", "萬"], ["合計", "約 20", "萬"]], "p3": "以你目前的必要支出（房貸 14,000 ＋ 生活開銷）估算，光靠手邊 8 萬約可撐 <b>2 到 3 個月</b>；把大A 可借的 12 萬算進去，大約是 <b>6 到 7 個月</b>——這已經超過一般建議的水準。"}, {"t": "43 歲", "c": "第三章", "tag": "big", "key": 2, "h": "43 歲｜兩件事同時到位", "p": ["<b>① 役滿 20 年</b>——退休俸的請領權到手。<br><b>② 大B 繳完</b>——<b>壽險保障一次往上跳</b>，帳戶價值也過了保本點（逐年金額請對照保誠正式建議書）。", "<b>真正的重點是現金流被釋放出來。</b>每月存入從 2 萬降到 1 萬，加上役滿後多出來的選擇，你手上會有一筆<b>可以重新安排的錢</b>，那時候我們再坐下來重新規劃一次。", "那一年你會面對一個選擇：繼續服役，還是換條路走。<br><b>這個規劃的目的，是讓你到時候「可以選」，不是「只能撐」。</b>"], "p2": "<b>要分清楚兩種錢 ⚖️</b><br><b>① 每月釋放出來的現金流</b>——這是你真正拿來安排生活、做下一步規劃的錢。<br><b>② 保單裡那一包保價金</b>——它<b>不是主要運用資金</b>，工作是「不要斷、一直長」。急用可以借，但借完要補回去。<br><b>現金流負責過日子，保價金負責長大。</b>", "n": [["大B", "繳完了", ""], ["壽險保障", "往上跳", ""], ["每月釋出", "10,000", "元"]]}, {"t": "65 歲", "c": "第六章", "tag": "big", "key": 2, "h": "65 歲｜四筆收入同時到位", "p": ["二十九年前那個決定，在今天結算。"], "rows": [["大A", "162.6 萬分 20 年領", "每月 6,773"], ["大B", "每年領 USD 5,000", "月約 12,500"], ["小A", "帳戶分 20 年領完", "每月 15,342"], ["退休俸", "43 歲起就在領，終身", "每月約 29,238"]], "p2": "合計每月約 <b>63,853</b>。目標是「現在的 5 萬」換算到 65 歲的 <b>88,792</b>，<b>達成約 72%</b>，還差 24,939。<br><b>缺口不是一次補完的，是一年一年補起來的。</b>收入會隨時間增加，我們每年檢視、逐步往上調。", "n": [["每月合計", "約 63,853", "元"], ["目標", "88,792", "元"], ["達成", "約 72", "%"]]}, {"t": "風險", "c": "第十章", "tag": "red", "key": 1, "h": "醫療與房貸：目前是誰在扛", "p": ["你不擔心，其實是有道理的。家裡有房、有長輩，真的出事不至於沒人接。<b>這不是錯覺，是你現在真實的後盾。</b>", "所以我想談的不是「你有危險」，而是另一個問題——<b>如果那天真的來了，這兩件事會落到誰身上？</b>"], "rows": [["醫療", "核保沒過，走風險自留", "錢從你的存款出，不夠從家裡出"], ["房貸 300 多萬", "萬一你不在，貸款不會消失", "變成太太或爸媽每月要面對的事"]], "p2": "這兩件事的共同點是：<b>風險沒有不見，只是目前由別人接住。</b><br>你今年 36 歲，正在從「被照顧的人」變成「照顧人的人」。<br><b>我沒有要你現在決定什麼</b>——你隨時可以說「還不用」。我只希望你做這個決定的時候，<b>是知道自己在選什麼</b>。", "n": [["已有壽險", "200", "萬"], ["既有保單年繳", "9,431", "元"], ["房貸餘額", "300 多", "萬"]]}, {"t": "90 天", "c": "第十二章", "tag": "amber", "h": "接下來 90 天，我們先做什麼", "p": ["不用一次做完。這幾件事有先後，一件一件來。"], "rows": [["你要做", "補辦網路銀行與晶片金融卡", "線上換匯要在網銀裡操作"], ["你要做", "跟人事單位確認本俸與軍保俸額", "順便問軍保保障內容表"], ["你要做", "提供房貸的三個數字", "餘額、利率、剩餘年限"], ["一起做", "大B 簽署", "外幣帳戶已到位，可以安排了"], ["一起做", "法巴保單簽收滿 10 天後確認配置", "投入前我們會再約一次"]], "n": [["你要做", "3", "件"], ["一起做", "2", "件"], ["期限", "沒有急的", ""]]}, {"t": "效益", "c": "第十四章", "tag": "green", "key": 2, "h": "規劃前 vs 規劃後", "p": ["同樣的收入、同樣的 50 萬，差別只在<b>有沒有把它們安排好</b>。"], "rows": [["規劃前", "50 萬全部放活存；每月結餘沒有去處", "退休沒有專款，出發時間不確定"], ["規劃後", "大A 30 萬滾存＋預備金；每月 2 萬各有工作", "四件事同時開始，不斷點"]], "p2": "<b>最後，回到最前面那個問題——</b><br><b>退休後每個月五萬的被動收入，是不是你要的？</b><br><br>如果是，那接下來我們只要<b>照著規劃走</b>，每年做一次<b>滾動式檢視</b>，該增就增、該減就減，確保這個目標走得到。<br>如果不是，或你心裡的數字跟當初不一樣了，<b>也隨時可以改</b>——目標是你的，規劃只是幫你走過去的路。<br><br><b>把人生的錢安排好，其他就是享受生活。</b>", "n": [["四件事", "同時開始", ""], ["第一個目標", "日本行", ""], ["下次檢視", "明年一月", ""]]}],REPORT="\u963f\u5fd7-\u4eba\u751f\u8ca1\u52d9\u8a2d\u8a08\u85cd\u5716\u5831\u544a\u66f8.html";
+function $(i){return document.getElementById(i);}
+function show(){$('gate').style.display='none';$('doc').style.display='block';init();}
+function ok(){try{var t=+localStorage.getItem(KEY);return t&&Date.now()<t;}catch(e){return false;}}
+$('eye').onclick=function(){var v=$('pw').type==='password';$('pw').type=v?'text':'password';this.textContent=v?'隱藏':'顯示';};
+function go(){if($('pw').value.trim()===PASS){if($('rm').checked){try{localStorage.setItem(KEY,Date.now()+DAYS*864e5);}catch(e){}}show();}
+ else{$('err').textContent='密碼不正確，請再試一次。';}}
+$('go').onclick=go;$('pw').addEventListener('keydown',function(e){if(e.key==='Enter')go();});
+if(ok())show();
+
+var inited=false;
+function init(){
+ if(inited)return;inited=true;
+ $('print').onclick=function(){window.print();};
+ $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
+ var N=S.length,cur=0;
+
+ $('rline').insertAdjacentHTML('beforeend',S.map(function(s,i){
+  return '<button type="button" class="rdot'+(s.key?' key':'')+'" data-i="'+i+'" title="'+s.t+'" '
+   +'style="left:'+(N>1?i/(N-1)*100:0)+'%"></button>';}).join(''));
+ $('jump').innerHTML=S.map(function(s,i){
+  return '<button type="button" data-i="'+i+'"'+(s.key?' class="key"':'')+'>'+(i+1)+'. '+s.t+'</button>';}).join('');
+
+ function render(i){
+  var s=S[i];cur=i;
+  $('card').className='card'+(s.tag?' '+s.tag:'');
+  $('cno').textContent=('0'+(i+1)).slice(-2);
+  $('cch').textContent=s.c;
+  $('ch1').textContent=s.h;
+  var html=(s.p||[]).map(function(x){return '<p class="cp">'+x+'</p>';}).join('');
+  if(s.rows&&s.rows.length){
+   html+='<div class="rows">'+s.rows.map(function(r){
+    return '<div class="rw"><span class="k">'+r[0]+'</span><span class="m">'+r[1]+'</span>'
+     +(r[2]?'<span class="v">'+r[2]+'</span>':'')+'</div>';}).join('')+'</div>';
+  }
+  $('cbody').innerHTML=html;
+  var nm=$('nums');
+  if(s.n&&s.n.length){nm.hidden=false;
+   nm.innerHTML=s.n.map(function(n){
+    return '<div><span class="nl">'+n[0]+'</span><span class="nv">'+n[1]
+     +(n[2]?'<span class="nu">'+n[2]+'</span>':'')+'</span></div>';}).join('');
+  }else nm.hidden=true;
+  var q=$('p2');
+  if(s.p2){q.hidden=false;q.innerHTML=s.p2+(s.p3?'<br><br>'+s.p3:'');}
+  else if(s.p3){q.hidden=false;q.innerHTML=s.p3;}else q.hidden=true;
+  $('lk').href=REPORT;
+  $('hudt').textContent='阿志｜'+(i+1)+'. '+s.t;
+  $('rprog').style.width=(N>1?i/(N-1)*100:0)+'%';
+  $('rl1').innerHTML='<b>'+(i+1)+'</b> / '+N;
+  [].forEach.call($('rline').querySelectorAll('.rdot'),function(d,j){
+   d.classList.toggle('on',j===i);d.classList.toggle('done',j<i);});
+  [].forEach.call($('jump').children,function(c,j){c.classList.toggle('on',j===i);});
+  $('prev').disabled=(i===0);$('next').disabled=(i===N-1);
+  $('next').textContent=(i===N-2)?'最後一步 →':'下一步 →';
+ }
+ function goTo(i,scroll){
+  render(Math.max(0,Math.min(N-1,i)));
+  if(scroll!==false){var c=$('card').getBoundingClientRect().top+window.scrollY-112;
+   window.scrollTo({top:Math.max(0,c),behavior:'smooth'});}
+ }
+ $('prev').onclick=function(){goTo(cur-1);};
+ $('next').onclick=function(){goTo(cur+1);};
+ $('rline').addEventListener('click',function(e){var d=e.target.closest('.rdot');
+  if(d)goTo(+d.getAttribute('data-i'));});
+ $('jump').addEventListener('click',function(e){var b=e.target.closest('button');
+  if(b)goTo(+b.getAttribute('data-i'));});
+ document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'){e.preventDefault();$('next').click();}
+  if(e.key==='ArrowLeft'){e.preventDefault();$('prev').click();}});
+ render(0);
+}
+})();
+</script></body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW"><head><meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【客戶版】阿志｜規劃執行進度表</title><style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--green:#3d7a55;--greenbg:#e7f2ea;--red:#a8423a;--redbg:#f7e3e1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 80px}
+#gate{max-width:400px;margin:13vh auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+#gate h2{margin:0 0 6px;font-size:20px;color:var(--deep)}
+#gate .row{display:flex;gap:8px;margin:12px 0 6px}
+#gate input{flex:1;font:inherit;font-size:17px;padding:10px;border:1px solid var(--line);border-radius:8px}
+#gate button{font:inherit;font-weight:700;cursor:pointer;border-radius:8px;padding:10px 16px;border:1px solid var(--deep);background:var(--deep);color:#fff}
+#gate #eye{background:#fff;color:var(--deep)}
+#gate label{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--sub);cursor:pointer}
+#err{color:var(--red);font-size:14px;min-height:22px;margin:4px 0 0}
+#doc{display:none}
+h1{font-family:"Noto Serif TC",serif;color:var(--deep);font-size:26px;margin:18px 0 4px}
+p.sub{color:var(--sub);font-size:14px;margin:4px 0}
+.hud{position:sticky;top:0;z-index:20;background:#12343f;color:#fff;padding:11px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hud .pc{font-size:20px;font-weight:700;color:#ffd98a;flex:none}
+.hud .bar{flex:1;min-width:120px;height:9px;background:rgba(255,255,255,.22);border-radius:6px;overflow:hidden}
+.hud .bar i{display:block;height:100%;width:0;background:#ffd98a;transition:width .35s}
+.hud .nx{font-size:13px;opacity:.92}
+.hud button{font:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:6px 13px}
+.hud button:hover{background:rgba(255,255,255,.18)}
+.hud button.pri{background:#ffd98a;color:#12343f;border-color:#ffd98a}
+.grp{margin:24px 0 10px;display:flex;align-items:center;gap:10px}
+.grp b{font-family:"Noto Serif TC",serif;font-size:20px;color:var(--deep)}
+.grp .cnt{font-size:13px;color:var(--sub)}
+.grp .ln{flex:1;height:2px;background:var(--mist);border-radius:2px}
+.it{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--line);border-radius:12px;padding:13px 15px;margin:9px 0;display:flex;gap:13px;align-items:flex-start}
+.it.done{border-left-color:var(--green);background:#fbfdfb}
+.it.doing{border-left-color:var(--amber);background:#fdf3e0;box-shadow:0 2px 10px rgba(183,121,31,.16);border-color:#e6d5ae}.it.doing .tt{color:#7a5410}
+.it.todo{border-left-color:#c3d2d6}
+.it.intn{border-style:dashed}
+.ic{flex:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;background:#c3d2d6;margin-top:2px}
+.it.done .ic{background:var(--green)}.it.doing .ic{background:var(--amber)}
+.bd{flex:1;min-width:0}
+.tt{font-size:16.5px;font-weight:700;color:var(--deep);line-height:1.6}
+.it.done .tt{color:#24512f}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:3px}
+.who{font-size:12.5px;font-weight:700;border-radius:999px;padding:1px 10px}
+.who.you{background:var(--amberbg);color:#5a4012}
+.who.me{background:var(--mist);color:var(--deep)}
+.who.both{background:var(--greenbg);color:#24512f}
+.dt{font-size:12.5px;color:var(--sub)}
+.nt{font-size:14.5px;color:var(--sub);margin-top:5px;line-height:1.75}
+.disc{font-size:12.5px;color:var(--sub);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+#toast{display:none;position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#12343f;color:#fff;padding:11px 20px;border-radius:999px;font-size:14.5px;z-index:50}
+@media print{.hud,.ed,.adds{display:none}.it{break-inside:avoid}}
+@media (max-width:560px){h1{font-size:22px}.it{padding:11px 12px;gap:10px}}
+
+.hint{background:var(--amberbg);border-left:5px solid var(--amber);border-radius:10px;padding:12px 15px;font-size:14.5px;color:#5a4012;margin:14px 0}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+@media print{.vband{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (max-width:560px){.vband{font-size:12px;padding:6px 12px;gap:7px}}
+</style></head><body>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜規劃執行進度表</span><span class="vv">v1.1 ・ 2026/09/24（台灣時間）</span></div>
+
+<div id="gate"><p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
+<h2>阿志｜規劃執行進度表</h2><p class="sub">請輸入密碼檢視。</p>
+<div class="row"><input type="password" id="pw" placeholder="請輸入密碼" autocomplete="current-password"><button type="button" id="eye">顯示</button></div>
+<label><input type="checkbox" id="rm" checked> 記住這台裝置 30 天</label><p id="err" aria-live="polite"></p>
+<button type="button" id="go" style="width:100%">進入</button></div>
+<div id="doc"><div class="hud"><span class="pc">35%</span><span class="bar"><i style="width:35%"></i></span>
+<span class="nx">已完成 6 項 ／ 共 17 項</span>
+<button type="button" id="print">列印／存 PDF</button><button type="button" id="out">登出</button></div>
+<div class="wrap"><h1>阿志｜規劃執行進度表</h1>
+<p class="sub">更新於 2026/09/20 08:19（台灣時間）｜財顧芸整理</p>
+<div class="hint">這是我們一起在走的進度。<b>「你要做」</b>是需要麻煩你的，<b>「我幫你做」</b>是我這邊會處理好的。有任何不清楚的，隨時 LINE 我。</div>
+<div class="grp"><b>已完成</b><span class="cnt">6 / 6</span><span class="ln"></span></div><div class="it done"><span class="ic">✓</span><div class="bd"><div class="tt">財務訪談</div><div class="meta"><span class="who both">我們一起</span><span class="dt">2026/09/12</span></div><div class="nt">把現況、家庭、目標一次談清楚</div></div></div><div class="it done"><span class="ic">✓</span><div class="bd"><div class="tt">你回覆確認表</div><div class="meta"><span class="who you">你要做</span><span class="dt">2026/09/15</span></div><div class="nt">八項確認，內容無出入</div></div></div><div class="it done"><span class="ic">✓</span><div class="bd"><div class="tt">人生財務設計藍圖報告書</div><div class="meta"><span class="who me">我幫你做</span><span class="dt">2026/09/19</span></div><div class="nt">大小水庫時間軸、退休四情境、風險盤點、壓力測試</div></div></div><div class="it done"><span class="ic">✓</span><div class="bd"><div class="tt">簽約：法巴單筆 30 萬（大水庫1）</div><div class="meta"><span class="who both">我們一起</span><span class="dt">2026/09/19</span></div><div class="nt">VGOU17 金采年華變額年金</div></div></div><div class="it done"><span class="ic">✓</span><div class="bd"><div class="tt">簽約：安聯 10來旺 每月 5,000（小水庫）</div><div class="meta"><span class="who both">我們一起</span><span class="dt">2026/09/19</span></div><div class="nt">目標 3,000＋超額 2,000，繳到 55 歲</div></div></div><div class="it done"><span class="ic">✓</span><div class="bd"><div class="tt">法巴投資標的：確定採「累積型」</div><div class="meta"><span class="who both">我們一起</span><span class="dt">2026/09/20</span></div><div class="nt">目前沒有使用需求，先把本金養大。累積型不配息，收益直接留在帳戶裡複利，也不會有「配息來自本金」的疑慮。等哪天需要現金流，我們再調整</div></div></div><div class="grp"><b>進行中</b><span class="cnt">0 / 4</span><span class="ln"></span></div><div class="it doing"><span class="ic">•</span><div class="bd"><div class="tt">法巴、安聯兩張核保</div><div class="meta"><span class="who me">我幫你做</span></div><div class="nt">需要補件我會提前通知你</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">開外幣帳戶（中國信託）</div><div class="meta"><span class="who you">你要做</span></div><div class="nt">一定要辦：① 外幣綜合存款帳戶（美元）② 網路銀行 ③ 線上換匯 ④ 晶片金融卡（忘記網銀密碼可在家自行重設）。轉帳匯款看你要不要開，之後補辦也可以</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">跟人事單位確認投保薪資</div><div class="meta"><span class="who you">你要做</span></div><div class="nt">本俸已從薪餉單看到 26,580，正式數字以人事單位為主。順便要軍保保障內容表</div></div></div><div class="it doing"><span class="ic">•</span><div class="bd"><div class="tt">退休俸試算</div><div class="meta"><span class="who me">我幫你做</span></div><div class="nt">已用本俸 26,580 算出每月約 29,238，待正式試算後再對一次</div></div></div><div class="grp"><b>接下來</b><span class="cnt">0 / 7</span><span class="ln"></span></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">收到保單、簽收</div><div class="meta"><span class="who you">你要做</span></div><div class="nt">簽收滿 10 天才會正式進入投資，同時是契約撤銷期</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">投入前配置確認會</div><div class="meta"><span class="who both">我們一起</span></div><div class="nt">投入之前我們再約一次，把投資標的配置一起確認過，你點頭了才投入</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">大水庫2 保誠鑫發達 簽署</div><div class="meta"><span class="who both">我們一起</span></div><div class="nt">要等外幣帳戶開好才能進行</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">退休俸重算、更新報告書</div><div class="meta"><span class="who me">我幫你做</span></div><div class="nt">把推估換成實際數字，退休缺口跟著修正</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">補齊軍保保障內容表</div><div class="meta"><span class="who you">你要做</span></div><div class="nt">跟人事單位要一份</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">補齊房貸三個數字</div><div class="meta"><span class="who you">你要做</span></div><div class="nt">餘額、利率、剩餘年限。補齊保障盤點才算完整</div></div></div><div class="it todo"><span class="ic"></span><div class="bd"><div class="tt">第一次檢視</div><div class="meta"><span class="who both">我們一起</span><span class="dt">2027/01</span></div><div class="nt">水庫執行狀況、日本旅遊存款進度、投資標的配置是否調整</div></div></div>
+<div class="disc"><p>本表為服務進度說明，不構成投資建議。退休俸相關數字依公開法規與薪餉單推估，非官方數字，以人事單位正式退除給與試算為準。保險商品權利義務以保單條款為準；投資型保單帳戶價值可能因投資標的績效增減，最高可能損失全部本金，由要保人自行承擔。外幣保單涉及匯率風險。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p></div></div></div>
+<script>(function(){function $(i){return document.getElementById(i);}
+var P="0421",K="azhi-prog-c-unlock";
+function PWN(v){return String(v||'').replace(/[\uFF01-\uFF5E]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[\s\u3000]/g,'');}
+function show(){$("gate").style.display="none";$("doc").style.display="block";}
+function ok(){try{var t=+localStorage.getItem(K);return t&&Date.now()<t;}catch(e){return false;}}
+$("eye").onclick=function(){var v=$("pw").type==="password";$("pw").type=v?"text":"password";this.textContent=v?"隱藏":"顯示";};
+function g(){if(PWN($("pw").value)===PWN(P)){if($("rm").checked){try{localStorage.setItem(K,Date.now()+30*864e5);}catch(e){}}show();}else{$("err").textContent="密碼不正確，請再試一次。";}}
+$("go").onclick=g;$("pw").addEventListener("keydown",function(e){if(e.key==="Enter")g();});
+$("print").onclick=function(){window.print();};
+$("out").onclick=function(){try{localStorage.removeItem(K);}catch(e){}location.reload();};
+if(ok())show();})();</script></body></html>

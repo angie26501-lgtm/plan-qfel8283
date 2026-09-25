@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【客戶版】阿志｜壓力測試：如果人生沒照劇本走</title>
+<style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--water:#3f8fa6;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--red:#a8423a;--redbg:#f7e3e1;--green:#3d7a55;--greenbg:#e7f2ea;--grey:#b9c4c9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:820px;margin:0 auto;padding:24px 18px 70px}
+.brand{font-family:"Noto Serif TC","Songti TC",serif;color:var(--amber);letter-spacing:.08em;font-size:14px;margin:0}
+h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;color:var(--deep);font-size:29px;line-height:1.35;margin:6px 0 8px}
+h2{font-family:"Noto Serif TC","Songti TC",serif;color:var(--deep);font-size:21px;margin:40px 0 10px;padding-top:16px;border-top:2px solid var(--mist)}
+h3{font-size:17px;margin:18px 0 4px;color:var(--deep)}
+p{margin:8px 0}
+.sub{color:var(--sub);font-size:14px}
+.small{font-size:13px;color:var(--sub)}
+.lead{font-size:17px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.ghost{font-size:13px;padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--sub)}
+
+.base{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:16px 0}
+.base b{color:var(--deep);font-size:18px}
+
+.bars{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.legend{font-size:12.5px;color:var(--sub);margin:0 0 10px!important}
+.bar{margin:10px 0 14px}
+.bar-h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}
+.bar-h b{font-size:15.5px}
+.bar-h .v{font-weight:700;font-size:15.5px}
+.track{position:relative;height:20px;background:#eef3f4;border-radius:10px;margin:6px 0 2px}
+.track i{position:absolute;top:0;bottom:0;left:0;border-radius:10px}
+.goal{position:absolute;right:0;top:-5px;bottom:-5px;border-right:2px dashed var(--amber)}
+.pct{font-size:12.5px;color:var(--sub)}
+
+.case{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+.case.a{border-top:6px solid var(--red)}
+.case.b{border-top:6px solid var(--amber)}
+.case.c{border-top:6px solid var(--water)}
+.tagline{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;border-radius:12px;padding:1px 12px;margin-bottom:6px}
+.case.a .tagline{background:var(--red)}
+.case.b .tagline{background:var(--amber)}
+.case.c .tagline{background:var(--water)}
+.case h3{margin-top:2px;font-size:19px}
+.happen{background:var(--paper);border-radius:10px;padding:10px 14px;font-size:14.5px;margin:10px 0}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px;background:var(--card)}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+th{background:var(--mist);color:var(--deep);font-weight:600}
+tr.total td{font-weight:700;border-top:2px solid var(--deep)}
+.down{color:var(--red);font-weight:600}
+.same{color:var(--sub)}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.res div{border-radius:10px;padding:10px 14px;text-align:center}
+.res .n{font-family:"Noto Serif TC",serif;font-size:24px;font-weight:700;display:block}
+.res .r1{background:var(--redbg);color:var(--red)}
+.res .r2{background:var(--amberbg);color:#8a5a12}
+.fix{background:var(--greenbg);border-radius:10px;padding:12px 14px;margin-top:12px}
+.fix b{color:var(--green)}
+.fix ul{margin:6px 0 0;padding-left:20px}
+.fix li{margin:4px 0}
+
+.find{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--deep);border-radius:10px;padding:14px 16px;margin:12px 0}
+.find b{color:var(--deep)}
+.rank{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.rk{border-radius:10px;padding:12px;text-align:center;background:var(--card);border:1px solid var(--line)}
+.rk .p{font-family:"Noto Serif TC",serif;font-size:26px;font-weight:700;display:block}
+.rk.x1 .p{color:var(--red)}.rk.x2 .p{color:var(--amber)}.rk.x3 .p{color:var(--water)}
+.rk span.l{font-size:13.5px;color:var(--sub)}
+.core{text-align:center;font-family:"Noto Serif TC",serif;color:var(--deep);font-size:19px;margin:18px 0}
+.note{background:var(--amberbg);border-radius:10px;padding:10px 14px;font-size:14.5px;color:#5a4012;margin:12px 0}
+.closing{margin:40px 0 10px;padding:24px;border-radius:12px;background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);text-align:center}
+.closing .m{font-family:"Noto Serif TC",serif;font-size:22px;color:var(--deep);font-weight:700;margin:0 0 8px}
+.disc{font-size:12.5px;color:var(--sub);margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+
+#gate{position:fixed;inset:0;background:var(--deep);display:flex;align-items:center;justify-content:center;z-index:30}
+#gate>div{background:#fff;padding:26px;border-radius:12px;width:min(320px,88vw);text-align:center}
+.pwrow{display:flex;gap:6px;margin:12px 0 6px}
+.pwrow input{flex:1;min-width:0;text-align:center;font-size:18px;padding:9px;border:1px solid var(--line);border-radius:6px}
+#eye{font-size:14px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:var(--mist);color:var(--deep)}
+.remember{display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;color:var(--sub);margin:8px 0 12px}
+.remember input{width:18px;height:18px;margin:0}
+#go{width:100%;font-size:17px;padding:10px;border:0;border-radius:6px;background:var(--deep);color:#fff}
+#err{color:var(--red);font-size:14px;min-height:20px;margin:6px 0 0}
+#doc{display:none}
+@media (max-width:560px){.res,.rank{grid-template-columns:1fr}h1{font-size:24px}}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+@media print{.vband{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (max-width:560px){.vband{font-size:12px;padding:6px 12px;gap:7px}}
+</style>
+</head>
+<body>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜壓力測試（三種情境）</span><span class="vv">v1.1 ・ 2026/09/24（台灣時間）</span></div>
+
+<div id="gate"><div>
+<p style="margin:0;font-weight:600">阿志｜壓力測試</p>
+<div class="pwrow"><input id="pw" type="password" placeholder="輸入密碼" aria-label="密碼" autocomplete="current-password"><button type="button" id="eye" aria-pressed="false">顯示</button></div>
+<label class="remember"><input type="checkbox" id="rem" checked> 在這台裝置記住 30 天</label>
+<button type="button" id="go">打開</button>
+<p id="err"></p>
+</div></div>
+
+<div id="doc"><div class="wrap">
+<div class="top"><p class="brand">財顧芸｜人生財務設計藍圖</p><button type="button" class="ghost" id="logout">登出</button></div>
+<h1>壓力測試：<br>如果人生沒有照劇本走</h1>
+<p class="lead">規劃書算的是「一切順利」的情況。但人生不會完全照劇本走。這一份是把三件<b>真的可能發生</b>的事放進來重算，看看規劃撐不撐得住，以及現在可以先做什麼。</p>
+<p class="small">不是要嚇你。知道最壞會怎樣，現在才有機會先準備；真正危險的，是從來沒想過。</p>
+
+<div class="base">
+<b>比較基準：情境四（樂觀）</b>
+<p style="margin:4px 0 0">65 歲起每月約 <b>88,025</b>　目標 88,792　缺口只差 767，達成 <b>99%</b><br>
+<span class="small">組成：小水庫 15,342＋大水庫1 6,773＋大水庫2 12,500＋D 另一桶 8,796＋加薪多存 15,376＋軍人退休俸 29,238（9/20 薪餉單本俸試算）</span></p>
+</div>
+
+<h2>三種壓力情境，一次看完</h2>
+<div class="bars">
+<p class="legend">65 歲起每月可以用的錢｜右側虛線為目標 88,792</p>
+<div class="bar">
+<div class="bar-h"><b>基準：情境四（樂觀）</b><span class="v">88,025</span></div>
+<div class="track"><i style="width:99.1%;background:linear-gradient(90deg,var(--water),var(--deep))"></i><em class="goal"></em></div>
+<p class="pct">達成 99%　缺口 767</p>
+</div>
+<div class="bar">
+<div class="bar-h"><b>壓力 B：45 歲重大醫療事件</b><span class="v">80,347</span></div>
+<div class="track"><i style="width:90.5%;background:var(--amber)"></i><em class="goal"></em></div>
+<p class="pct">達成 90%　缺口 8,445　<span class="down">比基準少 7,678</span></p>
+</div>
+<div class="bar">
+<div class="bar-h"><b>壓力 C：市場長期低迷＋匯率走升</b><span class="v">63,083</span></div>
+<div class="track"><i style="width:71.0%;background:var(--water)"></i><em class="goal"></em></div>
+<p class="pct">達成 71%　缺口 25,709　<span class="down">比基準少 24,942</span></p>
+</div>
+<div class="bar">
+<div class="bar-h"><b>壓力 A：沒服役到滿 20 年</b><span class="v">51,099</span></div>
+<div class="track"><i style="width:57.5%;background:var(--red)"></i><em class="goal"></em></div>
+<p class="pct">達成 58%　缺口 37,693　<span class="down">比基準少 36,926</span></p>
+</div>
+</div>
+
+<div class="find">
+<b>先講最重要的發現：對你來說，最大的風險不是市場，是「有沒有服役到滿 20 年」。</b>
+<p style="margin:6px 0 0">市場再差，退休俸還在；但如果沒服役到滿 20 年，那 29,238 就是整個消失。這一項的衝擊比市場長期零報酬還大。</p>
+</div>
+
+<h2>壓力 A｜沒服役到滿 20 年</h2>
+<div class="case a">
+<span class="tagline">衝擊最大</span>
+<h3>40 歲因故退伍，年資只有 17 年</h3>
+<div class="happen"><b>可能的原因：</b>健康因素、考績、留營資格未通過、組織調整，或自己想提早轉換跑道。<br>
+<b>後果：</b>未滿 20 年不能請領月退休俸，只有一次性的退伍給付。退伍後第二職涯收入未必馬上穩定，「每年加薪多存 500」的計畫也會打折。</div>
+<div class="tbl"><table>
+<tr><th>65 歲起每月</th><th>基準</th><th>壓力 A</th></tr>
+<tr><td>軍人退休俸</td><td>29,238</td><td class="down">0</td></tr>
+<tr><td>加薪多存（打 5 折）</td><td>15,376</td><td class="down">7,688</td></tr>
+<tr><td>小水庫、大水庫1、大水庫2、D 另一桶</td><td class="same">43,411</td><td class="same">43,411</td></tr>
+<tr class="total"><td>合計</td><td>88,025</td><td>51,099</td></tr>
+</table></div>
+<div class="res">
+<div class="r1"><span class="n">51,099</span>每月可用（達成 58%）</div>
+<div class="r2"><span class="n">37,693</span>每月缺口</div>
+</div>
+<div class="fix"><b>現在可以先做的事</b>
+<ul>
+<li><b>盡快向人事單位確認留營資格</b>，把「能不能服役到滿 20 年」變成確定的事，這是目前最高價值的一個動作。</li>
+<li><b>把退休俸當紅利，不當地基。</b>D 另一桶和加薪多存照常做，不因為有退休俸就放鬆。</li>
+<li><b>提前了解第二職涯。</b>40 歲後若轉民間，勞保老年年金與勞退個人專戶可以接上，這是退休俸之外的另一條路。</li>
+</ul></div>
+</div>
+
+<h2>壓力 B｜45 歲遇到重大醫療事件</h2>
+<div class="case b">
+<span class="tagline">衝擊最小，因為有預備金擋著</span>
+<h3>自費醫療支出 80 萬</h3>
+<div class="happen"><b>為什麼要測這個：</b>醫療險目前核保未過，走的是風險自留，這筆錢只能靠自己。<br>
+<b>錢從哪來：</b>緊急預備金 20 萬＋醫療預備金 30 萬＝50 萬先擋下，不足的 30 萬從小水庫部分提領。之後 D 要先補回醫療預備金，「另一桶」延到 50 歲才開始存。</div>
+<div class="tbl"><table>
+<tr><th>65 歲起每月</th><th>基準</th><th>壓力 B</th></tr>
+<tr><td>小水庫（45 歲提領 30 萬）</td><td>15,342</td><td class="down">11,333</td></tr>
+<tr><td>D 另一桶（延到 50 歲起存）</td><td>8,796</td><td class="down">5,127</td></tr>
+<tr><td>大水庫1、大水庫2、加薪多存、退休俸</td><td class="same">63,887</td><td class="same">63,887</td></tr>
+<tr class="total"><td>合計</td><td>88,025</td><td>80,347</td></tr>
+</table></div>
+<div class="res">
+<div class="r2"><span class="n">80,347</span>每月可用（達成 90%）</div>
+<div class="r2"><span class="n">8,445</span>每月缺口</div>
+</div>
+<div class="note">這個結果其實是好消息：一場 80 萬的醫療事件，只讓退休每月少 7,678。<b>這就是預備金的價值</b>——它把衝擊吸收掉大半，長期的水庫才不用整個解約。</div>
+<div class="fix"><b>現在可以先做的事</b>
+<ul>
+<li><b>把醫療預備金 30 萬補回來的時程顧好。</b>目前規劃是日本旅遊存滿後、約 43 歲存到。這段空窗期是整份規劃最脆弱的時候。</li>
+<li><b>需要用錢時照順序來：</b>預備金 → 彈性結餘 → 保單貸款 → 最後才解約。上表已假設用「部分提領」而非解約，就是為了保住保障。</li>
+<li><b>身體狀況若改善，再送一次醫療險核保。</b>能保到就不必全靠自己存。</li>
+</ul></div>
+</div>
+
+<h2>壓力 C｜市場長期低迷＋匯率走升</h2>
+<div class="case c">
+<span class="tagline">影響範圍最廣</span>
+<h3>投資報酬長期接近 0%，美元匯率升到 32</h3>
+<div class="happen"><b>假設：</b>小水庫與大水庫1 長期報酬 0%；大水庫2 只拿到低分紅（每年仍領約 5,000，但只能領到 71 歲）；匯率 32 讓大水庫2 每月多支出約 700，D 的存款進度往後延。</div>
+<div class="tbl"><table>
+<tr><th>65 歲起每月</th><th>基準</th><th>壓力 C</th></tr>
+<tr><td>小水庫（0%）</td><td>15,342</td><td class="down">4,445</td></tr>
+<tr><td>大水庫1（0%）</td><td>6,773</td><td class="down">1,250</td></tr>
+<tr><td>D 另一桶（0%）</td><td>8,796</td><td class="down">5,500</td></tr>
+<tr><td>加薪多存（0%）</td><td>15,376</td><td class="down">10,150</td></tr>
+<tr><td>大水庫2（低分紅，只領到 71 歲）</td><td>12,500</td><td class="same">12,500</td></tr>
+<tr><td>軍人退休俸</td><td>29,238</td><td class="same">29,238</td></tr>
+<tr class="total"><td>合計</td><td>88,025</td><td>63,083</td></tr>
+</table></div>
+<div class="res">
+<div class="r2"><span class="n">63,083</span>每月可用（達成 71%）</div>
+<div class="r2"><span class="n">25,709</span>每月缺口</div>
+</div>
+<div class="note">市場全面低迷時，<b>退休俸 29,238 反而變成主力</b>，佔了 63,083 的四成六。這說明為什麼「不受市場影響的現金流」在退休規劃裡這麼重要。另外要注意：大水庫2 若只拿到低分紅，71 歲之後就沒得領了，72 歲起每月會再少 12,500。</div>
+<div class="fix"><b>現在可以先做的事</b>
+<ul>
+<li><b>不要因為市場差就停扣。</b>0% 是「長期平均」的極端假設，中途停扣反而會把低點買進的機會也一起放棄。</li>
+<li><b>匯率分批進場。</b>大水庫2 是年繳，可以在匯率相對低的時候先換匯備著，不必到期才換。</li>
+<li><b>每年檢視一次。</b>如果連續幾年遠低於假設，就提早調整：延後退休、降低退休生活費，或增加每月投入。越早調整，要補的越少。</li>
+</ul></div>
+</div>
+
+<h2>三個結論</h2>
+<div class="rank">
+<div class="rk x1"><span class="p">1</span><b>服役滿 20 年</b><span class="l">影響 -36,926／月<br>最該優先確認</span></div>
+<div class="rk x2"><span class="p">2</span><b>市場長期低迷</b><span class="l">影響 -24,942／月<br>靠紀律與時間分散</span></div>
+<div class="rk x3"><span class="p">3</span><b>重大醫療事件</b><span class="l">影響 -7,678／月<br>預備金已擋掉大半</span></div>
+</div>
+<div class="find">
+<b>① 最值得先做的，是去確認留營資格。</b>
+<p style="margin:6px 0 0">這件事不用花錢，只要開口問一次，卻是三個風險裡影響最大的。確認之後，整份規劃的地基才算穩。</p>
+</div>
+<div class="find">
+<b>② 預備金證明有用，別動它。</b>
+<p style="margin:6px 0 0">80 萬的醫療事件只讓退休每月少 7,678，靠的就是 50 萬預備金先擋下。這筆錢平常看起來沒在「賺錢」，出事時卻是它保住了整個規劃。</p>
+</div>
+<div class="find">
+<b>③ 最壞的情況同時發生，還是有五萬上下。</b>
+<p style="margin:6px 0 0">三種壓力情境下，65 歲每月仍有 51,099～80,347。跟「維持現況＝0」相比，規劃有沒有做，差別非常大。缺口可以慢慢補，但要先有東西在跑。</p>
+</div>
+<p class="core">規劃不是保證一切順利，<br>是讓不順利的時候，還有選擇。</p>
+
+<div class="closing">
+<p class="m">把人生的錢安排好，<br>其他就是享受生活。</p>
+<p class="sub">哪一個情境你最擔心？我們下次見面可以從那個開始談。</p>
+</div>
+
+<div class="disc">
+<p>本頁為壓力情境模擬，目的是評估規劃的抗風險程度，不代表預測或保證任何結果。所有金額均為依目前已確認資料與試算假設推算，非保證給付。</p>
+<p>主要假設：累積期年報酬 4%，壓力情境下調整為 0%；目標金額以現在每月 5 萬、通膨 2% 換算至 65 歲（約 88,792）；65 歲起帳戶價值平均分 20 年支領，不計支領期報酬；大水庫2 以中分紅為主、壓力情境改以低分紅，美元以匯率 30 換算、壓力情境改為 32。軍人退休俸依「最後五分之一年資本俸平均數 × 2 × 俸率」，服現役滿 20 年俸率 55%，本俸依公開俸額表試算，<b>實際金額與請領資格以人事單位正式試算及主管機關最新規定為準</b>。</p>
+<p>保險商品內容、給付條件及費率以各保險公司保單條款與正式建議書為準。投資型保險與基金有投資風險，過去績效不代表未來表現，配息可能來自本金。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p>
+</div>
+</div></div>
+
+<script>
+(function(){
+var PASS='0421',KEY='azhi-stress-unlock',DAYS=30;
+function PWN(v){return String(v||'').replace(/[\uFF01-\uFF5E]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[\s\u3000]/g,'');}
+function $(i){return document.getElementById(i);}
+function show(){$('gate').style.display='none';$('doc').style.display='block';}
+function ok(){try{var t=+localStorage.getItem(KEY);return t&&Date.now()<t;}catch(e){return false;}}
+function open(){if(PWN($('pw').value)===PWN(PASS)){try{if($('rem').checked)localStorage.setItem(KEY,String(Date.now()+DAYS*864e5));else localStorage.removeItem(KEY);}catch(e){}show();}else{$('err').textContent='密碼不對，請再試一次。';$('pw').select();}}
+$('go').onclick=open;
+$('pw').addEventListener('keydown',function(e){if(e.key==='Enter')open();});
+$('eye').onclick=function(){var v=$('pw').type==='password';$('pw').type=v?'text':'password';this.textContent=v?'隱藏':'顯示';this.setAttribute('aria-pressed',v?'true':'false');$('pw').focus();};
+$('logout').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
+if(ok())show();
+})();
+</script>
+</body>
+</html>

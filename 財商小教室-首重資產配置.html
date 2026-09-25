@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【公版】財商小教室｜為什麼首重資產配置？｜財顧芸</title>
+<style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--water:#3f8fa6;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--green:#3d7a55;--greenbg:#e7f2ea;--red:#a8423a;--redbg:#f7e3e1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:26px 18px 70px}
+.brand{font-family:"Noto Serif TC","Songti TC",serif;color:var(--amber);letter-spacing:.08em;font-size:14px;margin:0}
+h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;color:var(--deep);font-size:30px;line-height:1.35;margin:6px 0 8px}
+h2{font-family:"Noto Serif TC","Songti TC",serif;color:var(--deep);font-size:22px;margin:40px 0 10px;padding-top:16px;border-top:2px solid var(--mist)}
+h3{font-size:17px;margin:18px 0 4px;color:var(--deep)}
+p{margin:8px 0}
+.lead{font-size:17px}
+.sub{color:var(--sub);font-size:14px}
+.hero{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+.hero .q{font-family:"Noto Serif TC",serif;font-size:21px;color:var(--deep);font-weight:700;margin:0}
+.map{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:14px 0}
+.map svg{width:100%;height:auto;display:block}
+.buckets{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.bk{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--deep);border-radius:10px;padding:12px 14px}
+.bk .n{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;background:var(--deep);border-radius:12px;padding:0 10px}
+.bk b{display:block;margin:6px 0 2px;color:var(--deep)}
+.bk p{font-size:14.5px;color:var(--sub);margin:2px 0}
+.bk.b1{border-top-color:var(--amber)}.bk.b1 .n{background:var(--amber)}
+.bk.b2{border-top-color:#c98f3a}.bk.b2 .n{background:#c98f3a}
+.bk.b3{border-top-color:var(--water)}.bk.b3 .n{background:var(--water)}
+.steps{counter-reset:s;margin:12px 0;padding:0;list-style:none}
+.steps li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 54px;margin:8px 0}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--deep);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps li b{color:var(--deep)}
+.myth{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.myth div{border-radius:10px;padding:12px 14px;font-size:15px}
+.myth .x{background:var(--redbg)}.myth .o{background:var(--greenbg)}
+.myth b{display:block;margin-bottom:2px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.f{display:block;font-size:14px;color:var(--sub);margin:6px 0 3px}
+input[type=number]{width:100%;font:inherit;font-size:17px;padding:9px 10px;border:1px solid var(--line);border-radius:8px}
+input:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:1px}
+.result{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--mist);font-size:15px}
+.result b{color:var(--deep);font-size:18px}
+.gauge{height:14px;background:#eef3f4;border-radius:8px;overflow:hidden;margin:8px 0 4px}
+.gauge i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--water),var(--deep));transition:width .3s}
+.chk{list-style:none;padding:0;margin:8px 0}
+.chk li{margin:6px 0}
+.chk label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.chk input{width:20px;height:20px;margin-top:4px;accent-color:var(--deep);flex:none}
+.score{font-weight:700;color:var(--deep);margin-top:8px}
+.note{background:var(--amberbg);border-radius:10px;padding:10px 14px;font-size:14.5px;color:#5a4012;margin:12px 0}
+.back{display:inline-block;margin-top:6px;color:var(--deep);font-weight:600}
+/* 逐步引導 */
+.guide{background:var(--card);border:2px solid var(--deep);border-radius:14px;padding:16px;margin:14px 0}
+.guide .gtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.guide .gno{flex:none;font-size:13px;font-weight:700;color:#fff;background:var(--deep);border-radius:999px;padding:2px 12px}
+.guide .gtitle{font-family:"Noto Serif TC",serif;font-size:20px;font-weight:700;color:var(--deep);margin:0}
+.guide .gsay{background:var(--mist);border-radius:10px;padding:12px 14px;font-size:16px;line-height:1.85;margin:0 0 10px;min-height:92px}
+.guide .gsay em{font-style:normal;background:linear-gradient(transparent 58%,#ffe08a 58%);font-weight:700;padding:0 2px}
+.gstage{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;overflow:hidden}
+.gstage svg{width:100%;height:auto;display:block}
+.gstage [data-show]{opacity:0;transition:opacity .5s ease}
+.gnav{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.gnav button{font:inherit;font-size:16px;font-weight:700;cursor:pointer;border-radius:10px;padding:11px 20px;border:1px solid var(--deep);background:#fff;color:var(--deep)}
+.gnav button.pri{background:var(--deep);color:#fff;flex:1 1 auto}
+.gnav button:disabled{opacity:.35;cursor:not-allowed}
+.gdots{display:flex;gap:6px;margin-left:auto}
+.gdots span{width:11px;height:11px;border-radius:50%;background:#cfdde1;cursor:pointer;display:block}
+.gdots span.on{background:var(--deep)}
+.gcmp{display:none;margin-top:12px}
+.gcmp.on{display:block}
+.gcmp .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gcmp .cc{border-radius:10px;padding:14px;text-align:center;border:2px solid}
+.gcmp .cc.a{background:var(--greenbg);border-color:var(--green)}
+.gcmp .cc.b{background:var(--redbg);border-color:var(--red)}
+.gcmp .cc small{display:block;font-size:13px;color:var(--sub)}
+.gcmp .cc b{display:block;font-size:24px;margin:4px 0 2px;font-family:"Noto Serif TC",serif}
+.gcmp .cc.a b{color:var(--green)}.gcmp .cc.b b{color:var(--red)}
+.gcmp .gap{margin-top:10px;background:var(--deep);color:#fff;border-radius:10px;padding:14px;text-align:center;font-size:16px}
+.gcmp .gap b{font-size:26px;font-family:"Noto Serif TC",serif}
+.drag{margin-top:14px;padding-top:14px;border-top:2px dashed var(--line)}
+.drag .dh{font-family:"Noto Serif TC",serif;font-weight:700;font-size:17px;color:var(--deep);margin:0 0 10px}
+.drag .agev{font-size:22px;font-weight:700;color:var(--deep)}
+.dslider input{width:100%;accent-color:var(--deep);height:30px}
+.dticks{display:flex;justify-content:space-between;font-size:12px;color:var(--sub);margin:0 2px 12px}
+.dmark{position:relative;height:20px;margin:-10px 0 10px}
+.dmark span{position:absolute;left:22.9%;transform:translateX(-50%);white-space:nowrap;font-size:12px;color:#a8423a;font-weight:700}
+@media (max-width:560px){.dmark span{left:0;transform:none}}
+.dcards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dc{border:2px solid;border-radius:12px;padding:12px;text-align:center;background:#fff}
+.dc.a{border-color:#0b7f9e}.dc.b{border-color:#a8423a}
+.dc .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-bottom:4px}
+.dc.a .dot{background:#0b7f9e}.dc.b .dot{background:#a8423a}
+.dc small{display:block;font-size:12.5px;color:var(--sub)}
+.dc b{display:block;font-family:"Noto Serif TC",serif;font-size:27px;margin:2px 0;font-variant-numeric:tabular-nums}
+.dc.a b{color:#0b7f9e}.dc.b b{color:#a8423a}
+.dgap{margin-top:10px;background:var(--deep);color:#fff;border-radius:10px;padding:13px;text-align:center;font-size:15.5px}
+.dgap b{font-family:"Noto Serif TC",serif;font-size:24px;font-variant-numeric:tabular-nums}
+.dchart{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px}
+.dchart svg{width:100%;height:auto;display:block}
+.dlgd{display:flex;gap:18px;justify-content:center;margin-top:4px}
+.dlgd span{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--sub)}
+.dlgd i{width:13px;height:13px;border-radius:3px}
+@media (max-width:560px){.dcards{grid-template-columns:1fr}.dc b{font-size:24px}.dgap b{font-size:21px}}
+.keyline{margin:14px 0;padding:16px 18px;border-radius:12px;background:linear-gradient(160deg,#fdf6e6,#fff);border:2px solid var(--amber)}
+.keyline b{display:block;font-family:"Noto Serif TC",serif;font-size:20px;color:#8a5a12;margin-bottom:4px}
+@media (max-width:560px){.gcmp .two{grid-template-columns:1fr}.guide .gtitle{font-size:18px}.gnav button{padding:12px 14px;font-size:15px}}
+@media (prefers-reduced-motion:reduce){.gstage [data-show]{transition:none}}
+.closing{margin:40px 0 10px;padding:22px;border-radius:12px;background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);text-align:center}
+.closing .m{font-family:"Noto Serif TC",serif;font-size:22px;color:var(--deep);font-weight:700;margin:0 0 8px}
+.disc{font-size:12.5px;color:var(--sub);margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+@media (max-width:560px){.buckets,.myth,.row2{grid-template-columns:1fr}h1{font-size:25px}}
+@media (prefers-reduced-motion:reduce){.gauge i{transition:none}}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+@media print{.vband{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (max-width:560px){.vband{font-size:12px;padding:6px 12px;gap:7px}}
+</style>
+</head>
+<body>
+<div class="vband" style="background:#fbf3e4;color:#5a4012;border-bottom-color:#b7791f"><span class="vk">公版教材</span><span class="vn">阿志案｜財商小教室 1｜首重資產配置</span><span class="vv">v1.0 ・ 2026/09/20（台灣時間）</span></div>
+
+<div class="wrap">
+<p class="brand">財顧芸｜馥芸財富學苑｜財商小教室</p>
+<h1>為什麼理財第一步，<br>是「首重資產配置」？</h1>
+<p class="lead">很多人一聽到理財，第一個想到的是「買什麼會賺」。但真正讓人安心的，是先把錢分好用途：哪一筆是救急的、哪一筆是短期要用的、哪一筆可以放很久。</p>
+
+<div class="hero">
+<p class="q">資產配置不是選商品，<br>是替每一筆錢安排工作。</p>
+<p class="sub">配置清楚了，遇到事情才知道該動哪一筆，也不會為了急用而賠錢解約。</p>
+</div>
+
+<h2>一、一般人與有錢人，差在哪一步？</h2>
+<p>同樣的收入、同樣的年齡，幾十年後差很多。差別常常不在「買到哪一檔」，而在<b>開始的方式</b>。下面這張圖，我們一步一步看。</p>
+
+<div class="guide" id="gd" data-step="1">
+<div class="gtop"><span class="gno" id="gno">第 1 步 / 共 7 步</span><p class="gtitle" id="gtt">先看一條時間軸</p></div>
+<p class="gsay" id="gsay">從現在到退休，其實就是這幾十年。每個人拿到的時間一樣長，差別在<em>怎麼用</em>。</p>
+
+<div class="gstage">
+<svg viewBox="0 0 720 350" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans TC,PingFang TC,Microsoft JhengHei,sans-serif" role="img" aria-label="一般人依序進行與有錢人同時配置的時間軸對照圖">
+<rect width="720" height="350" fill="#fff"/>
+
+<!-- 一般人 -->
+<g data-show="2">
+<text x="110" y="30" font-size="15" font-weight="700" fill="#a8423a">一般人：一件做完，才做下一件</text>
+<text x="102" y="69" font-size="13" fill="#5b6b72" text-anchor="end">一般人</text>
+<line x1="110" y1="48" x2="700" y2="48" stroke="#eef3f4"/>
+<line x1="110" y1="78" x2="700" y2="78" stroke="#eef3f4"/>
+</g>
+<g data-show="2">
+<rect x="110" y="48" width="51" height="30" rx="4" fill="#b7791f"/>
+<text x="135" y="68" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">預備金</text>
+</g>
+<g data-show="3">
+<rect x="177" y="48" width="34" height="30" rx="4" fill="#6b7f8c"/>
+<text x="194" y="68" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">保障</text>
+<circle cx="169" cy="63" r="8" fill="#a8423a"/>
+<text x="169" y="68" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">✕</text>
+</g>
+<g data-show="4">
+<rect x="245" y="48" width="455" height="30" rx="4" fill="#1d5a6e"/>
+<text x="472" y="68" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">長期累積（退休金）</text>
+<circle cx="228" cy="63" r="8" fill="#a8423a"/>
+<text x="228" y="68" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">✕</text>
+</g>
+<g data-show="4">
+<path d="M110 92 L110 100 L245 100 L245 92" fill="none" stroke="#a8423a" stroke-width="2"/>
+<text x="177" y="117" font-size="13" fill="#a8423a" text-anchor="middle" font-weight="700">長期的錢，少了 8 年</text>
+</g>
+<g data-show="3">
+<text x="700" y="117" font-size="12" fill="#a8423a" text-anchor="end">✕ ＝ 斷點（停下來、沒有進度的空白）</text>
+</g>
+
+<line x1="30" y1="133" x2="700" y2="133" stroke="#d5dfe2" data-show="5"/>
+
+<!-- 有錢人 -->
+<g data-show="5">
+<text x="110" y="157" font-size="15" font-weight="700" fill="#3d7a55">有錢人：一次一起來，四件事同時開始</text>
+<rect x="110" y="168" width="590" height="20" rx="4" fill="#6b7f8c"/>
+<text x="102" y="183" font-size="12" fill="#5b6b72" text-anchor="end">保障</text>
+<rect x="110" y="194" width="590" height="20" rx="4" fill="#b7791f"/>
+<text x="102" y="209" font-size="12" fill="#5b6b72" text-anchor="end">預備金</text>
+<rect x="110" y="220" width="590" height="20" rx="4" fill="#3f8fa6"/>
+<text x="102" y="235" font-size="12" fill="#5b6b72" text-anchor="end">小水庫</text>
+<rect x="110" y="246" width="590" height="20" rx="4" fill="#1d5a6e"/>
+<text x="102" y="261" font-size="12" fill="#5b6b72" text-anchor="end">大水庫</text>
+<text x="405" y="209" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">每一項都先開始，金額可以小</text>
+</g>
+<g data-show="6">
+<path d="M110 274 L110 281 L700 281 L700 274" fill="none" stroke="#3d7a55" stroke-width="2"/>
+<text x="405" y="298" font-size="14" fill="#3d7a55" text-anchor="middle" font-weight="700">從第一天就開始，中間沒有斷點</text>
+</g>
+
+<!-- 軸 -->
+<g data-show="1">
+<line x1="110" y1="322" x2="700" y2="322" stroke="#5b6b72" stroke-width="1.5"/>
+<line x1="110" y1="322" x2="110" y2="328" stroke="#5b6b72"/><text x="110" y="342" font-size="12" fill="#5b6b72" text-anchor="middle">30 歲</text>
+<line x1="278" y1="322" x2="278" y2="328" stroke="#5b6b72"/><text x="278" y="342" font-size="12" fill="#5b6b72" text-anchor="middle">40 歲</text>
+<line x1="447" y1="322" x2="447" y2="328" stroke="#5b6b72"/><text x="447" y="342" font-size="12" fill="#5b6b72" text-anchor="middle">50 歲</text>
+<line x1="700" y1="322" x2="700" y2="328" stroke="#5b6b72"/><text x="700" y="342" font-size="12" fill="#5b6b72" text-anchor="end">65 歲退休</text>
+</g>
+</svg>
+</div>
+
+<div class="gcmp" id="gcmp">
+<div class="two">
+<div class="cc a"><small>30 歲就開始（一次一起來）</small><b>712 萬</b><small>每月 5,000，存 35 年</small></div>
+<div class="cc b"><small>38 歲才開始（排隊做完才輪到）</small><b>403 萬</b><small>每月 5,000，存 27 年</small></div>
+</div>
+<div class="gap">本金只差 <b>48 萬</b>，最後卻差了 <b>309 萬</b></div>
+
+<div class="drag">
+<p class="dh">拉拉看：差距是怎麼一年一年拉開的</p>
+<label class="f" for="agex">看到 <span class="agev" id="agev">65</span> 歲的時候</label>
+<div class="dslider"><input type="range" id="agex" min="30" max="65" step="1" value="65"></div>
+<div class="dticks"><span>30 歲</span><span>65 歲</span></div>
+<div class="dmark"><span>↑ 38 歲：晚的人才開始</span></div>
+
+<div class="dcards">
+<div class="dc a"><span class="dot"></span><small>30 歲就開始</small><b id="vA">712 萬</b><small id="nA">已投入 210 萬</small></div>
+<div class="dc b"><span class="dot"></span><small>38 歲才開始</small><b id="vB">403 萬</b><small id="nB">已投入 162 萬</small></div>
+</div>
+<div class="dgap" id="dgap">這時候已經差了 <b>309 萬</b></div>
+
+<div class="dchart">
+<svg id="csvg" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="兩條累積曲線：30 歲開始與 38 歲開始，隨年齡拉開差距" font-family="Noto Sans TC,PingFang TC,Microsoft JhengHei,sans-serif">
+<rect width="700" height="300" fill="#fff"/>
+<g id="grid"></g>
+<path id="lnA" fill="none" stroke="#0b7f9e" stroke-width="2.5" stroke-linejoin="round"/>
+<path id="lnB" fill="none" stroke="#a8423a" stroke-width="2.5" stroke-linejoin="round"/>
+<line id="mk" stroke="#1f2d33" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line id="gapline" stroke="#1f2d33" stroke-width="2"/>
+<circle id="dA" r="6" fill="#0b7f9e" stroke="#fff" stroke-width="2"/>
+<circle id="dB" r="6" fill="#a8423a" stroke="#fff" stroke-width="2"/>
+<text id="tA" font-size="13" font-weight="700" fill="#0b7f9e"></text>
+<text id="tB" font-size="13" font-weight="700" fill="#a8423a"></text>
+<g id="ax"></g>
+</svg>
+<div class="dlgd"><span><i style="background:#0b7f9e"></i>30 歲就開始</span><span><i style="background:#a8423a"></i>38 歲才開始</span></div>
+</div>
+<p class="sub" style="margin-top:8px">每月 5,000、年化報酬率 6% 試算，僅為觀念示範，報酬率不保證。</p>
+</div>
+</div>
+
+<div class="gnav">
+<button type="button" id="gprev">← 上一步</button>
+<button type="button" id="gnext" class="pri">下一步 →</button>
+<button type="button" id="grst">重新開始</button>
+<div class="gdots" id="gdots" aria-hidden="true"></div>
+</div>
+</div>
+
+<div class="keyline">
+<b>有錢人的做法：一次一起來，而且不會斷點。</b>
+不是等到有錢才配置，是<b>先配置，才有機會變有錢</b>。四件事金額可以小，但都要「已經在跑」——因為時間是唯一買不到的東西，一旦斷點，那段時間就再也補不回來了。
+</div>
+
+<h2>二、錢沒有分工，會發生什麼事？</h2>
+<p>想像全家只有一個大水缸：生活費、旅遊基金、退休金全部倒在一起。平常看起來水很多，可是一旦生病、換工作或臨時要用錢，只能從同一缸舀水，常常一舀就動到本來要放很久的錢。</p>
+<div class="myth">
+<div class="x"><b>✗ 沒有分工</b>急用時只好解約、賣在低點；旅遊基金和退休金混在一起，永遠不知道到底存夠了沒。</div>
+<div class="o"><b>✓ 先分好用途</b>急用先動預備金；短期目標有專款；長期的錢放著慢慢長，不被打擾。</div>
+</div>
+
+<h2>三、用「水庫」來看資產配置</h2>
+<p>我們把錢分成幾座水庫，每座水庫的<b>用途、多久會用到、能承受多少波動</b>都不一樣：</p>
+<div class="map" role="img" aria-label="資產配置水庫示意圖：由近到遠分為緊急預備金、彈性結餘、小水庫、大水庫">
+<svg viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans TC,PingFang TC,Microsoft JhengHei,sans-serif">
+<rect width="700" height="250" fill="#fff"/>
+<line x1="30" y1="222" x2="670" y2="222" stroke="#5b6b72"/>
+<text x="30" y="242" font-size="13" fill="#5b6b72">隨時可用</text>
+<text x="670" y="242" font-size="13" fill="#5b6b72" text-anchor="end">放很久、不打擾</text>
+<path d="M50 222 L50 150 Q95 140 140 150 L140 222 Z" fill="#b7791f" opacity=".85"/>
+<text x="95" y="190" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">緊急</text><text x="95" y="207" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">預備金</text>
+<text x="95" y="132" font-size="12" fill="#8a5a12" text-anchor="middle">救急用</text>
+<path d="M180 222 L180 135 Q235 125 290 135 L290 222 Z" fill="#c98f3a" opacity=".85"/>
+<text x="235" y="185" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">彈性結餘</text>
+<text x="235" y="117" font-size="12" fill="#8a5a12" text-anchor="middle">1～3 年的目標</text>
+<path d="M330 222 L330 110 Q400 98 470 110 L470 222 Z" fill="#3f8fa6" opacity=".85"/>
+<text x="400" y="172" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">小水庫</text>
+<text x="400" y="92" font-size="12" fill="#1d5a6e" text-anchor="middle">每月慢慢存入</text>
+<path d="M510 222 L510 70 Q590 55 670 70 L670 222 Z" fill="#1d5a6e"/>
+<text x="590" y="152" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">大水庫</text>
+<text x="590" y="48" font-size="12" fill="#1d5a6e" text-anchor="middle">長期累積、退休與傳承</text>
+</svg>
+</div>
+<div class="buckets">
+<div class="bk b1"><span class="n">第 1 座</span><b>緊急預備金</b><p>用途：失業、生病、臨時修繕。</p><p>原則：放在隨時領得出來、不會虧損的地方。</p></div>
+<div class="bk b2"><span class="n">第 2 座</span><b>彈性結餘</b><p>用途：旅遊、進修、換車等 1～3 年內的目標。</p><p>原則：專款專用，時間到了拿得出來。</p></div>
+<div class="bk b3"><span class="n">第 3 座</span><b>小水庫</b><p>用途：中長期累積，每月定期存入。</p><p>原則：時間拉長，平均掉進場時機。</p></div>
+<div class="bk"><span class="n">第 4 座</span><b>大水庫</b><p>用途：退休金、長期累積、家庭保障與傳承。</p><p>原則：放很久，不因短期起伏而動用。</p></div>
+</div>
+
+<h2>四、配置的順序：先顧好底，再談長大</h2>
+<ol class="steps">
+<li><b>先準備緊急預備金</b><br>一般常用的參考是 3～6 個月生活費。收入越不穩定、家中依賴你的人越多，準備越多越安心。</li>
+<li><b>確認保障的缺口</b><br>預備金能應付的是「一陣子」，大病或意外可能是「很長一段時間」。保障不足時，要先補，或者清楚知道自己要多準備多少。</li>
+<li><b>替短期目標開專款</b><br>把 1～3 年內一定會花的錢先分出來，就不會因為急用，去動到長期的錢。</li>
+<li><b>最後才是長期累積</b><br>前面三步都安排好，長期的錢才能真的放很久，不怕中途被抽走。</li>
+</ol>
+
+<h2>五、小工具：我的緊急預備金夠嗎？</h2>
+<div class="tool">
+<div class="row2">
+<div><label class="f" for="exp">每月生活支出（元）</label><input type="number" id="exp" min="0" step="1000" inputmode="numeric" placeholder="例如 30000"></div>
+<div><label class="f" for="save">目前可以隨時動用的存款（元）</label><input type="number" id="save" min="0" step="10000" inputmode="numeric" placeholder="例如 150000"></div>
+</div>
+<div class="result" id="res" aria-live="polite">輸入兩個數字，就會算出你的預備金可以撐幾個月。</div>
+</div>
+<p class="sub">這個小工具只在你的瀏覽器裡計算，不會把數字傳到任何地方。</p>
+
+<h2>六、自我檢查：我的錢分工了嗎？</h2>
+<ul class="chk" id="chk">
+<li><label><input type="checkbox"> 我知道自己每個月大概花多少錢</label></li>
+<li><label><input type="checkbox"> 我有一筆「只用來救急」的預備金，而且不會隨便動</label></li>
+<li><label><input type="checkbox"> 我清楚自己的醫療、壽險保障大概有多少</label></li>
+<li><label><input type="checkbox"> 1～3 年內想完成的目標，已經有專門存的錢</label></li>
+<li><label><input type="checkbox"> 長期的錢放著不動，不會因為短期急用被拿走</label></li>
+</ul>
+<p class="score" id="score" aria-live="polite">勾選符合你的項目。</p>
+
+<h2>七、配置好之後，需要用錢怎麼辦？</h2>
+<p>順序很簡單：<b>先動預備金，再動彈性結餘</b>，最後才考慮長期的錢。如果手上有具保單價值的保單，短期資金需求也可以先了解保單借款的條件，但借款會計息，需要審慎評估。</p>
+<div class="note">每張保單能不能借、可以借多少、利率多少，都依各商品條款與保險公司公告為準。借款前，建議先和你的顧問確認。</div>
+
+<div class="closing">
+<p class="m">把人生的錢安排好，<br>其他就是享受生活。</p>
+<p class="sub">想知道自己的錢怎麼分工，歡迎和財顧芸聊聊。<br><a class="back" href="財商小教室-同時配置.html">延伸：有錢人的做法「一次一起來」 →</a><br><a class="back" href="財商小教室-需要用錢先從預備金開始.html">下一課：需要用錢時，為什麼先從預備金開始？ →</a><br><a class="back" href="https://www.allfreedom.info/fee-based-financial-advisor-value.html" target="_blank" rel="noopener">收費財務顧問的價值｜有人陪您把家庭財務整理清楚 →</a></p>
+</div>
+
+<div class="disc">
+<p>本頁為財商教育內容，提供一般性觀念說明，不構成個別投資、保險、法律或稅務建議。緊急預備金「3～6 個月生活費」為常見參考範圍，實際需求依個人收入穩定度、家庭狀況與保障情形而定。投資具風險，保險商品內容以各保險公司條款為準。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p>
+</div>
+</div>
+
+<script>
+(function(){
+function $(i){return document.getElementById(i);}
+function fmt(n){return Math.round(n).toLocaleString('en-US');}
+
+/* ---- 逐步引導 ---- */
+var S=[
+ {t:'先看一條時間軸',s:'從現在到退休，其實就是這幾十年。每個人拿到的時間一樣長，差別在<em>怎麼用</em>。'},
+ {t:'一般人：先把預備金存夠',s:'大部分人會說：「我先把預備金存夠，其他再說。」這一存，常常就是<em>兩三年</em>。'},
+ {t:'存夠了，才回頭看保障',s:'預備金存好了，才開始想保險。可是中間這段時間，其他三件事<em>完全沒有在跑</em>——這就是第一個斷點。'},
+ {t:'保障弄完了，才開始存退休金',s:'等保障也安排好，往往已經 38 歲。長期的錢，就這樣<em>少了 8 年</em>。而長期的錢，最怕的就是少時間。'},
+ {t:'有錢人：一次一起來',s:'有錢的人不是排隊一件一件做，而是<em>同時開始</em>——保障、預備金、小水庫、大水庫，一次一起來。<em>金額可以小，但每一項都要先開始。</em>'},
+ {t:'關鍵在：不會斷點',s:'因為同時進行，中間<em>沒有空白</em>。時間是唯一買不到的東西，只要不斷點，時間就會一直替你工作。'},
+ {t:'那到底差多少？',s:'同樣每月 5,000、同樣存到 65 歲。晚 8 年開始，投入的本金只少 48 萬，最後卻<em>少了 309 萬</em>。'}
+];
+var gd=$('gd');
+if(gd){
+ var st=1,N=S.length,els=gd.querySelectorAll('.gstage [data-show]'),dots=$('gdots');
+ for(var k=0;k<N;k++){var d=document.createElement('span');d.setAttribute('data-i',k+1);dots.appendChild(d);}
+ function render(){
+  gd.setAttribute('data-step',st);
+  $('gno').textContent='第 '+st+' 步 / 共 '+N+' 步';
+  $('gtt').textContent=S[st-1].t;
+  $('gsay').innerHTML=S[st-1].s;
+  for(var i=0;i<els.length;i++){els[i].style.opacity=(+els[i].getAttribute('data-show')<=st)?'1':'0';}
+  $('gcmp').className='gcmp'+(st>=7?' on':'');
+  $('gprev').disabled=(st===1);
+  $('gnext').disabled=(st===N);
+  $('gnext').textContent=(st===N)?'已是最後一步':'下一步 →';
+  var ds=dots.querySelectorAll('span');
+  for(var j=0;j<ds.length;j++){ds[j].className=(j+1===st)?'on':'';}
+ }
+ function go(n){st=Math.max(1,Math.min(N,n));render();}
+ $('gnext').addEventListener('click',function(){go(st+1);});
+ $('gprev').addEventListener('click',function(){go(st-1);});
+ $('grst').addEventListener('click',function(){go(1);});
+ dots.addEventListener('click',function(e){var i=e.target.getAttribute('data-i');if(i)go(+i);});
+ gd.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'){go(st+1);}else if(e.key==='ArrowLeft'){go(st-1);}
+ });
+ gd.setAttribute('tabindex','0');
+ render();
+
+ /* ---- 可拖曳時間軸 ---- */
+ (function(){
+  var I=0.06/12, P=5000, A0=30, B0=38, END=65;
+  function fv(n){return n<=0?0:P*((Math.pow(1+I,n)-1)/I);}
+  function valA(age){return fv((age-A0)*12);}
+  function valB(age){return fv(Math.max(0,age-B0)*12);}
+  function paidA(age){return P*(age-A0)*12;}
+  function paidB(age){return P*Math.max(0,age-B0)*12;}
+  function wan(v){if(v<=0)return '0';var w=v/10000; return (w>=100?Math.round(w):Math.round(w*10)/10).toLocaleString('en-US')+' 萬';}
+
+  var W=700,H=300,L=58,R=18,T=18,B=40;
+  var maxY=valA(END);
+  function X(age){return L+(age-A0)/(END-A0)*(W-L-R);}
+  function Y(v){return H-B-(v/maxY)*(H-T-B);}
+
+  var pa=[],pb=[];
+  for(var a=A0;a<=END;a++){pa.push((a===A0?'M':'L')+X(a).toFixed(1)+' '+Y(valA(a)).toFixed(1));
+                            pb.push((a===A0?'M':'L')+X(a).toFixed(1)+' '+Y(valB(a)).toFixed(1));}
+  $('lnA').setAttribute('d',pa.join(' '));
+  $('lnB').setAttribute('d',pb.join(' '));
+
+  var g='',ax='';
+  [0,2000000,4000000,6000000,8000000].forEach(function(v){
+   if(v>maxY*1.05)return;
+   g+='<line x1="'+L+'" y1="'+Y(v).toFixed(1)+'" x2="'+(W-R)+'" y2="'+Y(v).toFixed(1)+'" stroke="#eef3f4"/>';
+   g+='<text x="'+(L-8)+'" y="'+(Y(v)+4).toFixed(1)+'" font-size="11" fill="#5b6b72" text-anchor="end">'+(v?wan(v):'0')+'</text>';
+  });
+  $('grid').innerHTML=g;
+  [30,38,45,55,65].forEach(function(a){
+   ax+='<text x="'+X(a).toFixed(1)+'" y="'+(H-16)+'" font-size="11" fill="'+(a===38?'#a8423a':'#5b6b72')+'" text-anchor="middle">'+a+' 歲</text>';
+  });
+  ax+='<line x1="'+L+'" y1="'+(H-B)+'" x2="'+(W-R)+'" y2="'+(H-B)+'" stroke="#5b6b72"/>';
+  $('ax').innerHTML=ax;
+
+  var sl=$('agex');
+  function draw(){
+   var age=+sl.value, a=valA(age), b=valB(age), d=a-b;
+   $('agev').textContent=age;
+   $('vA').textContent=wan(a); $('vB').textContent=wan(b);
+   $('nA').textContent= age<=30 ? '還沒開始' : '已投入 '+wan(paidA(age));
+   $('nB').textContent= age<=B0 ? '還沒開始' : '已投入 '+wan(paidB(age));
+   $('dgap').innerHTML = age<=A0 ? '兩個人都還沒開始，起跑點一樣。'
+     : (age<=B0 ? '晚的人還沒開始，這時候已經差了 <b>'+wan(d)+'</b>'
+                : '這時候已經差了 <b>'+wan(d)+'</b>');
+   var x=X(age),ya=Y(a),yb=Y(b);
+   $('mk').setAttribute('x1',x);$('mk').setAttribute('x2',x);
+   $('mk').setAttribute('y1',T);$('mk').setAttribute('y2',H-B);
+   $('gapline').setAttribute('x1',x);$('gapline').setAttribute('x2',x);
+   $('gapline').setAttribute('y1',ya);$('gapline').setAttribute('y2',yb);
+   $('dA').setAttribute('cx',x);$('dA').setAttribute('cy',ya);
+   $('dB').setAttribute('cx',x);$('dB').setAttribute('cy',yb);
+   var flip = x > W*0.62, tx = flip ? x-10 : x+10, anc = flip ? 'end':'start';
+   $('tA').setAttribute('x',tx);$('tA').setAttribute('y',ya-10);$('tA').setAttribute('text-anchor',anc);$('tA').textContent=wan(a);
+   $('tB').setAttribute('x',tx);$('tB').setAttribute('y',yb+18);$('tB').setAttribute('text-anchor',anc);$('tB').textContent=wan(b);
+  }
+  sl.addEventListener('input',draw);
+  draw();
+ })();
+}
+
+function calc(){
+ var e=+$('exp').value,s=+$('save').value;
+ if(!e||e<=0){$('res').textContent='輸入兩個數字，就會算出你的預備金可以撐幾個月。';return;}
+ var m=s/e,lo=e*3,hi=e*6,pct=Math.min(100,m/6*100),msg;
+ if(m>=6)msg='已經達到 6 個月，底子很穩。多出來的部分，可以開始替短期目標或長期累積分工。';
+ else if(m>=3)msg='落在 3～6 個月的參考範圍內。如果收入不穩定或家人依賴你，可以慢慢往 6 個月補。';
+ else msg='還不到 3 個月。建議先把預備金補起來，再安排其他目標。';
+ $('res').innerHTML='可以撐約 <b>'+(Math.floor(m*10)/10)+' 個月</b><div class="gauge" aria-hidden="true"><i style="width:'+pct+'%"></i></div>'+
+  '參考目標：3 個月 '+fmt(lo)+' 元～6 個月 '+fmt(hi)+' 元'+(m<6?'；距離 6 個月還差 '+fmt(hi-s)+' 元':'')+'<br>'+msg;
+}
+['exp','save'].forEach(function(i){$(i).addEventListener('input',calc);});
+var boxes=$('chk').querySelectorAll('input');
+function score(){var n=[].filter.call(boxes,function(b){return b.checked;}).length,t;
+ t=n===5?'5 項都做到了，你的錢已經有分工！接下來定期檢視就好。':n>=3?'做到 '+n+' 項，基礎不錯，把沒勾的補起來會更安心。':n>0?'做到 '+n+' 項。先從「知道每月花多少」和「準備預備金」開始。':'勾選符合你的項目。';
+ $('score').textContent=t;}
+[].forEach.call(boxes,function(b){b.addEventListener('change',score);});
+})();
+</script>
+</body>
+</html>

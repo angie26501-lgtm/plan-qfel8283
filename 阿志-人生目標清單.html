@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【客戶版】阿志的人生目標清單</title>
+<style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--water:#3f8fa6;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--ok:#3d7a55}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding:22px 16px 70px}
+h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;color:var(--deep);font-size:28px;line-height:1.3;margin:4px 0}
+h2{font-family:"Noto Serif TC","Songti TC",serif;color:var(--deep);font-size:20px;margin:30px 0 8px}
+.sub{color:var(--sub);font-size:14px;margin:4px 0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:1px}
+.ghost{font-size:13px;padding:4px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--sub)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.stat b{display:block;font-size:22px;color:var(--deep);font-family:"Noto Serif TC",serif}
+.stat span{font-size:12px;color:var(--sub)}
+.add{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+label.f{display:block;font-size:13px;color:var(--sub);margin:10px 0 3px}
+input[type=text],input[type=number],select,textarea{width:100%;font:inherit;font-size:16px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+textarea{min-height:60px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cats{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.cat{border:1px solid var(--line);background:#fff;border-radius:16px;padding:4px 12px;font-size:14px;color:var(--ink)}
+.cat[aria-pressed=true]{background:var(--deep);color:#fff;border-color:var(--deep)}
+.primary{width:100%;margin-top:14px;font-size:17px;padding:11px;border:0;border-radius:8px;background:var(--deep);color:#fff;font-weight:600}
+.ideas{margin:10px 0 0;font-size:13px;color:var(--sub)}
+.idea{border:1px dashed var(--water);background:var(--mist);color:var(--deep);border-radius:14px;padding:2px 10px;font-size:13px;margin:4px 4px 0 0}
+.hint{font-size:13px;color:var(--amber);min-height:18px;margin-top:6px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.goal{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--water);border-radius:10px;padding:12px 14px;margin:10px 0;display:flex;gap:12px}
+.goal.done{border-left-color:var(--ok);opacity:.75}
+.goal.done .gt{text-decoration:line-through}
+.chk{flex:none;width:26px;height:26px;margin-top:2px;accent-color:var(--ok)}
+.gm{flex:1;min-width:0}
+.gt{font-weight:700;font-size:17px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.tag{font-size:12px;padding:1px 8px;border-radius:10px;background:var(--mist);color:var(--deep)}
+.tag.when{background:var(--amberbg);color:var(--amber)}
+.tag.st{background:#eef3f4;color:var(--sub)}
+.money{font-size:14px;color:var(--ink)}
+.note{font-size:14px;color:var(--sub);margin-top:4px;white-space:pre-wrap}
+.acts{display:flex;gap:6px;margin-top:8px}
+.acts button{font-size:13px;padding:3px 10px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--sub)}
+.from{font-size:12px;color:var(--water)}
+.empty{text-align:center;color:var(--sub);padding:20px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tools button{font-size:14px;padding:8px 14px;border-radius:8px;border:1px solid var(--deep);background:#fff;color:var(--deep)}
+.foot{font-size:12.5px;color:var(--sub);margin-top:28px;border-top:1px solid var(--line);padding-top:12px}
+dialog{border:0;border-radius:12px;padding:0;width:min(520px,94vw)}
+dialog::backdrop{background:rgba(20,40,48,.45)}
+.dlg{padding:16px}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--deep);color:#fff;padding:8px 16px;border-radius:20px;font-size:14px;display:none;z-index:20}
+#gate{position:fixed;inset:0;background:var(--deep);display:flex;align-items:center;justify-content:center;z-index:30}
+#gate>div{background:#fff;padding:26px;border-radius:12px;width:min(320px,88vw);text-align:center}
+.pwrow{display:flex;gap:6px;margin:12px 0 6px}
+.pwrow input{flex:1;min-width:0;text-align:center;font-size:18px}
+#eye{font-size:14px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:var(--mist);color:var(--deep)}
+.remember{display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;color:var(--sub);margin:8px 0 12px}
+.remember input{width:18px;height:18px;margin:0}
+#go{width:100%;font-size:17px;padding:10px;border:0;border-radius:6px;background:var(--deep);color:#fff}
+#err{color:#b33;font-size:14px;min-height:20px;margin:6px 0 0}
+#app{display:none}
+@media (max-width:480px){.row2{grid-template-columns:1fr}}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+@media print{.vband{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (max-width:560px){.vband{font-size:12px;padding:6px 12px;gap:7px}}
+</style>
+</head>
+<body>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜人生目標清單</span><span class="vv">v1.1 ・ 2026/09/24（台灣時間）</span></div>
+
+<div id="gate"><div>
+<p style="margin:0;font-weight:600">阿志的人生目標清單</p>
+<div class="pwrow"><input id="pw" type="password" placeholder="輸入密碼" aria-label="密碼" autocomplete="current-password"><button type="button" id="eye" aria-label="顯示密碼" aria-pressed="false">顯示</button></div>
+<label class="remember"><input type="checkbox" id="rem" checked> 在這台裝置記住 30 天</label>
+<button id="go" type="button">打開</button>
+<p id="err"></p>
+<p class="sub">清單只存在你的手機上，不會傳到任何地方。</p>
+</div></div>
+
+<div id="app"><div class="wrap">
+<div class="top"><p class="sub">財顧芸 陳芸琪 陪你一起想</p><button type="button" class="ghost" id="logout">登出</button></div>
+<h1>阿志的人生目標清單</h1>
+<p>想到就寫下來，不用一次想完整。金額、時間不知道也沒關係，先有個名字就好，之後我們再一起算。</p>
+
+<div class="stats">
+<div class="stat"><b id="sAll">0</b><span>個目標</span></div>
+<div class="stat"><b id="sDone">0</b><span>已完成</span></div>
+<div class="stat"><b id="sMonthly">0</b><span>每月計畫存（元）</span></div>
+</div>
+
+<h2>加一個目標</h2>
+<div class="add">
+<label class="f" for="t">想完成什麼？</label>
+<input type="text" id="t" maxlength="60" placeholder="例如：帶爸媽去環島">
+<div class="ideas">還想不到？點一下帶入：
+<div id="ideas"></div></div>
+<label class="f">分類</label>
+<div class="cats" id="cats" role="group" aria-label="分類"></div>
+<div class="row2">
+<div><label class="f" for="w">大概什麼時候？</label><input type="text" id="w" maxlength="20" placeholder="例如：後年、40 歲"></div>
+<div><label class="f" for="m">大概需要多少錢？（元）</label><input type="number" id="m" min="0" step="1000" inputmode="numeric" placeholder="不知道可以空著"></div>
+</div>
+<div class="row2">
+<div><label class="f" for="mo">距離現在幾個月？</label><input type="number" id="mo" min="1" step="1" inputmode="numeric" placeholder="例如：24"></div>
+<div><label class="f" for="p">每月打算存多少？（元）</label><input type="number" id="p" min="0" step="500" inputmode="numeric" placeholder="可以先空著"></div>
+</div>
+<p class="hint" id="calc"></p>
+<label class="f" for="n">想說的話（選填）</label>
+<textarea id="n" maxlength="300" placeholder="為什麼想做這件事？和誰一起？"></textarea>
+<button type="button" class="primary" id="addBtn">加入清單</button>
+</div>
+
+<h2>我的清單</h2>
+<div class="filters" id="filters" role="group" aria-label="篩選"></div>
+<div id="list"></div>
+
+<div class="tools">
+<button type="button" id="copy">複製清單，傳 LINE 給芸琪</button>
+<button type="button" id="reset">恢復成最初的清單</button>
+</div>
+
+<p class="foot">標示「已談過」的目標，是 9/12 訪談和 9/15 回覆時聊到的。金額與每月存款為估算，實際安排見面時再一起確認。清單存在這台裝置的瀏覽器裡，換手機或清除瀏覽器資料就會不見，重要的目標記得按「複製清單」傳給我備份。</p>
+</div></div>
+
+<dialog id="dlg"><div class="dlg">
+<h2 style="margin-top:0">修改目標</h2>
+<label class="f" for="et">目標</label><input type="text" id="et" maxlength="60">
+<label class="f" for="ec">分類</label><select id="ec"></select>
+<div class="row2">
+<div><label class="f" for="ew">什麼時候</label><input type="text" id="ew" maxlength="20"></div>
+<div><label class="f" for="est">進度</label><select id="est"><option>想法</option><option>規劃中</option><option>進行中</option><option>完成</option></select></div>
+</div>
+<div class="row2">
+<div><label class="f" for="em">需要多少錢（元）</label><input type="number" id="em" min="0" step="1000"></div>
+<div><label class="f" for="ep">每月存（元）</label><input type="number" id="ep" min="0" step="500"></div>
+</div>
+<label class="f" for="en">想說的話</label><textarea id="en" maxlength="300"></textarea>
+<div class="tools"><button type="button" id="save" style="background:var(--deep);color:#fff">儲存</button><button type="button" id="cancel">取消</button></div>
+</div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+var PASS='0421',UKEY='azhi-goals-unlock',DKEY='azhi-goals-data-v1',DAYS=30;
+function PWN(v){return String(v||'').replace(/[\uFF01-\uFF5E]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[\s\u3000]/g,'');}
+function $(i){return document.getElementById(i);}
+function show(){$('gate').style.display='none';$('app').style.display='block';}
+function remembered(){try{var t=+localStorage.getItem(UKEY);return t&&Date.now()<t;}catch(e){return false;}}
+function open(){if(PWN($('pw').value)===PWN(PASS)){try{if($('rem').checked)localStorage.setItem(UKEY,String(Date.now()+DAYS*864e5));else localStorage.removeItem(UKEY);}catch(e){}show();}else{$('err').textContent='密碼不對，請再試一次。';$('pw').select();}}
+$('go').onclick=open;$('pw').addEventListener('keydown',function(e){if(e.key==='Enter')open();});
+$('eye').onclick=function(){var v=$('pw').type==='password';$('pw').type=v?'text':'password';this.textContent=v?'隱藏':'顯示';this.setAttribute('aria-pressed',v?'true':'false');this.setAttribute('aria-label',v?'隱藏密碼':'顯示密碼');$('pw').focus();};
+$('logout').onclick=function(){try{localStorage.removeItem(UKEY);}catch(e){}location.reload();};
+if(remembered())show();
+
+var CATS=['家庭','旅遊','保障','退休','孩子','車子房子','自己','其他'];
+var IDEAS=['換車','子女教育金','帶爸媽出國','進修考證照','結婚紀念日旅行','搬家或裝潢','培養一個興趣','提早還房貸'];
+var SEED=[
+{t:'帶太太去日本旅遊',c:'旅遊',w:'後年',m:100000,p:5000,st:'進行中',n:'太太還沒去過日本。每月從結餘存 5,000，約 20 個月存到 10 萬。',seed:1},
+{t:'補回醫療預備金 30 萬',c:'保障',w:'約 43 歲',m:300000,p:5000,st:'規劃中',n:'日本旅遊存滿後，同一筆 5,000 繼續存，約 5 年存到。',seed:1},
+{t:'守住房貸，不讓家人扛',c:'保障',w:'現在',m:null,p:null,st:'規劃中',n:'已有定期壽險、軍保，加上投資型保單的壽險保障。待確認：定期壽險保額、軍保明細。',seed:1},
+{t:'65 歲退休，每月有 5 萬可以用',c:'退休',w:'65 歲',m:null,p:null,st:'規劃中',n:'以現在物價來想。待確認：軍職有沒有退休俸。',seed:1},
+{t:'另一桶規劃金：買車',c:'車子房子',w:'未定',m:null,p:null,st:'想法',n:'醫療預備金存滿後，沒用到的 5,000 可以存這一桶。',seed:1},
+{t:'另一桶規劃金：子女教育',c:'孩子',w:'未定',m:null,p:null,st:'想法',n:'和買車同一桶，依需要調整先後。',seed:1}
+];
+var data,cat='其他',filter='全部',editing=-1;
+function load(){try{var r=localStorage.getItem(DKEY);data=r?JSON.parse(r):null;}catch(e){data=null;}if(!Array.isArray(data))data=JSON.parse(JSON.stringify(SEED));}
+function persist(){try{localStorage.setItem(DKEY,JSON.stringify(data));}catch(e){toast('這台裝置無法儲存，關掉頁面後清單可能不見');}}
+function fmt(n){return (n==null||n==='')?'':Math.round(n).toLocaleString('en-US');}
+function num(v){v=String(v).trim();if(v==='')return null;var x=+v;return isFinite(x)&&x>=0?x:null;}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function toast(msg){var t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},2200);}
+
+$('cats').innerHTML=CATS.map(function(c){return '<button type="button" class="cat" aria-pressed="'+(c===cat)+'">'+c+'</button>';}).join('');
+$('cats').onclick=function(e){if(e.target.classList.contains('cat')){cat=e.target.textContent;[].forEach.call(this.children,function(b){b.setAttribute('aria-pressed',b.textContent===cat);});}};
+$('ideas').innerHTML=IDEAS.map(function(i){return '<button type="button" class="idea">'+i+'</button>';}).join('');
+$('ideas').onclick=function(e){if(e.target.classList.contains('idea')){$('t').value=e.target.textContent;$('t').focus();}};
+$('ec').innerHTML=CATS.map(function(c){return '<option>'+c+'</option>';}).join('');
+
+function calc(){var m=num($('m').value),mo=num($('mo').value),p=num($('p').value);var h='';
+ if(m&&mo){h='每月大約要存 '+fmt(m/mo)+' 元，'+mo+' 個月就能存到。';}
+ else if(m&&p){h='每月存 '+fmt(p)+' 元，大約 '+Math.ceil(m/p)+' 個月存到。';}
+ $('calc').textContent=h;}
+['m','mo','p'].forEach(function(i){$(i).addEventListener('input',calc);});
+
+$('addBtn').onclick=function(){var t=$('t').value.trim();if(!t){toast('先寫下想完成什麼');$('t').focus();return;}
+ var m=num($('m').value),mo=num($('mo').value),p=num($('p').value);if(p==null&&m&&mo)p=Math.round(m/mo);
+ data.unshift({t:t,c:cat,w:$('w').value.trim()||'未定',m:m,p:p,st:'想法',n:$('n').value.trim()});
+ persist();['t','w','m','mo','p','n'].forEach(function(i){$(i).value='';});$('calc').textContent='';render();toast('已加入清單');};
+
+function render(){
+ var fs=['全部','進行中','規劃中','想法','完成'];
+ $('filters').innerHTML=fs.map(function(f){return '<button type="button" class="cat" aria-pressed="'+(f===filter)+'">'+f+'</button>';}).join('');
+ var rows=data.map(function(g,i){return {g:g,i:i};}).filter(function(r){return filter==='全部'||r.g.st===filter;});
+ $('list').innerHTML=rows.length?rows.map(function(r){var g=r.g,done=g.st==='完成';
+  var money=[];if(g.m)money.push('需要約 '+fmt(g.m)+' 元');if(g.p)money.push('每月存 '+fmt(g.p)+' 元');if(g.m&&g.p)money.push('約 '+Math.ceil(g.m/g.p)+' 個月');
+  return '<div class="goal'+(done?' done':'')+'"><input type="checkbox" class="chk" data-i="'+r.i+'" '+(done?'checked':'')+' aria-label="完成：'+esc(g.t)+'">'+
+  '<div class="gm"><div class="gt">'+esc(g.t)+'</div><div class="tags"><span class="tag">'+esc(g.c)+'</span><span class="tag when">'+esc(g.w)+'</span><span class="tag st">'+esc(g.st)+'</span>'+(g.seed?'<span class="from">已談過</span>':'')+'</div>'+
+  (money.length?'<div class="money">'+money.join('｜')+'</div>':'')+(g.n?'<div class="note">'+esc(g.n)+'</div>':'')+
+  '<div class="acts"><button type="button" data-e="'+r.i+'">修改</button><button type="button" data-d="'+r.i+'">刪除</button></div></div></div>';}).join(''):'<p class="empty">這一類還沒有目標。</p>';
+ var active=data.filter(function(g){return g.st!=='完成';});
+ $('sAll').textContent=data.length;$('sDone').textContent=data.length-active.length;
+ var mon=0,seen={};active.forEach(function(g){if(g.p&&!seen[g.n+g.p]){mon+=g.p;}});
+ /* 旅遊與醫療預備金共用同一筆 5,000，每月計畫只算一次 */
+ var shared=active.filter(function(g){return g.seed&&g.p===5000;}).length;if(shared>1)mon-=5000*(shared-1);
+ $('sMonthly').textContent=fmt(mon)||'0';
+}
+$('filters').onclick=function(e){if(e.target.classList.contains('cat')){filter=e.target.textContent;render();}};
+$('list').onclick=function(e){var el=e.target;
+ if(el.classList.contains('chk')){var g=data[+el.dataset.i];g.st=el.checked?'完成':'進行中';persist();render();if(el.checked)toast('恭喜完成一個目標！');return;}
+ if(el.dataset.d!=null){if(confirm('確定刪除「'+data[+el.dataset.d].t+'」？')){data.splice(+el.dataset.d,1);persist();render();}return;}
+ if(el.dataset.e!=null){editing=+el.dataset.e;var g=data[editing];$('et').value=g.t;$('ec').value=g.c;$('ew').value=g.w;$('est').value=g.st;$('em').value=g.m==null?'':g.m;$('ep').value=g.p==null?'':g.p;$('en').value=g.n||'';$('dlg').showModal();}
+};
+$('save').onclick=function(){var g=data[editing];var t=$('et').value.trim();if(!t){$('et').focus();return;}g.t=t;g.c=$('ec').value;g.w=$('ew').value.trim()||'未定';g.st=$('est').value;g.m=num($('em').value);g.p=num($('ep').value);g.n=$('en').value.trim();persist();$('dlg').close();render();toast('已儲存');};
+$('cancel').onclick=function(){$('dlg').close();};
+$('reset').onclick=function(){if(confirm('會清掉你自己加的目標，恢復成最初的清單，確定嗎？')){data=JSON.parse(JSON.stringify(SEED));persist();render();toast('已恢復');}};
+$('copy').onclick=function(){
+ var txt='【阿志的人生目標清單】\n'+data.map(function(g,i){var s=(i+1)+'. '+(g.st==='完成'?'✅ ':'')+g.t+'（'+g.c+'｜'+g.w+'｜'+g.st+'）';if(g.m)s+='\n   需要約 '+fmt(g.m)+' 元';if(g.p)s+='，每月存 '+fmt(g.p)+' 元';if(g.n)s+='\n   '+g.n;return s;}).join('\n');
+ function done(){toast('已複製，貼到 LINE 就可以');}
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(done,fallback);}else fallback();
+ function fallback(){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){toast('複製失敗，請長按文字手動複製');}document.body.removeChild(ta);}
+};
+load();render();
+})();
+</script>
+</body>
+</html>

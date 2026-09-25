@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW"><head><meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>回饋問卷【客戶版】阿志與太太</title><style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--green:#3d7a55;--greenbg:#e7f2ea;--red:#a8423a;--plum:#7a4a63;--plumbg:#f6ecf1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 110px}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6;background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+#gate{max-width:400px;margin:13vh auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+#gate h2{margin:0 0 6px;font-size:20px;color:var(--deep)}
+#gate .row{display:flex;gap:8px;margin:12px 0 6px}
+#gate input{flex:1;font:inherit;font-size:17px;padding:10px;border:1px solid var(--line);border-radius:8px}
+#gate button{font:inherit;font-weight:700;cursor:pointer;border-radius:8px;padding:10px 16px;border:1px solid var(--deep);background:var(--deep);color:#fff}
+#gate #eye{background:#fff;color:var(--deep)}
+#gate label{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--sub);cursor:pointer}
+#err{color:var(--red);font-size:14px;min-height:22px;margin:4px 0 0}
+#doc{display:none}
+.hud{position:sticky;top:0;z-index:20;background:#12343f;color:#fff;padding:11px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hud .pc{font-size:19px;font-weight:700;color:#ffd98a;flex:none;font-variant-numeric:tabular-nums}
+.hud .bar{flex:1;min-width:90px;height:9px;background:rgba(255,255,255,.22);border-radius:6px;overflow:hidden}
+.hud .bar i{display:block;height:100%;width:0;background:#ffd98a;transition:width .35s}
+.hud button{font:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:6px 13px}
+h1{font-family:"Noto Serif TC",serif;color:var(--deep);font-size:26px;margin:18px 0 4px;text-wrap:balance}
+p.sub{color:var(--sub);font-size:14px;margin:4px 0}
+.intro{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.intro>b:first-child{color:var(--deep);display:block;margin-bottom:4px}
+.intro p b{color:var(--deep)}
+.intro p{margin:6px 0;font-size:15px}
+.intro p.last{margin-bottom:0}
+.who{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0}
+.who .lb{font-size:14px;font-weight:700;color:var(--sub);margin-bottom:9px}
+.who .btns{display:flex;gap:10px;flex-wrap:wrap}
+.who button{flex:1;min-width:150px;font:inherit;font-size:17px;font-weight:700;cursor:pointer;padding:14px 10px;border-radius:12px;border:2px solid var(--line);background:#fdfefe;color:var(--sub);line-height:1.5}
+.who button .s{display:block;font-size:12.5px;font-weight:400;opacity:.85}
+.who button.on{border-color:var(--deep);background:var(--mist);color:var(--deep)}
+.who button.on.w{border-color:var(--plum);background:var(--plumbg);color:var(--plum)}
+.q{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:14px;padding:16px 18px;margin:14px 0}
+.q.ans{border-left-color:var(--green);background:#fbfdfb}
+.q.wo{border-left-color:var(--plum)}
+.qn{font-size:12.5px;font-weight:700;color:var(--amber);letter-spacing:.06em}
+.q.ans .qn{color:var(--green)}
+.q.wo .qn{color:var(--plum)}
+.qt{font-family:"Noto Serif TC",serif;font-size:19px;font-weight:700;color:var(--deep);line-height:1.55;margin:2px 0 0;text-wrap:balance}
+.qh{font-size:14px;color:var(--sub);background:var(--mist);border-radius:9px;padding:9px 12px;margin:9px 0 0}
+.q.wo .qh{background:var(--plumbg)}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 10px;margin-left:7px;background:var(--plumbg);color:var(--plum);vertical-align:2px}
+.opts{display:flex;flex-direction:column;gap:8px;margin:12px 0 0}
+.opt{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fdfefe;cursor:pointer;font-size:15.5px;line-height:1.6}
+.opt input{width:21px;height:21px;flex:none;margin:3px 0 0;accent-color:var(--green);cursor:pointer}
+.opt:hover{background:var(--greenbg)}
+.opt.sel{border-color:var(--green);background:var(--greenbg);font-weight:700}
+.q textarea{width:100%;min-height:82px;font:inherit;font-size:15.5px;padding:11px 13px;border:1px solid var(--line);border-radius:11px;resize:vertical;background:#fdfefe;margin-top:12px}
+.q textarea:focus{outline:3px solid var(--amber);outline-offset:1px;background:#fff}
+.oth{margin-top:9px}
+.oth input{width:100%;font:inherit;font-size:15.5px;padding:10px 13px;border:1px dashed var(--line);border-radius:11px;background:#fdfefe}
+.oth input:focus{outline:3px solid var(--amber);outline-offset:1px;border-style:solid}
+.note{background:var(--amberbg);border:1px solid #e6d5ae;border-radius:14px;padding:16px 18px;margin:20px 0;font-size:15px;color:#5a4012}
+.note>b:first-child{display:block;margin-bottom:4px}
+.note b{color:#5a4012}
+.note p{margin:6px 0}
+.note p.last{margin-bottom:0}
+.closing{text-align:center;color:var(--sub);font-size:15px;margin:26px 0 8px}
+.disc{border-top:1px solid var(--line);margin-top:22px;padding-top:14px;font-size:12.5px;color:#8a979c;line-height:1.75}
+.disc p{margin:5px 0}
+.report{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#12343f;color:#fff;padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.report .rt{font-size:13.5px;opacity:.94}
+.report .rt b{color:#ffd98a}
+.report .rr{display:flex;gap:9px}
+.report button{font:inherit;font-size:16px;font-weight:700;cursor:pointer;border-radius:11px;padding:13px 16px;border:1px solid transparent;background:#ffd98a;color:#12343f;flex:1}
+.report button.sec{background:transparent;border-color:rgba(255,255,255,.45);color:#fff;flex:none;padding:13px 18px}
+.report .hint{font-size:12.5px;opacity:.78;line-height:1.6}
+#toast{display:none;position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:#12343f;color:#fff;padding:12px 22px;border-radius:999px;font-size:15px;z-index:60;max-width:90vw;text-align:center}
+@media print{.hud,.report,#toast,.vband{display:none!important}body{background:#fff}.q{break-inside:avoid}}
+</style></head><body>
+<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜規劃後回饋問卷</span><span class="vv">v1.1 ・ 2026/09/24（台灣時間）</span></div>
+<div id="gate">
+<p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
+<h2>回饋問卷【客戶版】阿志與太太</h2><p class="sub">請輸入密碼檢視。</p>
+<div class="row"><input type="password" id="pw" placeholder="請輸入密碼" autocomplete="current-password"><button type="button" id="eye">顯示</button></div>
+<label><input type="checkbox" id="rm" checked> 記住這台裝置 30 天</label>
+<p id="err" aria-live="polite"></p>
+<button type="button" id="go" style="width:100%">進入</button></div>
+
+<div id="doc">
+<div class="hud"><span class="pc" id="pct">0 / 0</span><span class="bar"><i id="pbar"></i></span>
+<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<div class="wrap">
+<h1>聽完之後，想聽聽你們怎麼想</h1>
+<p class="sub" id="stamp"></p>
+
+<div class="intro"><b>為什麼想請你們填這個</b>
+<p>昨天談了快兩個小時，內容不少。我很想知道——<b>哪些聽進去了、哪些其實沒聽懂但不好意思說</b>。</p>
+<p>這不是考試，也沒有標準答案。你們怎麼想，我下次就怎麼調整。<b>寫真話對我最有幫助</b>，寫「聽不太懂」我不會難過，反而會很感謝。</p>
+<p class="last">大概 <b>3 分鐘</b>就能填完，不想填的題目直接跳過也沒關係。填完按最下面的按鈕複製，貼到 LINE 傳給我就好。</p></div>
+
+<div class="who"><div class="lb">這份是誰在填？（兩個人可以輪流填，答案會分開記）</div>
+<div class="btns">
+<button type="button" class="wbtn" data-w="azhi">阿志<span class="s">先生本人</span></button>
+<button type="button" class="wbtn w" data-w="wife">太太<span class="s">有兩題是專門想問你的</span></button>
+</div></div>
+
+<div class="q" data-qid="q1" data-who="both" data-kd="單選"><div class="qn">第 1 題・單選</div><p class="qt">整體來說，昨天聽完之後的感覺是？</p><p class="qh">沒有標準答案，選最接近的就好。</p><div class="opts"><label class="opt"><input type="radio" name="q1" data-q="q1" data-i="0" value="很清楚，知道自己現在在做什麼"><span>很清楚，知道自己現在在做什麼</span></label><label class="opt"><input type="radio" name="q1" data-q="q1" data-i="1" value="大致清楚，有些細節還要再消化"><span>大致清楚，有些細節還要再消化</span></label><label class="opt"><input type="radio" name="q1" data-q="q1" data-i="2" value="有些地方還是有點模糊，想再聽一次"><span>有些地方還是有點模糊，想再聽一次</span></label><label class="opt"><input type="radio" name="q1" data-q="q1" data-i="3" value="當下有點多，回家之後才慢慢想通"><span>當下有點多，回家之後才慢慢想通</span></label></div></div><div class="q" data-qid="q2" data-who="both" data-kd="可複選"><div class="qn">第 2 題・可複選</div><p class="qt">哪些部分對你最有幫助？</p><p class="qh">可以複選，想到幾個就選幾個。</p><div class="opts"><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="0" value="「水庫」的比喻——錢要分在不同地方"><span>「水庫」的比喻——錢要分在不同地方</span></label><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="1" value="保障的「堤防」——壽險、意外、醫療還缺多少"><span>保障的「堤防」——壽險、意外、醫療還缺多少</span></label><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="2" value="退休金試算——20 年後大概領多少、還差多少"><span>退休金試算——20 年後大概領多少、還差多少</span></label><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="3" value="複利與資產配置的觀念"><span>複利與資產配置的觀念</span></label><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="4" value="保單借款可以怎麼用"><span>保單借款可以怎麼用</span></label><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="5" value="費用怎麼收、顧問賺的是什麼"><span>費用怎麼收、顧問賺的是什麼</span></label><label class="opt"><input type="checkbox" name="q2" data-q="q2" data-i="6" value="把家裡的保單、房貸一次攤開來看"><span>把家裡的保單、房貸一次攤開來看</span></label></div><div class="oth"><input type="text" data-oth="q2" placeholder="其他（想自己寫就寫在這裡）" autocomplete="off"></div></div><div class="q" data-qid="q3" data-who="both" data-kd="可複選"><div class="qn">第 3 題・可複選</div><p class="qt">有沒有哪一段當下聽得比較吃力，會想再聽一次？</p><p class="qh">這題對我最有用。你說了我下次就知道要講慢一點、換個講法。沒有的話就跳過。</p><div class="opts"><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="0" value="投資型保單的費用結構（前 5 年那張表）"><span>投資型保單的費用結構（前 5 年那張表）</span></label><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="1" value="配息型 vs 累積型的差別"><span>配息型 vs 累積型的差別</span></label><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="2" value="退休金的試算過程"><span>退休金的試算過程</span></label><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="3" value="資產配置的比例怎麼決定"><span>資產配置的比例怎麼決定</span></label><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="4" value="外幣、匯率的部分"><span>外幣、匯率的部分</span></label><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="5" value="保單借款的條件"><span>保單借款的條件</span></label><label class="opt"><input type="checkbox" name="q3" data-q="q3" data-i="6" value="沒有特別吃力的"><span>沒有特別吃力的</span></label></div><div class="oth"><input type="text" data-oth="q3" placeholder="其他（想自己寫就寫在這裡）" autocomplete="off"></div></div><div class="q" data-qid="q4" data-who="both" data-kd="單選"><div class="qn">第 4 題・單選</div><p class="qt">這次談的節奏，你覺得？</p><div class="opts"><label class="opt"><input type="radio" name="q4" data-q="q4" data-i="0" value="剛剛好"><span>剛剛好</span></label><label class="opt"><input type="radio" name="q4" data-q="q4" data-i="1" value="有點多、有點久，下次想分兩次談"><span>有點多、有點久，下次想分兩次談</span></label><label class="opt"><input type="radio" name="q4" data-q="q4" data-i="2" value="還可以再多講一點，我想知道更多"><span>還可以再多講一點，我想知道更多</span></label><label class="opt"><input type="radio" name="q4" data-q="q4" data-i="3" value="前面剛好，後面簽約那段有點趕"><span>前面剛好，後面簽約那段有點趕</span></label></div></div><div class="q" data-qid="q5" data-who="both" data-kd="單選"><div class="qn">第 5 題・單選</div><p class="qt">現在回頭看這次的安排，你的感覺是？</p><p class="qh">真心話就好。覺得緊一定要講，調整是隨時可以的，早講比晚講好。</p><div class="opts"><label class="opt"><input type="radio" name="q5" data-q="q5" data-i="0" value="在能力範圍內，很安心"><span>在能力範圍內，很安心</span></label><label class="opt"><input type="radio" name="q5" data-q="q5" data-i="1" value="可以，但想先觀察一陣子再說"><span>可以，但想先觀察一陣子再說</span></label><label class="opt"><input type="radio" name="q5" data-q="q5" data-i="2" value="有一點緊，想找時間再討論看看"><span>有一點緊，想找時間再討論看看</span></label><label class="opt"><input type="radio" name="q5" data-q="q5" data-i="3" value="還沒什麼感覺，要過幾個月才知道"><span>還沒什麼感覺，要過幾個月才知道</span></label></div></div><div class="q wo" data-qid="q6" data-who="wife" data-kd="單選"><div class="qn">第 6 題・單選</div><p class="qt">這次的規劃過程，你覺得有被問到、被考慮到嗎？<span class="tag">太太填</span></p><p class="qh">這題是專門想問太太的。你們是一起過日子的，我不希望只聽得到一個人的聲音。</p><div class="opts"><label class="opt"><input type="radio" name="q6" data-q="q6" data-i="0" value="有，過程中有問到我的想法"><span>有，過程中有問到我的想法</span></label><label class="opt"><input type="radio" name="q6" data-q="q6" data-i="1" value="大部分有，有些是事後才知道"><span>大部分有，有些是事後才知道</span></label><label class="opt"><input type="radio" name="q6" data-q="q6" data-i="2" value="比較少，希望下次我也在場一起聽"><span>比較少，希望下次我也在場一起聽</span></label><label class="opt"><input type="radio" name="q6" data-q="q6" data-i="3" value="還好，這種事我讓他決定就可以"><span>還好，這種事我讓他決定就可以</span></label></div></div><div class="q wo" data-qid="q7" data-who="wife" data-kd="單選"><div class="qn">第 7 題・單選</div><p class="qt">對於家裡這次的安排，你現在的心情比較接近？<span class="tag">太太填</span></p><div class="opts"><label class="opt"><input type="radio" name="q7" data-q="q7" data-i="0" value="放心，覺得有人幫忙看著是好事"><span>放心，覺得有人幫忙看著是好事</span></label><label class="opt"><input type="radio" name="q7" data-q="q7" data-i="1" value="還可以，但想多了解一點細節"><span>還可以，但想多了解一點細節</span></label><label class="opt"><input type="radio" name="q7" data-q="q7" data-i="2" value="有點擔心，想知道萬一需要用錢怎麼辦"><span>有點擔心，想知道萬一需要用錢怎麼辦</span></label><label class="opt"><input type="radio" name="q7" data-q="q7" data-i="3" value="說不上來，再看看"><span>說不上來，再看看</span></label></div></div><div class="q" data-qid="q8" data-who="both" data-kd="自由填"><div class="qn">第 8 題・自由填</div><p class="qt">還有什麼沒講到、但你想知道的？</p><p class="qh">任何問題都可以，包含「我還沒想清楚要問什麼」也可以這樣寫。</p><textarea data-q="q8" placeholder="例如：小孩的教育金要怎麼準備？房貸要不要提前還？"></textarea></div><div class="q" data-qid="q9" data-who="both" data-kd="單選"><div class="qn">第 9 題・單選</div><p class="qt">如果身邊朋友問起，你會想把芸姐介紹給他嗎？</p><p class="qh">這題只是讓我知道自己做得夠不夠好，選什麼都不會影響我們後續的服務。</p><div class="opts"><label class="opt"><input type="radio" name="q9" data-q="q9" data-i="0" value="會，我會主動提"><span>會，我會主動提</span></label><label class="opt"><input type="radio" name="q9" data-q="q9" data-i="1" value="如果對方問起，我會說"><span>如果對方問起，我會說</span></label><label class="opt"><input type="radio" name="q9" data-q="q9" data-i="2" value="再看看，還想多相處一陣子"><span>再看看，還想多相處一陣子</span></label><label class="opt"><input type="radio" name="q9" data-q="q9" data-i="3" value="目前還不會"><span>目前還不會</span></label></div></div><div class="q" data-qid="q10" data-who="both" data-kd="自由填"><div class="qn">第 10 題・自由填</div><p class="qt">想對芸姐說的話</p><p class="qh">可以不填。想抱怨也可以，我不會生氣 😊</p><textarea data-q="q10" placeholder="隨便寫幾句就好…"></textarea></div>
+
+<div class="note"><b>最後一句</b>
+<p>不管你們填了什麼，這次的規劃<b>都不是定案</b>。人生會變，數字也會變，我們本來就是滾動式調整。</p>
+<p class="last">覺得哪裡不對勁、哪裡想改，隨時跟我說就好 😊</p></div>
+
+<p class="closing">謝謝你們願意花這幾分鐘 🌿</p>
+
+<div class="disc">
+<p>本問卷僅供服務品質改善使用。填寫內容存在你自己的手機／電腦裡，不會自動傳送給任何人——<b>要按下方按鈕複製、你確認過內容，再自行傳給財顧芸</b>。未經你同意，不會提供給第三方。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p></div>
+</div>
+
+<div class="report"><span class="rt" id="rt"></span>
+<div class="rr"><button type="button" class="sec" id="clr">清空</button>
+<button type="button" id="rep">📋 複製回饋，傳給財顧芸</button></div>
+<span class="hint">貼到 LINE 之後先看一下，內容沒問題再按傳送。</span></div>
+</div><div id="toast"></div>
+
+<script>
+(function(){
+var PASS="0421", KEY='azhi_fb_gate', DKEY='azhi_fb_data';
+function PWN(v){return String(v||'').replace(/[\uFF01-\uFF5E]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[\s\u3000]/g,'');}
+var QS=[{"id": "q1", "who": "both", "kind": "one", "t": "整體來說，昨天聽完之後的感覺是？", "o": ["很清楚，知道自己現在在做什麼", "大致清楚，有些細節還要再消化", "有些地方還是有點模糊，想再聽一次", "當下有點多，回家之後才慢慢想通"]}, {"id": "q2", "who": "both", "kind": "many", "t": "哪些部分對你最有幫助？", "o": ["「水庫」的比喻——錢要分在不同地方", "保障的「堤防」——壽險、意外、醫療還缺多少", "退休金試算——20 年後大概領多少、還差多少", "複利與資產配置的觀念", "保單借款可以怎麼用", "費用怎麼收、顧問賺的是什麼", "把家裡的保單、房貸一次攤開來看"]}, {"id": "q3", "who": "both", "kind": "many", "t": "有沒有哪一段當下聽得比較吃力，會想再聽一次？", "o": ["投資型保單的費用結構（前 5 年那張表）", "配息型 vs 累積型的差別", "退休金的試算過程", "資產配置的比例怎麼決定", "外幣、匯率的部分", "保單借款的條件", "沒有特別吃力的"]}, {"id": "q4", "who": "both", "kind": "one", "t": "這次談的節奏，你覺得？", "o": ["剛剛好", "有點多、有點久，下次想分兩次談", "還可以再多講一點，我想知道更多", "前面剛好，後面簽約那段有點趕"]}, {"id": "q5", "who": "both", "kind": "one", "t": "現在回頭看這次的安排，你的感覺是？", "o": ["在能力範圍內，很安心", "可以，但想先觀察一陣子再說", "有一點緊，想找時間再討論看看", "還沒什麼感覺，要過幾個月才知道"]}, {"id": "q6", "who": "wife", "kind": "one", "t": "這次的規劃過程，你覺得有被問到、被考慮到嗎？", "o": ["有，過程中有問到我的想法", "大部分有，有些是事後才知道", "比較少，希望下次我也在場一起聽", "還好，這種事我讓他決定就可以"]}, {"id": "q7", "who": "wife", "kind": "one", "t": "對於家裡這次的安排，你現在的心情比較接近？", "o": ["放心，覺得有人幫忙看著是好事", "還可以，但想多了解一點細節", "有點擔心，想知道萬一需要用錢怎麼辦", "說不上來，再看看"]}, {"id": "q8", "who": "both", "kind": "text", "t": "還有什麼沒講到、但你想知道的？", "o": []}, {"id": "q9", "who": "both", "kind": "one", "t": "如果身邊朋友問起，你會想把芸姐介紹給他嗎？", "o": ["會，我會主動提", "如果對方問起，我會說", "再看看，還想多相處一陣子", "目前還不會"]}, {"id": "q10", "who": "both", "kind": "text", "t": "想對芸姐說的話", "o": []}];
+function $(i){return document.getElementById(i);}
+function twNow(t){
+ var o={timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'};
+ if(t){o.hour='2-digit';o.minute='2-digit';o.hour12=false;}
+ return new Intl.DateTimeFormat('zh-TW',o).format(new Date()).replace(/\//g,'/');
+}
+function ok(){try{var v=localStorage.getItem(KEY);if(v&&Number(v)>Date.now())return true;}catch(e){}return false;}
+function enter(){$('gate').style.display='none';$('doc').style.display='block';init();}
+$('eye').onclick=function(){var p=$('pw');var s=p.type==='password';p.type=s?'text':'password';this.textContent=s?'隱藏':'顯示';};
+$('go').onclick=function(){
+ if(PWN($('pw').value)!==PWN(PASS)){$('err').textContent='密碼不對，再試一次。';return;}
+ if($('rm').checked){try{localStorage.setItem(KEY,String(Date.now()+30*864e5));}catch(e){}}
+ enter();};
+$('pw').addEventListener('keydown',function(e){if(e.key==='Enter')$('go').click();});
+if(ok())enter();
+
+var inited=false;
+function init(){
+ if(inited)return; inited=true;
+ var st={}; try{st=JSON.parse(localStorage.getItem(DKEY)||'{}');}catch(e){}
+ st.azhi=st.azhi||{}; st.wife=st.wife||{};
+ var who=st._who||'azhi';
+ function save(){try{localStorage.setItem(DKEY,JSON.stringify(st));}catch(e){}}
+ function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},2800);}
+ $('stamp').textContent='更新於 2026/09/20（台灣時間）｜財顧芸整理';
+ $('print').onclick=function(){window.print();};
+ $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
+
+ function mine(q){return q.who==='both'||q.who===who;}
+ function cards(){return [].slice.call(document.querySelectorAll('.q'));}
+
+ function paint(){
+  [].forEach.call(document.querySelectorAll('.wbtn'),function(b){b.classList.toggle('on',b.getAttribute('data-w')===who);});
+  var a=st[who];
+  QS.forEach(function(q){
+   var box=document.querySelector('.q[data-qid="'+q.id+'"]');
+   var show=mine(q); box.hidden=!show;
+   var v=a[q.id];
+   if(q.kind==='text'){
+    box.querySelector('textarea').value=v||'';
+   }else{
+    [].forEach.call(box.querySelectorAll('input[data-q]'),function(inp){
+     var i=Number(inp.getAttribute('data-i'));
+     var on=q.kind==='one'?(v&&v.pick===i):!!(v&&v.pick&&v.pick.indexOf(i)>=0);
+     inp.checked=on; inp.parentNode.classList.toggle('sel',on);});
+    var o=box.querySelector('input[data-oth]');
+    if(o)o.value=(v&&v.oth)||'';
+   }
+   box.classList.toggle('ans',filled(q,v));
+  });
+  var vn=0;
+  QS.forEach(function(q){
+   if(!mine(q))return; vn++;
+   var box=document.querySelector('.q[data-qid="'+q.id+'"]');
+   box.querySelector('.qn').textContent='第 '+vn+' 題・'+box.getAttribute('data-kd');
+  });
+  upd();
+ }
+ function filled(q,v){
+  if(!v)return false;
+  if(q.kind==='text')return !!String(v).trim();
+  if(q.kind==='one')return v.pick!=null;
+  return (v.pick&&v.pick.length>0)||!!(v.oth&&v.oth.trim());
+ }
+ function upd(){
+  var mq=QS.filter(mine), a=st[who];
+  var n=mq.filter(function(q){return filled(q,a[q.id]);}).length;
+  $('pct').textContent=n+' / '+mq.length;
+  $('pbar').style.width=(mq.length?Math.round(n*100/mq.length):0)+'%';
+  var nm=who==='azhi'?'阿志':'太太';
+  var other=who==='azhi'?'wife':'azhi';
+  var on=QS.filter(function(q){return q.who==='both'||q.who===other;})
+           .filter(function(q){return filled(q,st[other][q.id]);}).length;
+  $('rt').innerHTML=(n>=mq.length&&mq.length)
+   ?('<b>'+nm+'的部分填完了 ✓</b>'+(on?'　兩份都會一起帶過去。':'　另一位也可以換手填，或現在就傳給我。'))
+   :('目前填的是 <b>'+nm+'</b> 的份'+(on?('　（另一位已填 '+on+' 題）'):'')+'　·　可以跳題，不用全填');
+ }
+
+ [].forEach.call(document.querySelectorAll('.wbtn'),function(b){
+  b.addEventListener('click',function(){who=b.getAttribute('data-w');st._who=who;save();paint();
+   toast(who==='azhi'?'切換成阿志的份':'切換成太太的份，有兩題是專門問你的 🌸');});});
+
+ QS.forEach(function(q){
+  var box=document.querySelector('.q[data-qid="'+q.id+'"]');
+  if(q.kind==='text'){
+   var ta=box.querySelector('textarea');
+   ta.addEventListener('input',function(){st[who][q.id]=ta.value;save();
+    box.classList.toggle('ans',!!ta.value.trim());upd();});
+   return;
+  }
+  [].forEach.call(box.querySelectorAll('input[data-q]'),function(inp){
+   inp.addEventListener('change',function(){
+    var i=Number(inp.getAttribute('data-i'));
+    var v=st[who][q.id]||{};
+    if(q.kind==='one'){v.pick=i;}
+    else{v.pick=v.pick||[];var at=v.pick.indexOf(i);
+     if(inp.checked){if(at<0)v.pick.push(i);}else if(at>=0)v.pick.splice(at,1);
+     v.pick.sort(function(x,y){return x-y;});}
+    st[who][q.id]=v;save();paint();});
+  });
+  var o=box.querySelector('input[data-oth]');
+  if(o)o.addEventListener('input',function(){
+   var v=st[who][q.id]||{}; v.oth=o.value; st[who][q.id]=v; save();
+   box.classList.toggle('ans',filled(q,v)); upd();});
+ });
+
+ function copy(txt,cb){
+  function okc(){cb&&cb();}
+  function fb(){var t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');okc();}catch(e){toast('複製失敗，長按文字手動複製');}document.body.removeChild(t);}
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(okc,fb);}else fb();}catch(e){fb();}}
+
+ function block(w,L){
+  var a=st[w], nm=w==='azhi'?'阿志':'太太';
+  var mq=QS.filter(function(q){return q.who==='both'||q.who===w;});
+  var any=mq.some(function(q){return filled(q,a[q.id]);});
+  if(!any)return false;
+  L.push('—— '+nm+' ——');
+  mq.forEach(function(q,i){
+   var v=a[q.id]; if(!filled(q,v))return;
+   L.push('Q'+(i+1)+'. '+q.t);
+   if(q.kind==='text'){L.push('　'+String(v).replace(/\n/g,'\n　'));}
+   else{
+    var ps=q.kind==='one'?[v.pick]:v.pick||[];
+    ps.forEach(function(ix){L.push('　· '+q.o[ix]);});
+    if(v.oth&&v.oth.trim())L.push('　· 其他：'+v.oth.trim());
+   }
+   L.push('');
+  });
+  return true;
+ }
+
+ $('rep').onclick=function(){
+  var L=['芸姐你好，這是我們的回饋 🌿',''];
+  var a=block('azhi',L), b=block('wife',L);
+  if(!a&&!b){toast('還沒填任何一題喔，先選幾個再複製 😊');return;}
+  L.push('（'+twNow(true)+' 填寫）');
+  copy(L.join('\n'),function(){
+   var o=$('rep').textContent;$('rep').textContent='✓ 已複製，貼上後確認再傳';
+   setTimeout(function(){$('rep').textContent=o;},3200);
+   toast('已複製！貼到 LINE 之後先看一下，沒問題再傳送給財顧芸 😊');});};
+
+ $('clr').onclick=function(){
+  var nm=who==='azhi'?'阿志':'太太';
+  if(!confirm('會清掉「'+nm+'」這一份的所有答案，確定嗎？（另一位的不受影響）'))return;
+  st[who]={};save();paint();toast('已清空');};
+
+ paint();
+}
+})();
+</script></body></html>
