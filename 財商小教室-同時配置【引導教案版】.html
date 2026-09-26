@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【公版】引導教案｜重要的目標，一起來｜財顧芸</title>
+<style>
+:root{--ink:#1f2d33;--sub:#5b6b72;--line:#d5dfe2;--paper:#f6f9f9;--card:#fff;--deep:#1d5a6e;--water:#3f8fa6;--mist:#dcebef;--amber:#b7791f;--amberbg:#fbf3e4;--green:#3d7a55;--greenbg:#e7f2ea;--red:#a8423a;--redbg:#f7e3e1;--grey:#b9c4c9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;font-size:16px}
+body.guiding{padding-bottom:300px}
+.wrap{max-width:780px;margin:0 auto;padding:22px 18px 40px}
+.brand{font-family:"Noto Serif TC","Songti TC",serif;color:var(--amber);letter-spacing:.08em;font-size:14px;margin:0}
+h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;color:var(--deep);font-size:28px;line-height:1.35;margin:6px 0 8px}
+h2{font-family:"Noto Serif TC","Songti TC",serif;color:var(--deep);font-size:21px;margin:0 0 8px}
+h3{font-size:17px;margin:2px 0 4px;color:var(--deep)}
+p{margin:8px 0}
+.lead{font-size:17px}
+.sub{color:var(--sub);font-size:14px}
+.small{font-size:13px;color:var(--sub)}
+.num{display:inline-flex;width:29px;height:29px;border-radius:50%;background:var(--deep);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-right:8px;font-size:15px;flex:0 0 auto}
+
+/* ── 逐步解鎖區塊 ── */
+.st{display:none;padding:14px;margin:14px 0;border-radius:12px;background:transparent;transition:box-shadow .25s,opacity .25s,background .25s}
+.st.on{display:block;animation:rise .38s ease-out both}
+.st.cur{background:var(--card);box-shadow:0 0 0 3px var(--water),0 12px 30px rgba(29,90,110,.13)}
+body.guiding .st.on:not(.cur){opacity:.5}
+body.guiding .closing,body.guiding .disc,body.pre .closing,body.pre .disc{display:none}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.st.on{animation:none}.st{transition:none}}
+.stag{display:inline-block;font-size:12px;font-weight:700;color:var(--water);letter-spacing:.06em;margin-bottom:2px}
+
+.hero{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:18px;margin:4px 0}
+.hero .q{font-family:"Noto Serif TC",serif;font-size:21px;color:var(--deep);font-weight:700;margin:0}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:13px;color:var(--sub);text-align:center;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.box.bad{border-top:5px solid var(--red)}
+.box.good{border-top:5px solid var(--green)}
+.box>b{display:block;margin-bottom:4px}
+.box.bad>b{color:var(--red)}.box.good>b{color:var(--green)}
+.box p{font-size:14.5px;margin:4px 0}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px;background:var(--card)}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+th{background:var(--mist);color:var(--deep);font-weight:600}
+tr.total td{font-weight:700;border-top:2px solid var(--deep)}
+.hl{color:var(--red);font-weight:700}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}
+label.f{display:block;font-size:14px;color:var(--sub);margin:6px 0 3px}
+.slider{margin:8px 0}
+.slider input{width:100%;accent-color:var(--deep);height:30px}
+.slv{font-family:"Noto Serif TC",serif;font-size:26px;font-weight:700;color:var(--deep)}
+.result{margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--mist);font-size:15px}
+.result b{color:var(--deep);font-size:20px}
+.gauge{height:14px;background:#eef3f4;border-radius:8px;overflow:hidden;margin:8px 0 4px}
+.gauge i{display:block;height:100%;background:linear-gradient(90deg,var(--water),var(--deep));transition:width .3s}
+.doit{display:flex;gap:8px;align-items:flex-start;font-size:14px;background:var(--amberbg);color:#5a4012;border-radius:9px;padding:9px 12px;margin:10px 0 0}
+.doit.ok{background:var(--greenbg);color:#24503a}
+.doit .ck{font-weight:700;flex:0 0 auto}
+.steps{counter-reset:s;margin:10px 0;padding:0;list-style:none}
+.steps li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 52px;margin:8px 0}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--deep);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.steps li b{color:var(--deep)}
+.note{background:var(--amberbg);border-radius:10px;padding:10px 14px;font-size:14.5px;color:#5a4012;margin:8px 0}
+.core{text-align:center;font-family:"Noto Serif TC",serif;color:var(--deep);font-size:20px;margin:10px 0}
+
+/* ── 浮動導覽對話框 ── */
+.tour{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none}
+.tour.on{display:block}
+.tin{max-width:780px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--deep);border-radius:16px 16px 0 0;box-shadow:0 -10px 34px rgba(20,45,55,.20);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.tprog{height:6px;border-radius:4px;background:#e8eff1;overflow:hidden;margin:0 0 9px}
+.tprog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--water),var(--deep));transition:width .3s}
+.thead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px}
+.tn{font-size:12.5px;font-weight:700;color:var(--water);letter-spacing:.04em}
+.tskip{margin-left:auto;background:none;border:none;color:var(--sub);font-size:12.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:inherit;padding:2px 0}
+.tsay{margin:0 0 10px;font-size:15.5px;line-height:1.75;max-height:32vh;overflow-y:auto}
+.tsay b{color:var(--deep)}
+.tsay .mini{display:block;font-size:13.5px;color:var(--sub);margin-top:4px}
+.tbtn{display:flex;gap:8px}
+button.nav{flex:1;font-family:inherit;font-size:16px;font-weight:700;padding:13px 10px;border-radius:11px;cursor:pointer;border:1px solid var(--deep);background:var(--deep);color:#fff;line-height:1.3;white-space:nowrap}
+button.nav.ghost{flex:0 0 108px;background:var(--card);color:var(--deep)}
+button.nav:disabled{opacity:.35;cursor:not-allowed}
+button.nav:focus-visible,.tskip:focus-visible,.opt:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+.startcard{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+.startcard h2{margin-top:0}
+.startcard ul{margin:8px 0 12px;padding-left:22px;font-size:15px}
+.startcard li{margin:3px 0}
+button.big{width:100%;font-family:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:12px;border:none;background:var(--deep);color:#fff;cursor:pointer}
+button.big.alt{background:var(--card);color:var(--deep);border:1px solid var(--deep)}
+.linkbtn{background:none;border:none;color:var(--sub);font-size:13.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:inherit;padding:8px 0;display:block;margin:6px auto 0}
+
+/* ── 檢核問卷 ── */
+#quiz{display:none}
+#quiz.on{display:block}
+.qhead{background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0 6px}
+.qhead h2{margin-top:0}
+.qbar{position:sticky;top:0;z-index:40;background:rgba(246,249,249,.95);backdrop-filter:blur(4px);padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px;font-weight:700;color:var(--deep);margin-bottom:6px}
+.qbar .qg{height:7px;border-radius:4px;background:#e8eff1;overflow:hidden;margin-top:5px}
+.qbar .qg i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--water),var(--deep));transition:width .3s}
+.qq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px;margin:12px 0}
+.qq .qn{font-size:12.5px;font-weight:700;color:var(--water);letter-spacing:.05em}
+.qq .qt{font-size:16.5px;font-weight:700;color:var(--deep);margin:3px 0 10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:15px;line-height:1.65;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:7px 0;cursor:pointer;color:var(--ink)}
+.opt:hover{border-color:var(--water)}
+.opt.pick{border-color:var(--deep);border-width:2px}
+.opt.right{background:var(--greenbg);border-color:var(--green);border-width:2px}
+.opt.wrong{background:var(--redbg);border-color:var(--red);border-width:2px}
+.opt[disabled]{cursor:default}
+.fb{display:none;margin-top:10px;padding:11px 13px;border-radius:10px;font-size:14.5px;line-height:1.7}
+.fb.on{display:block}
+.fb.y{background:var(--greenbg);color:#24503a}
+.fb.n{background:var(--redbg);color:#7a2f28}
+.fb b{display:inline;font-weight:700}
+.fb>b:first-child{display:block;margin-bottom:2px}
+.qq textarea{width:100%;min-height:82px;font-family:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);resize:vertical;line-height:1.7}
+.score{display:none;background:var(--card);border:1px solid var(--line);border-top:5px solid var(--deep);border-radius:12px;padding:20px;margin:16px 0;text-align:center}
+.score.on{display:block}
+.score .big{font-family:"Noto Serif TC",serif;font-size:44px;font-weight:700;color:var(--deep);line-height:1.1}
+.score .cm{font-size:15.5px;margin:8px 0 0}
+.score .rv{text-align:left;background:var(--paper);border-radius:10px;padding:12px 14px;margin:14px 0 0;font-size:14.5px}
+.score .rv b{color:var(--deep)}
+.closing{margin:26px 0 10px;padding:22px;border-radius:12px;background:linear-gradient(160deg,var(--mist),#fff);border:1px solid var(--line);text-align:center}
+.closing .m{font-family:"Noto Serif TC",serif;font-size:21px;color:var(--deep);font-weight:700;margin:0 0 8px}
+.back{display:inline-block;margin-top:4px;color:var(--deep);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.disc{font-size:12.5px;color:var(--sub);margin-top:26px;border-top:1px solid var(--line);padding-top:12px}
+.vband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 16px;border-bottom:1px solid rgba(0,0,0,.08);line-height:1.6}
+.vband .vk{font-weight:700;border-radius:999px;padding:1px 11px;background:rgba(255,255,255,.75)}
+.vband .vn{flex:1;min-width:120px}
+.vband .vv{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;opacity:.85}
+@media (max-width:560px){
+ .two{grid-template-columns:1fr}
+ h1{font-size:23px}h2{font-size:19px}
+ .vband{font-size:12px;padding:6px 12px;gap:7px}
+ body.guiding{padding-bottom:330px}
+ .tsay{font-size:15px;max-height:30vh}
+ button.nav{font-size:15px;padding:12px 6px}
+ button.nav.ghost{flex:0 0 92px;font-size:14px}
+ .st{padding:12px 11px}
+ .wrap{padding:18px 16px 36px}
+}
+@media print{.tour{display:none!important}.st{display:block!important;opacity:1!important;box-shadow:none!important}.vband{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body class="pre">
+<div class="vband" style="background:#fbf3e4;color:#5a4012;border-bottom-color:#b7791f"><span class="vk">公版教材</span><span class="vn">引導教案｜重要的目標，一起來（財商小教室 4 教學版）</span><span class="vv">v1.0 ・ 2026/09/26（台灣時間）</span></div>
+
+<div class="wrap">
+<p class="brand">財顧芸｜馥芸財富學苑｜財商小教室・引導教案</p>
+<h1>有錢人的金錢藍圖：<br>重要的目標，一起來</h1>
+
+<!-- 開場卡 -->
+<div class="startcard" id="start">
+<h2>這是一堂「跟著走」的課</h2>
+<p class="sub" style="margin-top:0">你不用先讀完整頁，也不用決定從哪裡開始看。</p>
+<ul>
+<li>下面會出現一個<b>對話框</b>，我在裡面一段一段跟你說。</li>
+<li>你只要按 <b>「下一步」</b>，頁面會自己把下一段打開、自己捲到位置。</li>
+<li>中間有一個可以<b>動手拉的試算</b>，拉一下感受最直接。</li>
+<li>走完之後會出 <b>8 題檢核</b>，答完就知道自己真正記住了哪些。</li>
+</ul>
+<p class="small" style="margin-bottom:12px">全程大約 8～10 分鐘。中途離開沒關係，下次打開會問你要不要接著看。</p>
+<button class="big" id="go">開始這堂課 →</button>
+<button class="linkbtn" id="freego">我想自己讀完整頁，不要引導</button>
+</div>
+
+<!-- ══════ 教學步驟 ══════ -->
+
+<section class="st" id="s1" data-tag="開場">
+<div class="hero">
+<p class="q">錢有限，不是理由；<br>正因為有限，順序才更重要。</p>
+<p class="sub">同時配置不是每樣都做滿，是每樣都先開始。</p>
+</div>
+<p class="lead">大部分人存錢的方式是「一次一個、慢慢來」：先存結婚的錢，存到了再存買車的錢，然後是房子……輪到退休金時，人已經五十幾歲了。這一課講的是另一種做法，也是財務規劃裡最關鍵的一個觀念：<b>重要的目標，要同時配置</b>。</p>
+</section>
+
+<section class="st" id="s2" data-tag="觀念一">
+<h2><span class="num">1</span>關注淨值：先存再花，花的才瀟灑</h2>
+<p>很多人的順序是「收入 − 支出 ＝ 儲蓄」，剩多少存多少，結果常常是沒剩。有錢人的順序倒過來：<b>收入 − 儲蓄 ＝ 支出</b>，先把要存的錢撥走，剩下的才是可以花的。</p>
+</section>
+
+<section class="st" id="s3" data-tag="觀念一・圖">
+<div class="fig">
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="水庫先蓄水再放水的示意圖" font-family="Noto Sans TC,PingFang TC,Microsoft JhengHei,sans-serif">
+<rect width="700" height="220" fill="#fff"/>
+<path d="M60 40 Q80 36 96 44 L88 66 Q74 60 62 62 Z" fill="#b7791f"/>
+<path d="M90 56 C120 70 150 66 180 78" stroke="#3f8fa6" stroke-width="7" fill="none" stroke-linecap="round"/>
+<text x="60" y="30" font-size="13" fill="#8a5a12">收入</text>
+<path d="M190 78 L520 78 L490 178 L220 178 Z" fill="#dcebef" stroke="#1d5a6e" stroke-width="2"/>
+<rect x="224" y="110" width="262" height="68" fill="#3f8fa6" opacity=".6"/>
+<text x="355" y="102" font-size="16" fill="#1d5a6e" text-anchor="middle" font-weight="700">先存起來</text>
+<text x="355" y="150" font-size="14" fill="#1d5a6e" text-anchor="middle">水庫蓄水</text>
+<path d="M520 140 L575 140" stroke="#3f8fa6" stroke-width="7" stroke-linecap="round"/>
+<circle cx="596" cy="140" r="5" fill="#3f8fa6"/><circle cx="608" cy="152" r="4" fill="#3f8fa6"/><circle cx="600" cy="166" r="3" fill="#3f8fa6"/>
+<text x="600" y="120" font-size="14" fill="#1d5a6e" text-anchor="middle" font-weight="700">剩下的才花</text>
+<text x="355" y="205" font-size="14" fill="#5b6b72" text-anchor="middle">發薪日先撥走，不靠意志力</text>
+</svg>
+<figcaption>先存再花，花的才瀟灑</figcaption>
+</div>
+</section>
+
+<section class="st" id="s4" data-tag="觀念一・做法">
+<div class="note"><b>做法很簡單：設定自動轉帳。</b>發薪日當天就把要存的錢轉走，看不到就不會花掉。靠意志力省錢很難持久，靠設定就輕鬆多了。</div>
+</section>
+
+<section class="st" id="s5" data-tag="觀念二">
+<h2><span class="num">2</span>專款專用：一次一個，還是一起來？</h2>
+<p>這是整堂課最重要的一頁。同樣一筆錢，兩種安排方式，結果差很多。</p>
+</section>
+
+<section class="st" id="s6" data-tag="觀念二・圖">
+<div class="fig">
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="一次一個與同時配置的對照圖" font-family="Noto Sans TC,PingFang TC,Microsoft JhengHei,sans-serif">
+<rect width="700" height="300" fill="#fff"/>
+<text x="10" y="22" font-size="14" fill="#a8423a" font-weight="700">一般人：一次一個，慢～慢～來</text>
+<line x1="60" y1="120" x2="680" y2="120" stroke="#5b6b72"/>
+<rect x="60" y="86" width="120" height="26" rx="4" fill="#b9c4c9"/><text x="120" y="104" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">結婚</text>
+<rect x="184" y="86" width="140" height="26" rx="4" fill="#b9c4c9"/><text x="254" y="104" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">買車</text>
+<rect x="328" y="86" width="180" height="26" rx="4" fill="#b9c4c9"/><text x="418" y="104" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">買房</text>
+<rect x="512" y="86" width="140" height="26" rx="4" fill="#f7e3e1" stroke="#a8423a" stroke-dasharray="4 3"/><text x="582" y="104" font-size="12" fill="#a8423a" text-anchor="middle" font-weight="700">退休？</text>
+<text x="660" y="104" font-size="20" fill="#a8423a" font-weight="700">?</text>
+<text x="60" y="137" font-size="11" fill="#5b6b72">現在</text><text x="660" y="137" font-size="11" fill="#5b6b72" text-anchor="end">五十幾歲</text>
+<text x="370" y="156" font-size="12.5" fill="#a8423a" text-anchor="middle">輪到退休金時，只剩十幾年可以存</text>
+<text x="10" y="196" font-size="14" fill="#3d7a55" font-weight="700">有錢人：重要的目標同時配置</text>
+<line x1="60" y1="288" x2="680" y2="288" stroke="#5b6b72"/>
+<rect x="60" y="206" width="180" height="18" rx="4" fill="#b7791f"/><text x="248" y="220" font-size="11.5" fill="#8a5a12">短期目標</text>
+<rect x="60" y="230" width="330" height="18" rx="4" fill="#3f8fa6"/><text x="398" y="244" font-size="11.5" fill="#1d5a6e">中期目標</text>
+<rect x="60" y="254" width="592" height="18" rx="4" fill="#1d5a6e"/><text x="352" y="268" font-size="11.5" fill="#fff" text-anchor="middle" font-weight="700">退休金｜從現在就開始，時間最長</text>
+<text x="60" y="284" font-size="11" fill="#5b6b72">現在</text>
+</svg>
+<figcaption>差別不在存多少，在「退休金什麼時候開始存」</figcaption>
+</div>
+</section>
+
+<section class="st" id="s7" data-tag="觀念二・對照">
+<div class="two">
+<div class="box bad"><b>✗ 一次一個</b>
+<p>每個目標輪流來，看起來很專注。</p>
+<p>但最長期、最需要時間的退休金，永遠排在最後面，等輪到它，能用的時間已經被吃掉大半。</p></div>
+<div class="box good"><b>✓ 同時配置</b>
+<p>每個目標都分到一點，都先開始。</p>
+<p>短期目標照樣達成，長期目標也拿到完整的時間，讓複利有機會發揮。</p></div>
+</div>
+</section>
+
+<section class="st" id="s8" data-tag="觀念二・數字">
+<h3>差多少？只晚 27 個月開始，結果就不一樣</h3>
+<p class="small">假設：每月可存 15,000，累積期年報酬 4%，存到 65 歲，退休後分 20 年支領。</p>
+<div class="tbl"><table>
+<tr><th>做法</th><th>65 歲累積</th><th>退休後每月</th></tr>
+<tr><td><b>同時配置</b>（36 歲就開始）</td><td>約 982.7 萬</td><td>約 40,946</td></tr>
+<tr><td>一次一個（先存完別的，晚 27 個月才開始）</td><td>約 859.6 萬</td><td>約 35,816</td></tr>
+<tr class="total"><td>差距</td><td class="hl">約 123.1 萬</td><td class="hl">每月少 5,130</td></tr>
+</table></div>
+<div class="note">只是晚了兩年多開始，退休後<b>每個月就少 5,130 元</b>，而且是少一輩子。這不是因為存得比較少，是因為少了兩年的時間。</div>
+</section>
+
+<section class="st" id="s9" data-tag="觀念三">
+<h2><span class="num">3</span>長期累積：最重要的是時間，不是時機</h2>
+<p>很多人在等「市場好一點再進場」。但對退休準備來說，<b>「什麼時候開始」比「買在什麼點位」影響大得多</b>。</p>
+</section>
+
+<section class="st" id="s10" data-tag="觀念三・動手玩">
+<div class="tool">
+<label class="f" for="age">幾歲開始準備：<span class="slv" id="av">36</span> 歲</label>
+<div class="slider"><input type="range" id="age" min="25" max="60" step="1" value="36" aria-describedby="av"></div>
+<div class="result" id="res" aria-live="polite"></div>
+<div class="doit" id="doit"><span class="ck" id="doitck">□</span><span id="doittx">換你動手：把上面那條線<b>往右拉</b>，看「每月要存」跳多少。</span></div>
+</div>
+<p class="small">試算假設：目標在 65 歲累積 1,200 萬，年報酬 4%，每月月底存入，非保證。</p>
+</section>
+
+<section class="st" id="s11" data-tag="觀念三・重點">
+<div class="note">同樣要存到 1,200 萬：36 歲開始每月 18,317，46 歲開始要 35,224，<b>晚 10 年，每月要存的幾乎翻倍</b>。時間會幫你出錢，越晚開始，要自己出的越多。</div>
+</section>
+
+<section class="st" id="s12" data-tag="觀念四">
+<h2><span class="num">4</span>資產配置：地基要穩，上面才放得高</h2>
+<p>把人生的支出分成三層：<b>核心支出</b>（吃住、房貸、保費這些不能斷的）、<b>娛樂支出</b>（旅遊、嗜好）、<b>目標支出</b>（教育金、換車、夢想）。每一層該用什麼工具來對應，決定了整個配置穩不穩。</p>
+</section>
+
+<section class="st" id="s13" data-tag="觀念四・圖">
+<div class="fig">
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="常見配置與穩健配置的三角形對照" font-family="Noto Sans TC,PingFang TC,Microsoft JhengHei,sans-serif">
+<rect width="700" height="260" fill="#fff"/>
+<text x="20" y="24" font-size="14" fill="#a8423a" font-weight="700">常見的配置：頭重腳輕</text>
+<path d="M30 60 L300 60 L240 120 L90 120 Z" fill="#f7e3e1" stroke="#a8423a"/>
+<text x="165" y="96" font-size="14" fill="#a8423a" text-anchor="middle" font-weight="700">積極投資（股票、不動產）</text>
+<path d="M90 124 L240 124 L205 174 L125 174 Z" fill="#fbf3e4" stroke="#b7791f"/>
+<text x="165" y="154" font-size="13" fill="#8a5a12" text-anchor="middle">保守投資</text>
+<path d="M125 178 L205 178 L165 228 Z" fill="#dcebef" stroke="#3f8fa6"/>
+<text x="165" y="200" font-size="12" fill="#1d5a6e" text-anchor="middle">儲蓄</text>
+<text x="165" y="250" font-size="12.5" fill="#a8423a" text-anchor="middle">市場一震，地基就晃</text>
+<text x="400" y="24" font-size="14" fill="#3d7a55" font-weight="700">穩健的配置：地基紮實</text>
+<path d="M535 60 L575 110 L495 110 Z" fill="#f7e3e1" stroke="#a8423a"/>
+<text x="535" y="98" font-size="12" fill="#a8423a" text-anchor="middle">積極投資</text>
+<path d="M495 114 L575 114 L610 164 L460 164 Z" fill="#fbf3e4" stroke="#b7791f"/>
+<text x="535" y="144" font-size="13" fill="#8a5a12" text-anchor="middle">保守投資</text>
+<path d="M460 168 L610 168 L670 228 L400 228 Z" fill="#e7f2ea" stroke="#3d7a55"/>
+<text x="535" y="196" font-size="14" fill="#3d7a55" text-anchor="middle" font-weight="700">儲蓄、年金</text>
+<text x="535" y="216" font-size="12" fill="#3d7a55" text-anchor="middle">固定可靠、源源不絕</text>
+<text x="535" y="250" font-size="12.5" fill="#3d7a55" text-anchor="middle">核心支出先被蓋住，上面才敢放</text>
+</svg>
+<figcaption>不是不能積極，是要先把地基鋪好</figcaption>
+</div>
+</section>
+
+<section class="st" id="s14" data-tag="觀念四・三個理由">
+<h3>為什麼底層要有「固定可靠」的錢？</h3>
+<ol class="steps">
+<li><b>核心支出不能斷</b><br>吃飯、住的、保費，這些每個月都要付。用會波動的資產來對應，等於把生活費押在市場上。</li>
+<li><b>有底氣，上面才敢承擔風險</b><br>基本生活被蓋住之後，積極投資就算短期下跌，也不必被迫在低點賣出。</li>
+<li><b>部分資產年金化</b><br>把一部分資產轉成「每個月固定進來」的現金流，退休後的生活費就有著落，不用每個月看市場臉色決定能花多少。</li>
+</ol>
+<div class="note">這不是說儲蓄或年金報酬比較高，而是它們<b>負責的工作不一樣</b>：積極投資負責讓資產長大，固定可靠的部分負責讓生活不斷炊。兩者都需要，順序不能顛倒。</div>
+</section>
+
+<section class="st" id="s15" data-tag="總結">
+<h2>四個觀念，串起來就是一句話</h2>
+<div class="two">
+<div class="box"><b>① 關注淨值</b><p>先存再花，花的才瀟灑。</p></div>
+<div class="box"><b>② 專款專用</b><p>重要的目標，一起來。</p></div>
+<div class="box"><b>③ 長期累積</b><p>最重要的是時間，不是時機。</p></div>
+<div class="box"><b>④ 資產配置</b><p>地基要穩，上面才放得高。</p></div>
+</div>
+<p class="core">不是等有錢了才開始配置，<br>是因為配置了，才會有錢。</p>
+</section>
+
+<!-- ══════ 檢核問卷 ══════ -->
+<div id="quiz">
+<div class="qhead">
+<h2>來檢核一下 ✍️</h2>
+<p class="sub" style="margin:0">8 題，每題答完馬上告訴你對不對、為什麼。答錯沒關係，解析就是複習。</p>
+</div>
+<div class="qbar" id="qbar">已答 <span id="qdone">0</span> / 8<div class="qg"><i id="qgi"></i></div></div>
+<div id="qlist"></div>
+
+<div class="qq" id="qfree">
+<div class="qn">最後一題・自由寫</div>
+<p class="qt">看完這一課，你最想「先開始」的一個目標是什麼？</p>
+<p class="small" style="margin-top:-4px">寫一句就好。不用寫金額，寫你心裡第一個浮出來的那件事。</p>
+<textarea id="freetx" placeholder="例如：退休金，我想從這個月就開始撥一筆…"></textarea>
+</div>
+
+<button class="big" id="seescore">看我的檢核結果</button>
+
+<div class="score" id="score">
+<p class="small" style="margin:0">答對題數</p>
+<p class="big"><span id="sc">0</span><span style="font-size:22px;color:var(--sub)"> / 8</span></p>
+<p class="cm" id="scm"></p>
+<div class="rv" id="srv"></div>
+<button class="big" id="copy" style="margin-top:14px">📋 複製我的結果，傳給財顧芸</button>
+<button class="linkbtn" id="again">重看一次導覽</button>
+</div>
+</div>
+
+<div class="closing">
+<p class="m">把人生的錢安排好，<br>其他就是享受生活。</p>
+<p class="sub">想知道自己的目標該怎麼同時配置，歡迎和財顧芸聊聊。<br>
+<a class="back" href="財商小教室-同時配置.html">看這一課的完整圖文版（不用引導）→</a><br>
+<a class="back" href="財商小教室-首重資產配置.html">第 1 課：為什麼理財第一步是「首重資產配置」？ →</a><br>
+<a class="back" href="財商小教室-需要用錢先從預備金開始.html">第 2 課：需要用錢時，為什麼先從預備金開始？ →</a><br>
+<a class="back" href="財商小教室-保單貸款.html">第 3 課：短期要用錢，為什麼可以考慮保單貸款？ →</a></p>
+</div>
+
+<div class="disc">
+<p>本頁為財商教育內容，提供一般性觀念說明，不構成個別投資、保險、法律或稅務建議。文中每月 15,000、年報酬 4%、目標 1,200 萬等均為便於說明的假設數字，非保證結果；實際報酬會因市場、工具與時間而不同，投資可能損失本金。</p>
+<p>「部分資產年金化」係指配置具有固定給付性質的工具以對應核心支出，不特指任何商品；實際內容與給付條件以各金融機構或保險公司之契約條款為準。</p>
+<p>你的作答內容只存在你自己的手機／電腦裡，不會自動傳送給任何人——要按按鈕複製、你確認過內容，再自行傳給財顧芸。</p>
+<p>財顧芸 陳芸琪｜馥芸財富學苑</p>
+</div>
+</div>
+
+<!-- 浮動導覽對話框 -->
+<div class="tour" id="tour" role="region" aria-label="課程導覽">
+<div class="tin">
+<div class="tprog" aria-hidden="true"><i id="tpi"></i></div>
+<div class="thead"><span class="tn" id="tn">第 1 步</span><button class="tskip" id="tskip">跳過導覽，直接看全部</button></div>
+<p class="tsay" id="tsay" aria-live="polite"></p>
+<div class="tbtn">
+<button class="nav ghost" id="prev">← 上一步</button>
+<button class="nav" id="next">下一步 →</button>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+"use strict";
+function $(i){return document.getElementById(i);}
+function fmt(n){return Math.round(n).toLocaleString('en-US');}
+var KEY='azhi-tour4-progress';
+
+/* ── 試算滑桿 ── */
+var TARGET=12000000, r=0.04/12, touched=false;
+function calc(){
+ var a=+$('age').value, n=(65-a)*12;
+ $('av').textContent=a;
+ if(n<=0){$('res').innerHTML='已屆 65 歲。';return;}
+ var pmt=TARGET*r/(Math.pow(1+r,n)-1);
+ var base=TARGET*r/(Math.pow(1+r,(65-36)*12)-1);
+ var ratio=pmt/base;
+ var w=Math.min(100, 18317/pmt*100);
+ $('res').innerHTML='距離 65 歲還有 <b>'+(65-a)+' 年</b>，每月要存 <b>'+fmt(pmt)+' 元</b>'+
+  '<div class="gauge" aria-hidden="true"><i style="width:'+w+'%"></i></div>'+
+  (a===36?'以 36 歲開始為基準。':'是 36 歲開始（18,317）的 <b>'+ratio.toFixed(1)+' 倍</b>，每月多 '+fmt(pmt-base)+' 元。');
+}
+$('age').addEventListener('input',function(){
+ calc();
+ if(!touched){
+  touched=true;
+  $('doit').className='doit ok';
+  $('doitck').textContent='✓';
+  $('doittx').innerHTML='有感覺了吧？<b>越晚開始，要自己出的錢越多。</b>多拉幾個年齡看看，再按下一步。';
+ }
+});
+calc();
+
+/* ── 導覽腳本 ── */
+var SAY=[
+ {id:'s1', t:'這一課只有一個重點：<b>重要的目標，要同時配置</b>。<span class="mini">先看框裡那句話——錢有限不是理由，正因為有限，順序才更重要。</span>'},
+ {id:'s2', t:'第一個觀念：<b>關注淨值</b>。<br>多數人是「收入 − 支出 ＝ 儲蓄」，剩多少存多少，結果常常沒剩。把順序倒過來：<b>收入 − 儲蓄 ＝ 支出</b>。'},
+ {id:'s3', t:'用水庫來看就很清楚：發薪日先把水引進水庫<b>蓄起來</b>，剩下的才放出去用。<span class="mini">先存再花，花的才瀟灑——因為你花的是「確定可以花」的錢。</span>'},
+ {id:'s4', t:'那要怎麼做到？<b>不靠意志力，靠設定。</b><br>發薪日當天自動轉帳撥走，看不到就不會花掉。這是整堂課最容易馬上做的一件事。'},
+ {id:'s5', t:'第二個觀念：<b>專款專用</b>。<br>這一段是整堂課最關鍵的地方——同樣一筆錢，兩種安排方式，結果差很多。'},
+ {id:'s6', t:'看這張圖，分上下兩條：<br>上面灰色那條是<b>一般人</b>：結婚 → 買車 → 買房，一個一個來，輪到退休金已經五十幾歲。<br>下面三條是<b>同時配置</b>：每個目標都先開始，退休金拿到<b>最長的那一條</b>。'},
+ {id:'s7', t:'左右對照一次。<br>「一次一個」看起來很專注，問題是——<b>最需要時間的那一項，永遠排在最後面</b>。<span class="mini">差別不在存多少，在退休金什麼時候開始存。</span>'},
+ {id:'s8', t:'來看數字，這樣最有感。<br>同樣每月 15,000、同樣 4%，只是<b>晚 27 個月</b>開始：65 歲少了約 123 萬，退休後每個月少 <b>5,130 元</b>——而且是少一輩子。<span class="mini">不是存得比較少，是少了兩年的時間。</span>'},
+ {id:'s9', t:'第三個觀念：<b>最重要的是時間，不是時機</b>。<br>很多人在等「市場好一點再進場」，但對退休準備來說，「什麼時候開始」影響大得多。'},
+ {id:'s10',t:'這一段<b>換你動手</b>：把試算的那條線往右拉，看「每月要存」怎麼跳。<span class="mini">拉過之後下面的勾勾會打起來，再按下一步。</span>'},
+ {id:'s11',t:'把剛剛拉到的感覺變成一句話：<br>同樣存到 1,200 萬，36 歲每月 18,317，46 歲要 35,224。<b>晚十年，每月幾乎翻倍。</b><span class="mini">時間會幫你出錢；越晚開始，要自己出的越多。</span>'},
+ {id:'s12',t:'第四個觀念：<b>資產配置</b>。<br>把支出分成三層——核心（不能斷的）、娛樂、目標。每一層用什麼工具對應，決定整個配置穩不穩。'},
+ {id:'s13',t:'兩個三角形對照：<br>左邊<b>頭重腳輕</b>，市場一震地基就晃。<br>右邊<b>地基紮實</b>：核心支出先被蓋住，上面才敢放積極的部位。<span class="mini">不是不能積極，是要先把地基鋪好。</span>'},
+ {id:'s14',t:'為什麼底層一定要有「固定可靠」的錢？三個理由：<b>不能斷</b>、<b>有底氣</b>、<b>部分年金化</b>。<span class="mini">重點不是誰報酬高，是它們負責的工作不一樣。</span>'},
+ {id:'s15',t:'四個觀念，這樣就串起來了。<br>最後留一句話給你：<b>不是等有錢了才開始配置，是因為配置了，才會有錢。</b>'}
+];
+var TOTAL=SAY.length;
+var i=-1, freeMode=false;
+
+function jump(el){
+ var y=el.getBoundingClientRect().top+window.pageYOffset-84;
+ window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+}
+function render(){
+ var s=SAY[i], el=$(s.id);
+ for(var k=0;k<TOTAL;k++){
+  var e=$(SAY[k].id);
+  if(k<=i) e.classList.add('on');
+  e.classList.toggle('cur', k===i);
+ }
+ $('tn').textContent='第 '+(i+1)+' 步／共 '+TOTAL+' 步';
+ $('tsay').innerHTML=s.t;
+ $('tpi').style.width=((i+1)/TOTAL*100)+'%';
+ $('prev').disabled=(i===0);
+ $('next').textContent=(i===TOTAL-1)?'進入檢核 ✍️':'下一步 →';
+ try{localStorage.setItem(KEY,String(i));}catch(e){}
+ jump(el);
+}
+function startTour(from){
+ $('start').style.display='none';
+ document.body.classList.add('guiding');
+ $('tour').classList.add('on');
+ i=(typeof from==='number'&&from>=0&&from<TOTAL)?from:0;
+ render();
+}
+function openQuiz(){
+ document.body.classList.remove('guiding');
+ document.body.classList.remove('pre');
+ $('tour').classList.remove('on');
+ for(var k=0;k<TOTAL;k++){$(SAY[k].id).classList.add('on');$(SAY[k].id).classList.remove('cur');}
+ $('quiz').classList.add('on');
+ try{localStorage.setItem(KEY,'done');}catch(e){}
+ jump($('quiz'));
+}
+function goFree(){
+ freeMode=true;
+ document.body.classList.remove('pre');
+ $('start').style.display='none';
+ document.body.classList.remove('guiding');
+ $('tour').classList.remove('on');
+ for(var k=0;k<TOTAL;k++){$(SAY[k].id).classList.add('on');$(SAY[k].id).classList.remove('cur');}
+ $('quiz').classList.add('on');
+ jump($('s1'));
+}
+$('go').addEventListener('click',function(){startTour(0);});
+$('freego').addEventListener('click',goFree);
+$('tskip').addEventListener('click',goFree);
+$('prev').addEventListener('click',function(){if(i>0){i--;render();}});
+$('next').addEventListener('click',function(){if(i<TOTAL-1){i++;render();}else{openQuiz();}});
+document.addEventListener('keydown',function(e){
+ if(!$('tour').classList.contains('on'))return;
+ var tg=e.target.tagName;
+ if(tg==='TEXTAREA'||tg==='INPUT')return;
+ if(e.key==='ArrowRight'){e.preventDefault();$('next').click();}
+ if(e.key==='ArrowLeft'){e.preventDefault();if(!$('prev').disabled)$('prev').click();}
+});
+
+/* 續看 */
+(function(){
+ var v=null; try{v=localStorage.getItem(KEY);}catch(e){}
+ if(v===null)return;
+ if(v==='done'){
+  var b=document.createElement('p');
+  b.className='small';b.style.marginTop='10px';
+  b.textContent='（你上次已經看完這堂課了，可以直接重看，或往下看檢核題。）';
+  $('start').appendChild(b);
+  return;
+ }
+ var n=parseInt(v,10);
+ if(isNaN(n)||n<=0||n>=TOTAL)return;
+ var btn=document.createElement('button');
+ btn.className='big alt';btn.style.marginTop='8px';
+ btn.textContent='接著上次看：從第 '+(n+1)+' 步繼續 →';
+ btn.addEventListener('click',function(){startTour(n);});
+ $('start').insertBefore(btn,$('freego'));
+})();
+
+/* ── 檢核題庫 ── */
+var QZ=[
+ {q:'有錢人存錢的順序，是哪一個？',
+  o:['收入 − 支出 ＝ 儲蓄（剩多少存多少）','收入 − 儲蓄 ＝ 支出（先撥走，剩下的才花）','先把錢投資出去，生活費再想辦法'],
+  a:1, y:'對。<b>先存再花，花的才瀟灑</b>，因為你花的是「確定可以花」的錢。',
+  n:'順序要倒過來：<b>收入 − 儲蓄 ＝ 支出</b>。先把要存的撥走，剩下的才是能花的；剩多少存多少，通常就是沒剩。'},
+ {q:'「同時配置」的意思，最接近哪一句？',
+  o:['每個目標都要一次做到滿','每個重要目標都先開始，各分到一點','把所有錢都先丟進退休金'],
+  a:1, y:'對。<b>同時配置不是每樣都做滿，是每樣都先開始。</b>',
+  n:'不是做滿，也不是只做一樣。重點是<b>每個重要目標都先開始</b>，讓長期的那一項也拿到時間。'},
+ {q:'「一次一個」最大的問題出在哪裡？',
+  o:['每個目標存的錢太少','太專注，容易半途而廢','最需要時間的退休金永遠排最後，時間被吃掉'],
+  a:2, y:'對。<b>差別不在存多少，在退休金什麼時候開始存。</b>',
+  n:'問題不在金額，在順序：結婚、買車、買房一個一個來，<b>輪到退休金已經五十幾歲</b>，最需要時間的那一項失去了時間。'},
+ {q:'課程裡的例子：只晚 27 個月開始，退休後每個月差多少？',
+  o:['約少 500 元','約少 5,130 元，而且是少一輩子','幾乎沒有差別'],
+  a:1, y:'對。65 歲累積少約 123 萬，換成月退是<b>每月少 5,130，且少一輩子</b>。',
+  n:'是<b>每月少約 5,130 元</b>（65 歲累積少約 123 萬）。這不是存得少，是少了兩年多的時間。'},
+ {q:'同樣要存到 1,200 萬，46 歲開始比 36 歲開始，每月要存的錢會怎樣？',
+  o:['差不多，多一點點','多大約三成','幾乎翻倍（18,317 → 35,224）'],
+  a:2, y:'對。<b>晚十年，每月幾乎翻倍。</b>時間會幫你出錢，越晚開始要自己出的越多。',
+  n:'<b>幾乎翻倍</b>：36 歲每月 18,317，46 歲要 35,224。時間少了，就得用自己的錢去補。'},
+ {q:'「最重要的是時間，不是時機」在講什麼？',
+  o:['「什麼時候開始」比「買在什麼點位」影響更大','要等市場低點再一次投入','只要選對商品，什麼時候開始都一樣'],
+  a:0, y:'對。等一個好時機的同時，時間正在流掉，而<b>時間是最難補回來的</b>。',
+  n:'指的是<b>「什麼時候開始」比「買在什麼點位」影響大得多</b>。等時機的那幾年，時間已經流掉了。'},
+ {q:'配置的三角形，為什麼底層要放「固定可靠」的錢？',
+  o:['因為儲蓄和年金的報酬比較高','因為核心支出不能斷，有底氣上面才敢承擔風險','因為不想投資的人才需要底層'],
+  a:1, y:'對。<b>它們負責的工作不一樣</b>：積極投資讓資產長大，固定可靠的部分讓生活不斷炊。',
+  n:'不是因為報酬高。是<b>核心支出（吃住、房貸、保費）不能斷</b>；地基被蓋住了，上面的積極投資短期下跌也不必被迫低點賣出。'},
+ {q:'「把部分資產年金化」的用途是什麼？',
+  o:['追求更高的投資報酬','讓退休後有固定進來的現金流，對應每月的核心支出','把所有資產鎖住不能動用'],
+  a:1, y:'對。有了固定進來的那一段，<b>退休後就不用每個月看市場臉色決定能花多少</b>。',
+  n:'目的是<b>製造每月固定進來的現金流</b>，去對應退休後不能斷的核心支出，不是為了追高報酬。'}
+];
+var ans=new Array(QZ.length).fill(null);
+
+(function build(){
+ var h='';
+ QZ.forEach(function(it,n){
+  h+='<div class="qq" data-q="'+n+'"><div class="qn">第 '+(n+1)+' 題・單選</div><p class="qt">'+it.q+'</p>';
+  it.o.forEach(function(o,m){
+   h+='<button class="opt" data-q="'+n+'" data-o="'+m+'">'+o+'</button>';
+  });
+  h+='<div class="fb" id="fb'+n+'"></div></div>';
+ });
+ $('qlist').innerHTML=h;
+})();
+
+$('qlist').addEventListener('click',function(ev){
+ var b=ev.target.closest('.opt'); if(!b)return;
+ var n=+b.dataset.q, m=+b.dataset.o;
+ if(ans[n]!==null)return;
+ ans[n]=m;
+ var it=QZ[n], box=$('fb'+n), ok=(m===it.a);
+ var opts=$('qlist').querySelectorAll('.opt[data-q="'+n+'"]');
+ opts.forEach(function(o){
+  o.disabled=true;
+  var mm=+o.dataset.o;
+  if(mm===it.a)o.classList.add('right');
+  else if(mm===m)o.classList.add('wrong');
+ });
+ box.className='fb on '+(ok?'y':'n');
+ box.innerHTML='<b>'+(ok?'✓ 答對了':'✗ 再看一下這裡')+'</b>'+(ok?it.y:it.n);
+ var done=ans.filter(function(x){return x!==null;}).length;
+ $('qdone').textContent=done;
+ $('qgi').style.width=(done/QZ.length*100)+'%';
+});
+
+function grade(){
+ var sc=0, miss=[];
+ QZ.forEach(function(it,n){ if(ans[n]===it.a)sc++; else miss.push(n+1); });
+ $('sc').textContent=sc;
+ var cm;
+ if(sc===QZ.length) cm='全對 🎉 四個觀念你都抓到了。<b>接下來就是把它變成設定</b>——挑一個目標，這個月就開始。';
+ else if(sc>=6) cm='很不錯，主要觀念都懂了。把答錯那幾題的解析再看一次就補起來了。';
+ else if(sc>=4) cm='一半以上有了。建議把導覽<b>再走一次</b>，特別是「同時配置」那一段。';
+ else cm='沒關係，這堂課本來就要看兩次。<b>按下面「重看一次導覽」</b>，這次特別注意數字那兩頁。';
+ $('scm').innerHTML=cm;
+ var un=ans.filter(function(x){return x===null;}).length;
+ var rv='';
+ if(un>0) rv+='<b>還有 '+un+' 題沒作答。</b><br>';
+ rv+= miss.length? '<b>要再看一次的題目：</b>第 '+miss.join('、')+' 題（往上捲，那幾題下面的解析就是重點）。'
+                 : '<b>四句話帶走：</b>先存再花・重要的目標一起來・時間比時機重要・地基要穩。';
+ $('srv').innerHTML=rv;
+ $('score').classList.add('on');
+ jump($('score'));
+}
+$('seescore').addEventListener('click',grade);
+
+$('copy').addEventListener('click',function(){
+ var sc=0, L=[];
+ QZ.forEach(function(it,n){ if(ans[n]===it.a)sc++; });
+ L.push('芸姐，我看完「重要的目標，一起來」這一課了 🌿');
+ L.push('');
+ L.push('檢核結果：答對 '+sc+' / '+QZ.length+' 題');
+ var miss=[];
+ QZ.forEach(function(it,n){ if(ans[n]!==it.a)miss.push(n+1); });
+ if(miss.length)L.push('答錯或未答：第 '+miss.join('、')+' 題');
+ var ft=$('freetx').value.trim();
+ if(ft){L.push('');L.push('我最想先開始的一個目標：');L.push('　'+ft);}
+ L.push('');
+ var d=new Date();
+ L.push('（'+d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate()+' '+
+   String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' 完成）');
+ var tx=L.join('\n');
+ function done(){ $('copy').textContent='✓ 已複製，貼給財顧芸就好'; setTimeout(function(){$('copy').textContent='📋 複製我的結果，傳給財顧芸';},2600); }
+ if(navigator.clipboard&&navigator.clipboard.writeText){
+  navigator.clipboard.writeText(tx).then(done,function(){fallback(tx,done);});
+ }else fallback(tx,done);
+});
+function fallback(tx,cb){
+ var t=document.createElement('textarea');
+ t.value=tx;t.style.position='fixed';t.style.top='-9999px';
+ document.body.appendChild(t);t.select();
+ try{document.execCommand('copy');cb();}catch(e){alert('請手動複製：\n\n'+tx);}
+ document.body.removeChild(t);
+}
+$('again').addEventListener('click',function(){
+ $('quiz').classList.remove('on');
+ for(var k=0;k<TOTAL;k++){$(SAY[k].id).classList.remove('on');}
+ $('score').classList.remove('on');
+ startTour(0);
+});
+})();
+</script>
+</body>
+</html>
