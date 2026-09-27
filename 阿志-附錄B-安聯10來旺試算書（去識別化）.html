@@ -130,7 +130,7 @@ td.n{font-variant-numeric:tabular-nums}
 <script>
 (function(){
 function $(i){return document.getElementById(i);}
-var PASS='0421',KEY='azhi-apxb-unlock',DAYS=30;
+var PASS='0421',KEY='azhi-unlock',DAYS=30;
 function PWN(v){return String(v||'').replace(/[\uFF01-\uFF5E]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[\s\u3000]/g,'');}
 function show(){$('gate').style.display='none';$('doc').style.display='block';init();}
 function ok(){try{var t=+localStorage.getItem(KEY);return t&&Date.now()<t;}catch(e){return false;}}
