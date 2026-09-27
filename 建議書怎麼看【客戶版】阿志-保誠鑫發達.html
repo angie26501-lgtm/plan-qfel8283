@@ -66,9 +66,18 @@ p.sub{color:var(--sub);font-size:14.5px;margin:4px 0 0}
  font-weight:700;padding:2px 10px;border-radius:0 0 0 9px;letter-spacing:.06em}
 .ftip{position:absolute;left:10px;right:16px;bottom:10px;z-index:6;background:rgba(255,255,255,.975);
  border:1px solid #cfe3e9;border-left:6px solid var(--deep);border-radius:0 12px 12px 0;
- padding:10px 13px 11px;box-shadow:0 12px 30px rgba(20,45,55,.22);max-height:48%;overflow:auto;
+ padding:10px 13px 11px;box-shadow:0 12px 30px rgba(20,45,55,.22);max-height:58%;overflow:auto;
  font-size:14.5px;line-height:1.72}
 .ftip.top{top:var(--ht,10px);bottom:auto}
+.zwrap{position:relative;display:none;margin:0 0 9px}
+.zwrap.on{display:block}
+.zoom{overflow:auto;-webkit-overflow-scrolling:touch;border:2px solid var(--red);border-radius:8px;background:#fff}
+.zpad{position:relative}
+.zin{position:absolute;top:0;left:0;transform-origin:0 0}
+.zin img{display:block;max-width:none}
+.zlab{position:absolute;right:-1px;top:-1px;background:var(--red);color:#fff;font-size:11px;font-weight:700;
+ padding:1px 8px;border-radius:0 6px 0 7px;letter-spacing:.05em;pointer-events:none}
+.ftip.fold-on .zwrap{display:none}
 .ftip .fh{display:flex;align-items:center;gap:8px;margin:0 0 3px}
 .ftip .n{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;flex:0 0 23px;
  border-radius:50%;background:var(--red);color:#fff;font-size:13px;font-weight:700}
@@ -110,7 +119,7 @@ details.full>summary span{font-weight:400;font-size:13.5px;color:var(--sub)}
  .tip p{font-size:15px}
  .nav button{flex:1 1 100%}
  #scroller{height:clamp(320px,58vh,520px)}
- .ftip{font-size:14px;left:8px;right:12px;bottom:8px;max-height:54%;padding:9px 11px 10px}
+ .ftip{font-size:14px;left:8px;right:12px;bottom:8px;max-height:62%;padding:9px 11px 10px}
  .ftip .fh b{font-size:15.5px}
 }
 </style>
@@ -125,7 +134,7 @@ details.full>summary span{font-weight:400;font-size:13.5px;color:var(--sub)}
 <button type="button" id="go" style="width:100%">進入</button></div></div>
 
 <div id="app">
-<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜建議書怎麼看（保誠鑫發達）</span><span class="vv">v1.1 ・ 2026/09/27（台灣時間）</span></div>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜建議書怎麼看（保誠鑫發達）</span><span class="vv">v1.2 ・ 2026/09/27（台灣時間）</span></div>
 <div class="wrap">
 <h1>建議書怎麼看</h1>
 <p class="sub">保險公司的表格欄位很多，一開始都會看不懂。這一頁<b>一次只圈一個地方</b>，八步走完，你就知道這張保單在做什麼。</p>
@@ -138,9 +147,10 @@ details.full>summary span{font-weight:400;font-size:13.5px;color:var(--sub)}
 <div class="scroller" id="scroller"><div class="canvas" id="canvas">
 <img id="pageimg" alt="保誠鑫發達 減少保險金額影響表">
 <i class="bx" id="box" data-n="1"></i>
-</div></div>
+</div><div id="spacer" aria-hidden="true"></div></div>
 <div class="hdr" id="hdr"><div class="hdrin" id="hdrin"><img id="hdrimg" alt="表格欄位標題"></div><span class="hdrtag">表頭對照</span></div>
 <div class="ftip" id="ftip">
+<div class="zwrap" id="zwrap"><div class="zoom" id="zoom"><div class="zpad" id="zpad"><div class="zin" id="zin"><img id="zimg" alt="紅框重點放大"></div></div></div><span class="zlab">紅框放大</span></div>
 <div class="fh"><span class="n" id="tn">1</span><b id="tt"></b><button type="button" class="fold" id="fold">收合</button></div>
 <div class="fb" id="tb"></div>
 </div>
@@ -233,33 +243,64 @@ function render(i){
  setTimeout(function(){place(true);},50);
 }
 // ---- 表頭對照 + 浮動說明 ----
-var IMGR=910/1287,HT=214/910,HH=155/910,hdrSet=false,pageOK=false;
+var IMGR=910/1287,HT=214/910,HH=155/910,hdrSet=false,pageOK=false,curHH=0;
 function needHdr(st){return st.pg===1||st.box[1]>24;}
 function syncHdr(){
  var hdr=$('hdr');if(!hdr.classList.contains('on'))return;
  var sc=$('scroller'),cv=$('canvas');
- var dh=cv.offsetHeight>50?cv.offsetHeight:cv.offsetWidth*IMGR;
+ var ih=$('pageimg').offsetHeight,dh=ih>50?ih:cv.offsetWidth*IMGR;
  $('hdrin').style.transform='translate('+(-sc.scrollLeft)+'px,'+(-dh*HT)+'px)';
 }
 function flipTip(){
- var sc=$('scroller'),br=$('box').getBoundingClientRect(),vr=sc.getBoundingClientRect();
- var c=(br.top+br.bottom)/2-vr.top;
- if(c>sc.clientHeight*0.52)$('ftip').classList.add('top');else $('ftip').classList.remove('top');
+ var sc=$('scroller'),ft=$('ftip');
+ var br=$('box').getBoundingClientRect(),vr=sc.getBoundingClientRect();
+ var bT=br.top-vr.top,bB=br.bottom-vr.top,H=sc.clientHeight,fh=ft.offsetHeight;
+ var ovB=Math.max(0,bB-(H-fh-10));          // 說明放下面時，紅框被蓋到多少
+ var ovT=Math.max(0,(curHH+8+fh)-bT);       // 說明放上面時，紅框被蓋到多少
+ if(ovB>ovT)ft.classList.add('top');else ft.classList.remove('top');
+}
+function zoomTo(st,W,dh){
+ var zw=$('zwrap'),zo=$('zoom'),zp=$('zpad'),zi=$('zin'),zm=$('zimg'),ft=$('ftip');
+ var avail=ft.clientWidth-26;
+ if(avail<120||W<10){zw.classList.remove('on');return;}
+ if(zm.getAttribute('data-p')!==String(st.pg)){zm.src=IMGS[st.pg];zm.setAttribute('data-p',String(st.pg));}
+ zm.style.width=W+'px';
+ var px=10,py=4;
+ var bx=W*st.box[0]/100,by=dh*st.box[1]/100,bw=W*st.box[2]/100,bh=dh*st.box[3]/100;
+ // 放大倍率：紅框愈小放愈大，最多 2.8 倍
+ var Z=avail/(bw+px*2); if(Z>2.8)Z=2.8; if(Z<1.4)Z=1.4;
+ // 裁切範圍：以紅框為中心往左右補足整條寬度，讓客戶看得到前後欄位
+ var cw=avail/Z; if(cw>W)cw=W;
+ var cl=bx+bw/2-cw/2;
+ if(cl<0)cl=0; if(cl+cw>W)cl=W-cw;
+ if(bx-px<cl)cl=Math.max(0,bx-px);
+ if(bx+bw+px>cl+cw)cl=Math.min(W-cw,bx+bw+px-cw);
+ var ct=by-py,ch=bh+py*2;
+ if(ct<0){ch+=ct;ct=0;}
+ zp.style.width=(cw*Z)+'px'; zp.style.height=(ch*Z)+'px';
+ zo.style.width=Math.min(cw*Z,avail)+'px';
+ zo.style.height=(ch*Z)+'px';
+ zi.style.transform='scale('+Z+') translate('+(-cl)+'px,'+(-ct)+'px)';
+ zw.classList.add('on');
+ zo.scrollLeft=0;
 }
 function place(scroll){
  var sc=$('scroller'),cv=$('canvas'),hdr=$('hdr'),him=$('hdrimg'),ft=$('ftip'),st=STEPS[cur];
- var W=cv.offsetWidth,dh=cv.offsetHeight>50?cv.offsetHeight:W*IMGR,hH=0;
+ var W=cv.offsetWidth,ih=$('pageimg').offsetHeight,dh=ih>50?ih:W*IMGR,hH=0;
+ $('spacer').style.height=(ft.offsetHeight+24)+'px';
  if(needHdr(st)){
   if(!hdrSet){him.src=IMGS[0];hdrSet=true;}
   him.style.width=W+'px';
   hH=dh*HH;hdr.style.height=hH+'px';hdr.classList.add('on');
  }else{hdr.classList.remove('on');}
+ curHH=hH;
  ft.style.setProperty('--ht',(hH+8)+'px');
+ zoomTo(st,W,dh);
  if(scroll){
   var cx=W*(st.box[0]+st.box[2]/2)/100,left=cx-sc.clientWidth/2;if(left<0)left=0;
   var bt=dh*st.box[1]/100,bh=dh*st.box[3]/100;
   var band=((hH)+(sc.clientHeight-ft.offsetHeight-14))/2;
-  var top=bt+bh/2-band,maxT=cv.offsetHeight-sc.clientHeight;
+  var top=bt+bh/2-band,maxT=sc.scrollHeight-sc.clientHeight;
   if(maxT<0)maxT=0;if(top<0)top=0;if(top>maxT)top=maxT;
   try{sc.scrollTo({left:left,top:top,behavior:'smooth'});}catch(e){sc.scrollLeft=left;sc.scrollTop=top;}
   if(pageOK){var vr=$('viewer').getBoundingClientRect(),need=vr.bottom-(window.innerHeight-8);
