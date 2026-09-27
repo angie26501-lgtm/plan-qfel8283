@@ -53,6 +53,35 @@ p.sub{color:var(--sub);font-size:14.5px;margin:4px 0 0}
 .tip b{color:var(--deep)}
 .tip .w{color:#8a5a12;background:var(--amberbg);border-radius:6px;padding:1px 6px}
 .tip .s{display:block;font-size:13px;color:var(--sub);margin-top:8px}
+
+/* 固定高度檢視窗 + 表頭對照 + 浮動說明 */
+#viewer{position:relative}
+#scroller{overflow:auto;height:clamp(340px,64vh,600px)}
+.hdr{position:absolute;top:0;left:0;right:0;z-index:4;overflow:hidden;background:#fff;display:none;
+ pointer-events:none;border-bottom:2px solid var(--deep);box-shadow:0 6px 14px rgba(20,45,55,.14)}
+.hdr.on{display:block}
+.hdrin{position:absolute;top:0;left:0}
+.hdrin img{display:block;height:auto;max-width:none}
+.hdrtag{position:absolute;right:0;top:0;z-index:5;background:var(--deep);color:#fff;font-size:11.5px;
+ font-weight:700;padding:2px 10px;border-radius:0 0 0 9px;letter-spacing:.06em}
+.ftip{position:absolute;left:10px;right:16px;bottom:10px;z-index:6;background:rgba(255,255,255,.975);
+ border:1px solid #cfe3e9;border-left:6px solid var(--deep);border-radius:0 12px 12px 0;
+ padding:10px 13px 11px;box-shadow:0 12px 30px rgba(20,45,55,.22);max-height:48%;overflow:auto;
+ font-size:14.5px;line-height:1.72}
+.ftip.top{top:var(--ht,10px);bottom:auto}
+.ftip .fh{display:flex;align-items:center;gap:8px;margin:0 0 3px}
+.ftip .n{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;flex:0 0 23px;
+ border-radius:50%;background:var(--red);color:#fff;font-size:13px;font-weight:700}
+.ftip .fh b{font-size:16.5px;color:var(--deep);flex:1;min-width:0}
+.ftip .fold{font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--sub);
+ background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 11px;flex:0 0 auto}
+.ftip .fb b{color:var(--deep)}
+.ftip .fb .w{color:#8a5a12;background:var(--amberbg);border-radius:6px;padding:1px 6px}
+.ftip .fb .s{display:block;font-size:12.5px;color:var(--sub);margin-top:6px}
+.ftip.fold-on{max-height:none}
+.ftip.fold-on .fb{display:none}
+.vhint{font-size:12.5px;color:var(--sub);margin:8px 0 0}
+.vhint b{color:var(--deep)}
 .nav{display:flex;gap:10px;margin:14px 0 0;flex-wrap:wrap}
 .nav button{font:inherit;font-size:15px;font-weight:700;cursor:pointer;border-radius:10px;padding:11px 20px;
  border:1px solid var(--deep);background:var(--deep);color:#fff;flex:1;min-width:120px}
@@ -80,6 +109,9 @@ details.full>summary span{font-weight:400;font-size:13.5px;color:var(--sub)}
  h1{font-size:23px}
  .tip p{font-size:15px}
  .nav button{flex:1 1 100%}
+ #scroller{height:clamp(320px,58vh,520px)}
+ .ftip{font-size:14px;left:8px;right:12px;bottom:8px;max-height:54%;padding:9px 11px 10px}
+ .ftip .fh b{font-size:15.5px}
 }
 </style>
 </head>
@@ -93,7 +125,7 @@ details.full>summary span{font-weight:400;font-size:13.5px;color:var(--sub)}
 <button type="button" id="go" style="width:100%">進入</button></div></div>
 
 <div id="app">
-<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜建議書怎麼看（保誠鑫發達）</span><span class="vv">v1.0 ・ 2026/09/26（台灣時間）</span></div>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜建議書怎麼看（保誠鑫發達）</span><span class="vv">v1.1 ・ 2026/09/27（台灣時間）</span></div>
 <div class="wrap">
 <h1>建議書怎麼看</h1>
 <p class="sub">保險公司的表格欄位很多，一開始都會看不懂。這一頁<b>一次只圈一個地方</b>，八步走完，你就知道這張保單在做什麼。</p>
@@ -102,15 +134,18 @@ details.full>summary span{font-weight:400;font-size:13.5px;color:var(--sub)}
 
 <div class="stage">
 <p class="pgcap" id="pgcap"></p>
+<div id="viewer">
 <div class="scroller" id="scroller"><div class="canvas" id="canvas">
 <img id="pageimg" alt="保誠鑫發達 減少保險金額影響表">
 <i class="bx" id="box" data-n="1"></i>
 </div></div>
+<div class="hdr" id="hdr"><div class="hdrin" id="hdrin"><img id="hdrimg" alt="表格欄位標題"></div><span class="hdrtag">表頭對照</span></div>
+<div class="ftip" id="ftip">
+<div class="fh"><span class="n" id="tn">1</span><b id="tt"></b><button type="button" class="fold" id="fold">收合</button></div>
+<div class="fb" id="tb"></div>
 </div>
-
-<div class="tip">
-<span class="n" id="tn">1</span><h3 id="tt"></h3>
-<p id="tb"></p>
+</div>
+<p class="vhint">圖片可左右、上下拖曳。看到表格中段時，上方會自動留住一條<b>表頭對照</b>，隨時看得出紅框圈的是哪一欄。</p>
 </div>
 
 <div class="nav">
@@ -164,6 +199,10 @@ function init(){
  });
  $('prev').onclick=function(){if(cur>0)render(cur-1);};
  $('next').onclick=function(){if(cur<STEPS.length-1)render(cur+1);};
+ $('fold').onclick=function(){var f=$('ftip'),on=f.classList.toggle('fold-on');this.textContent=on?'說明':'收合';};
+ $('scroller').addEventListener('scroll',function(){syncHdr();flipTip();},{passive:true});
+ window.addEventListener('resize',function(){place(false);});
+ $('pageimg').addEventListener('load',function(){place(true);});
  // 完整建議書分頁
  var tabs=$('tabs');
  IMGS.forEach(function(src,i){
@@ -191,14 +230,45 @@ function render(i){
  $('prev').disabled=(i===0);
  $('next').disabled=(i===STEPS.length-1);
  $('next').textContent=(i===STEPS.length-1)?'看完了 ✓':'下一步 →';
- // 自動捲到紅框
- setTimeout(function(){
-  var sc=$('scroller'),cv=$('canvas');
-  var cx=cv.offsetWidth*(st.box[0]+st.box[2]/2)/100;
-  var target=cx-sc.clientWidth/2;
-  if(target<0)target=0;
-  try{sc.scrollTo({left:target,behavior:'smooth'});}catch(e){sc.scrollLeft=target;}
- },60);
+ setTimeout(function(){place(true);},50);
+}
+// ---- 表頭對照 + 浮動說明 ----
+var IMGR=910/1287,HT=214/910,HH=155/910,hdrSet=false,pageOK=false;
+function needHdr(st){return st.pg===1||st.box[1]>24;}
+function syncHdr(){
+ var hdr=$('hdr');if(!hdr.classList.contains('on'))return;
+ var sc=$('scroller'),cv=$('canvas');
+ var dh=cv.offsetHeight>50?cv.offsetHeight:cv.offsetWidth*IMGR;
+ $('hdrin').style.transform='translate('+(-sc.scrollLeft)+'px,'+(-dh*HT)+'px)';
+}
+function flipTip(){
+ var sc=$('scroller'),br=$('box').getBoundingClientRect(),vr=sc.getBoundingClientRect();
+ var c=(br.top+br.bottom)/2-vr.top;
+ if(c>sc.clientHeight*0.52)$('ftip').classList.add('top');else $('ftip').classList.remove('top');
+}
+function place(scroll){
+ var sc=$('scroller'),cv=$('canvas'),hdr=$('hdr'),him=$('hdrimg'),ft=$('ftip'),st=STEPS[cur];
+ var W=cv.offsetWidth,dh=cv.offsetHeight>50?cv.offsetHeight:W*IMGR,hH=0;
+ if(needHdr(st)){
+  if(!hdrSet){him.src=IMGS[0];hdrSet=true;}
+  him.style.width=W+'px';
+  hH=dh*HH;hdr.style.height=hH+'px';hdr.classList.add('on');
+ }else{hdr.classList.remove('on');}
+ ft.style.setProperty('--ht',(hH+8)+'px');
+ if(scroll){
+  var cx=W*(st.box[0]+st.box[2]/2)/100,left=cx-sc.clientWidth/2;if(left<0)left=0;
+  var bt=dh*st.box[1]/100,bh=dh*st.box[3]/100;
+  var band=((hH)+(sc.clientHeight-ft.offsetHeight-14))/2;
+  var top=bt+bh/2-band,maxT=cv.offsetHeight-sc.clientHeight;
+  if(maxT<0)maxT=0;if(top<0)top=0;if(top>maxT)top=maxT;
+  try{sc.scrollTo({left:left,top:top,behavior:'smooth'});}catch(e){sc.scrollLeft=left;sc.scrollTop=top;}
+  if(pageOK){var vr=$('viewer').getBoundingClientRect(),need=vr.bottom-(window.innerHeight-8);
+   if(need>0){var y=window.pageYOffset+Math.min(need,vr.top-8);
+    if(y>window.pageYOffset){try{window.scrollTo({top:y,behavior:'smooth'});}catch(e){window.scrollTo(0,y);}}}}
+  pageOK=true;
+  setTimeout(function(){syncHdr();flipTip();},420);
+ }
+ syncHdr();flipTip();
 }
 function fshow(i){
  $('fimg').src=IMGS[i];$('fcap').textContent=CAPS[i];
