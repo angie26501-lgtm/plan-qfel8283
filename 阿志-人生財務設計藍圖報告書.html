@@ -2,7 +2,6 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>【客戶版】財顧芸｜人生財務設計藍圖報告書｜阿志</title>
 <style>
@@ -150,6 +149,12 @@ ul.ask li{background:var(--card);margin:8px 0;padding:10px 14px;border-radius:8p
 .foldbar button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 h2.fh{cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none;scroll-margin-top:64px}
 h3.fh,[id^="d-res"]{scroll-margin-top:64px}
+#plan-timeline{scroll-margin-top:72px}
+.bplink{color:#8a5a12;font-weight:700;text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:1.5px;text-underline-offset:4px;cursor:pointer}
+.bplink:hover{background:#fbf3e4;border-radius:4px}
+.signlinks{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.signlinks a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:14px;color:#1d5a6e;background:#fff;border:1px solid #cfe3e9;border-radius:999px;padding:6px 13px}
+.signlinks a:hover{background:#dcebef}
 h2.fh:hover{color:#12343f}
 h2.fh:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
 h2.fh .car{flex:none;margin-left:auto;font-size:14px;font-weight:400;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:#fff;white-space:nowrap}
@@ -328,7 +333,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 </style>
 </head>
 <body>
-<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜人生財務設計藍圖報告書</span><span class="vv">v2.0 ・ 2026/09/27（台灣時間）</span></div>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜人生財務設計藍圖報告書</span><span class="vv">v2.8 ・ 2026/09/28（台灣時間）</span></div>
 
 <div id="gate"><div>
 <p style="margin:0;font-weight:600">阿志的財務規劃建議</p>
@@ -419,7 +424,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <div class="ph"><strong>65～88 歲｜幫自己加薪</strong>大水庫2 每年領約 USD 5,000（月約 12,500，中分紅），價值逐年下降。</div>
 </div>
 
-<div class="tl">
+<div class="tl" id="plan-timeline">
 <div class="tlbar"><span class="small" id="scrollHint">← 左右滑動，看完整時間軸 →</span><button type="button" id="zoomBtn" class="zoombtn" aria-pressed="false">放大檢視</button></div>
 <div class="tlscroll" id="tlscroll" tabindex="0" aria-label="時間軸，可左右捲動"><svg id="chart" viewBox="0 0 700 426" role="img" aria-label="小水庫與大水庫2 價值隨年齡變化"></svg></div>
 <div class="slider under"><label for="age" class="small">拖拉看年齡</label><input id="age" type="range" min="36" max="90" value="65"><span class="agebig" id="ageTxt">65 歲</span></div>
@@ -626,7 +631,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <p class="core">缺口不是一次補完的，是一年一年補起來的。</p>
 
 <h3 id="d-res1">大水庫1：法巴單筆 30 萬</h3>
-<p><b>100% 累積型</b>，不配息。收益直接留在帳戶裡繼續滾，本金越養越大。<br>原本曾考慮「月撥現 70%／累積 30%」，會每月配出約 1,750 元再投入。<b>9/20 討論後改為全部累積</b>——你目前沒有現金需求，累積型比較乾淨：收益直接複利，不會有「配息其實是從本金拿出來」的疑慮，也省掉每月配出再投回的來回。等哪天需要現金流，我們再調整。</p>
+<p><b>100% 累積型</b>，不配息。收益直接留在帳戶裡繼續滾，本金越養越大。<br>原本曾考慮「月撥現 70%／累積 30%」，將每月配息再投入。<b>9/20 討論後改為全部累積</b>——你目前沒有現金需求，累積型比較乾淨：收益直接複利，不會有「配息其實是從本金拿出來」的疑慮，也省掉每月配出再投回的來回。等哪天需要現金流，我們再調整。</p>
 
 <h3 id="d-res3">小水庫：安聯人壽 10來旺變額萬能壽險（甲型） <span class="tag">投資型・非保證</span></h3>
 <p>每月目標保費 3,000＋超額保費 2,000，一年 60,000，繳 20 年（36～55 歲），共 120 萬。基本保額 120 萬，本身也有身故保障。</p>
@@ -675,9 +680,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 ② <b>第 6～10 年公司會回補「加值給付金」</b>，合計 54,000（7,200×3＋10,800＋21,600）。<br>
 ③ <b>假設 6%，第 7 年（42 歲）回本</b>。所以這筆錢的定位是長期的小水庫，<b>前幾年不適合拿來當急用金</b>——急用要走預備金和 D 彈性結餘。</div>
 
-<div class="note" style="border-left-color:#a8423a"><b>要一起承擔的風險：</b>保險成本會隨年齡變貴，雖然不用另外繳，但會從帳戶價值裡扣得越來越多（假設 0% 時，75 歲一年約 21,811 元）。市場長期不好時，帳戶可能不夠扣而提早停效——假設 0% 在 87 歲、-6% 在 71 歲歸零。這也是為什麼壽險保障不能只靠它。</div>
-
-<div class="note" style="border-left-color:#0b7f9e"><b>但這個風險是可以管的：</b>規劃不是簽下去就放到底——<b>時間到了，你手上的資源也會不一樣。</b>役滿之後的退休俸、大A 那一桶、大B 繳完之後每月釋放出來的現金流，到時候都會是新的籌碼。<br>所以我們會<b>定期回頭一起檢視</b>：哪一桶多了、哪一層保障該補、要不要把資源重新挪一次。這就是<b>資產重分配</b>——整合當時手上的資源，做<b>滾動式的調整</b>，而不是等它出問題才處理。<br>真正要注意的不是「它會不會停效」，而是<b>有沒有人每年陪你看一眼</b>。這件事我會做。</div>
+<div class="note" style="border-left-color:#0b7f9e"><b>要一起承擔的風險：</b>透過保險規劃，相對會有保險成本，規劃不是簽下去就放到底——<b>時間到了，你手上的資源也會不一樣。</b>重點在於<b>有沒有達到我們要的結果</b>，不糾結在費用及成本，透過配置，之後每月釋放出來的現金流，到時候都會是<b>新的籌碼</b>。<br>所以我們會<b>定期回頭一起檢視</b>：哪一桶多了、哪一層保障該補、要不要把資源重新挪一次。這就是<b>資產重分配</b>——整合當時手上的資源，做<b>滾動式的調整</b>，而不是等它出問題才處理。<br>真正要注意的不是「它會不會停效」，而是<b>有沒有人每年陪你看一眼</b>。這件事我會做。</div>
 
 <div class="note">累積型不配息，所以不會有「配息來自本金」的問題；但<b>淨值一樣會波動</b>，帳戶價值可能上下起伏，這是投資的常態。真正要看的是<b>帳戶價值的長期走勢</b>，不是某一個月的數字。</div>
 
@@ -691,6 +694,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <tr class="total"><td>年繳（採用）</td><td>USD 4,040</td><td>USD 4,000</td><td><b>USD 4,000</b></td></tr>
 </table></div>
 <div class="note"><b>一年差 USD 224，繳 8 年就是 USD 1,792</b>（匯率 30 估算，約台幣 5.4 萬）。<br><b>同樣的保障、同樣的年期，只是繳別不同。</b>這就是當初我問你要不要改年繳的原因——這筆錢不用多做什麼，換個繳法就留下來了。<br><span class="small">代價是每年要一次拿出 12 萬，所以我們用緊急預備金先撥付首期，再由每月結餘慢慢補回。資料來源：保誠正式建議書（月繳版列印日期 115/09/26、年繳版 115/9/24）。</span></div>
+<p class="edu"><a href="https://www.allfreedom.info/insurance-payment-frequency-cost.html" target="_blank" rel="noopener">📘 延伸閱讀：只是把保費改成年繳，她 20 年省了一整年的保費 →</a></p>
 <p>目前我們的設計，是<b>從 65 歲起每年辦理「減少保險金額」領回解約金</b>，這裡先設定<b>每年領 USD 5,000</b>。<br>以 65 歲第一次提領為例：領走 5,000 之後，<b>帳戶剩下的解約金約 USD 77,540</b>。逐年的變化，請對照下表。</p>
 <div class="note" style="border-left-color:#0b7f9e"><b>這個設計是可以調整的</b><br>領取的<b>年齡</b>和<b>金額</b>現在都只是先設定，不是定死。等更接近退休、收入與生活型態比較明朗的時候，我們會依照當時的狀況<b>再彈性調整一次</b>——要早一點領、晚一點領，或是每年多領少領，到時候由你的實際需要決定。<br><span class="small">機制上要知道的一件事：這不是年金，<b>每領一次，保障與解約金會同步減少</b>，所以領多久、領多少，是一個要一起看著走的決定。</span></div>
 <div class="tbl"><table>
@@ -703,7 +707,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <tr class="total"><td>88</td><td>870</td><td>116,198</td><td>保障結束</td></tr>
 </table></div>
 <p class="small">單位：美元，假設中分紅，非保證。來源：保誠人壽減少保險金額影響表（列印日期 115/09/17），搭配正式建議書（列印日期 115/9/24，共 11 頁）核對。</p>
-<p class="edu"><a href="建議書怎麼看【客戶版】阿志-保誠鑫發達.html" target="_blank" rel="noopener">📄 建議書怎麼看：八步帶你看懂這張表（可展開完整建議書） →</a></p>
+<p class="edu"><a href="建議書怎麼看【客戶版】阿志-保誠鑫發達.html" target="_blank" rel="noopener">📄 打開導讀：建議書怎麼看 ①（保誠．減少保險金額影響表，可逐欄對照上表數字） →</a></p>
 <p class="small">假設低分紅：可領到 71 歲，72 歲領 1,749，累計 USD 36,781，之後保障結束。</p>
 <div class="note">蓄水期中途解約會虧：第 5 年已繳 20,000，解約金 9,290。低分紅要到 62 歲解約金才超過已繳保費。大水庫2 只放長期不用的錢，也需要核保。</div>
 <h3>繳費年期參考：8 年期 vs 15 年期</h3>
@@ -811,7 +815,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <li><b>快速撥款</b>：不用另外找銀行審核，通常很快就能拿到錢。</li>
 <li><b>持續參與投資</b>：保單不必解約，帳戶可以繼續留在市場裡。</li>
 </ul>
-<p>保單貸款要付利息，<b>目前約 4%～5%</b>（依各保險公司公告為準；法巴已確認為 4.46%）。借款真正的好處是<b>錢沒有離開帳戶</b>——保單不必解約，裡面的錢可以繼續留在市場裡。<br>舉例來說，若<b>假設</b>帳戶一年的報酬率是 6%，扣掉借款利息之後仍有差距；假設更高（例如 8%）時，差距會更明顯。<b>但報酬率不保證</b>，市場不好時，利息會吃掉帳戶價值——這一點要先想清楚，所以<span class="key">借款是第三順位，不是第一順位</span>。</p><p class="edu"><a href="財商小教室-保單貸款.html" target="_blank" rel="noopener">📘 延伸閱讀：財商小教室｜短期要用錢，為什麼可以考慮保單貸款？（小學公式圖解） →</a></p></div></div>
+<p>保單貸款要付利息，<b>利率與可借額度依各保險公司當時公告及保單條款為準</b>，要動用前我們會先一起確認。借款真正的好處是<b>錢沒有離開帳戶</b>——保單不必解約，裡面的錢可以繼續留在市場裡。<br>舉例來說，若<b>假設</b>帳戶一年的報酬率是 6%，扣掉借款利息之後仍有差距；假設更高（例如 8%）時，差距會更明顯。<b>但報酬率不保證</b>，市場不好時，利息會吃掉帳戶價值——這一點要先想清楚，所以<span class="key">借款是第三順位，不是第一順位</span>。</p><p class="edu"><a href="財商小教室-保單貸款.html" target="_blank" rel="noopener">📘 延伸閱讀：財商小教室｜短期要用錢，為什麼可以考慮保單貸款？（小學公式圖解） →</a></p></div></div>
 </div>
 <div class="note">保單貸款不是免費的錢，要記得三件事：<br>① 借款會計息，沒還的本息會從保單價值裡扣，影響保障和日後可領的金額。<br>② 投資型保單的帳戶價值會波動，如果帳戶價值不足以支付借款本息或保險成本，保單可能停效。<br>③ 每張保單能不能借、可借多少、利率多少，都依各商品條款與保險公司公告為準，借之前我會先幫你確認。</div>
 <p class="small">6%、8% 均為<b>假設</b>報酬率，僅用於說明，不代表過去績效或未來獲利，實際可能為負；保單貸款利率會隨保險公司公告調整。</p>
@@ -929,7 +933,7 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <tr><td>65</td><td>3,681,982</td><td>1,341,000</td><td>1,200,000</td></tr>
 <tr class="total"><td>保障結束</td><td>持續</td><td>87 歲停效</td><td>71 歲停效</td></tr>
 </table></div>
-<div class="note">定期壽險 200 萬＋既有終身壽險約 27.2 萬＋小水庫 120 萬，<b>合計約 347.2 萬</b>，46 歲前可以對應房貸 300 多萬；定期壽險到期後，還留有終身壽險約 27.2 萬加上小水庫，那時房貸餘額應該也降低了，到期前我們再一起檢視。軍保身故保額拿到明細後再加進來。10來旺的保險成本會隨年齡增加，雖然不用另外繳，但會從帳戶價值扣得越來越多（假設 0% 時，75 歲一年約 21,811 元）。市場不好時帳戶可能不夠扣而提早停效，所以不能只靠它。定期壽險到期前，也要記得回頭檢視。</div>
+<div class="note">定期壽險 200 萬＋既有終身壽險約 27.2 萬＋小水庫 120 萬，<b>合計約 347.2 萬</b>，46 歲前可以對應房貸 300 多萬；定期壽險到期後，還留有終身壽險約 27.2 萬加上小水庫，那時房貸餘額應該也降低了，到期前我們再一起檢視。軍保身故保額拿到明細後再加進來。10來旺是投資型，保險成本會隨年齡增加、從帳戶價值裡扣，這是這類保單的特性。<b>不用糾結在某一年的成本數字</b>——真正決定結果的，是<b>持續投入的紀律</b>，還有我們每年回頭看一眼、該調整就調整。所以壽險保障不會只放一個地方；定期壽險到期前，我們也會一起檢視。</div>
 
 <h2>十一、如果現在開始調整，未來有什麼不同？</h2>
 <div class="two">
@@ -1052,12 +1056,19 @@ table.yr td:nth-child(2){color:var(--deep);font-weight:600}
 <p style="margin:10px 0;color:#5a4012">一個沒有名字的數字，存不了幾個月就會鬆掉。但<b>有畫面的目標不一樣</b>——後年帶太太去日本、43 歲那年多出一個選擇、65 歲每個月自己幫自己加薪。<br>當你<b>看得見它</b>，每個月那 2 萬就不再是被扣掉的錢，而是<b>正在長大的東西</b>。</p>
 <p style="margin:14px 0 10px;font-size:17px;font-weight:700;color:#8a5a12">這就是我們在做的事：<b>築夢踏實。</b></p>
 <p style="margin:10px 0;color:#5a4012"><b>夢要敢做，但要有一條踏得到的路。</b>把目標寫下來、算清楚、排進時間裡，它就從「想想而已」變成「照著走就會到」。</p>
-<p style="margin:10px 0 0;color:#5a4012">這也是我最想留給你的價值——<b>不是幫你買了幾張保單，是讓你從今天起，知道自己正往哪裡走，而且走得到。</b></p>
+<p style="margin:10px 0 0;color:#5a4012">這也是我最想留給你的價值——<b>不是買了幾張保單，而是讓你從今天起，知道自己正往哪裡走，確保走得到，而我也一直會在。</b></p>
+<p style="margin:20px 0 6px;padding-top:16px;border-top:1px dashed #e0cda0;font-size:17px;font-weight:700;color:#8a5a12">人生的重要時刻，我都在。</p>
+<p style="margin:0 0 4px;color:#5a4012">我陪你看的，不是一張保單、一筆投資，而是<a href="#plan-timeline" id="bp-link" class="bplink">你整個人生的財務藍圖 ↑</a>。</p>
+<p class="small" style="margin:0 0 12px;color:#7a6540">點一下，回去看那張從 36 歲走到 90 歲的時間軸。</p>
+<p style="margin:0;color:#5a4012"><b>家裡的錢不是沒有安排，只是還沒放進同一張財務藍圖。</b></p>
+<div class="signlinks"><a href="https://www.allfreedom.info/about-angie.html" target="_blank" rel="noopener">👤 認識財顧芸 →</a><a href="https://www.allfreedom.info/fee-based-financial-advisor-value.html" target="_blank" rel="noopener">📘 收費財務顧問的價值｜有人陪您把家庭財務整理清楚 →</a></div>
 <p style="text-align:center;font-family:'Noto Serif TC',serif;font-size:18px;font-weight:700;color:#8a5a12;margin:20px 0 0;padding-top:16px;border-top:1px dashed #e0cda0">把人生的錢安排好，其他就是享受生活。</p></div>
 
 <h2>附錄：商品試算書</h2>
 <p>報告書裡大水庫2 與小水庫的每一個數字，都出自保險公司系統產出的原始試算書。附錄把那幾頁放上來，並附對照說明，你可以自己核對。</p>
-<p class="edu"><a href="建議書怎麼看【客戶版】阿志-保誠鑫發達.html" target="_blank" rel="noopener">📄 保誠鑫發達：建議書怎麼看（互動導讀＋完整建議書） →</a></p>
+<p class="edu"><a href="建議書怎麼看【客戶版】阿志-保誠鑫發達.html" target="_blank" rel="noopener">📄 建議書怎麼看 ①：保誠．減少保險金額影響表（65 歲起每年領回） →</a></p>
+<p class="edu"><a href="建議書怎麼看【客戶版】阿志-保誠鑫發達（正式建議書）.html" target="_blank" rel="noopener">📄 建議書怎麼看 ③：保誠．正式建議書（如果都不領，會長成什麼樣子） →</a></p>
+<p class="edu"><a href="建議書怎麼看【客戶版】阿志-安聯10來旺.html" target="_blank" rel="noopener">📄 建議書怎麼看 ②：安聯 10來旺（費用怎麼扣、第幾年回本、-6% 會怎樣） →</a></p>
 <p class="edu"><a href="阿志-附錄B-安聯10來旺試算書（去識別化）.html" target="_blank" rel="noopener">📄 打開附錄B：安聯 10來旺 試算書對照（已去識別化） →</a></p>
 <p class="small">法國巴黎人壽那份目前拿到的是內部試算檔，不能直接給你，我另外跟窗口要正式建議書，拿到再補上。</p>
 
@@ -1424,6 +1435,21 @@ refit();
  window.addEventListener('scroll',function(){if(raf)return;raf=requestAnimationFrame(function(){raf=null;tick();});},{passive:true});
  window.addEventListener('resize',tick);
  tick();
+})();
+</script>
+<script>
+(function(){
+ var a=document.getElementById('bp-link');if(!a)return;
+ a.addEventListener('click',function(e){
+  var t=document.getElementById('plan-timeline');if(!t)return;
+  e.preventDefault();
+  if(window.__revealFold)window.__revealFold(t);
+  setTimeout(function(){
+   t.scrollIntoView({behavior:'smooth',block:'start'});
+   t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+   setTimeout(function(){t.classList.remove('flash');},2400);
+  },30);
+ });
 })();
 </script>
 </body>
