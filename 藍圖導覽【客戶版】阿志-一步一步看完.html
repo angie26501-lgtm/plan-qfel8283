@@ -102,7 +102,7 @@ p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;c
 .disc p{margin:5px 0}
 @media print{.hud,.rail,.ctrl,.jump{display:none!important}}
 </style></head><body>
-<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜藍圖報告書・引導導覽</span><span class="vv">v1.3 ・ 2026/09/27（台灣時間）</span></div>
+<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜藍圖報告書・引導導覽</span><span class="vv">v1.4 ・ 2026/09/29（台灣時間）</span></div>
 <div id="gate">
 <p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
 <h2>藍圖導覽【客戶版】阿志</h2><p class="sub">請輸入密碼檢視。</p>
@@ -113,7 +113,7 @@ p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;c
 
 <div id="doc">
 <div class="hud"><span class="t" id="hudt">阿志｜藍圖導覽</span>
-<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<button type="button" id="out">登出</button></div>
 <div class="wrap">
 <h1>一步一步，把你的藍圖看完</h1>
 <p class="sub">更新於 2026/09/25（台灣時間）｜財顧芸整理</p>
@@ -171,7 +171,6 @@ if(ok())show();
 var inited=false;
 function init(){
  if(inited)return;inited=true;
- $('print').onclick=function(){window.print();};
  $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
  var N=S.length,cur=0;
 

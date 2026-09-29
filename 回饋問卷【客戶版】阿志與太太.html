@@ -76,7 +76,7 @@ p.sub{color:var(--sub);font-size:14px;margin:4px 0}
 #toast{display:none;position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:#12343f;color:#fff;padding:12px 22px;border-radius:999px;font-size:15px;z-index:60;max-width:90vw;text-align:center}
 @media print{.hud,.report,#toast,.vband{display:none!important}body{background:#fff}.q{break-inside:avoid}}
 </style></head><body>
-<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜規劃後回饋問卷</span><span class="vv">v1.2 ・ 2026/09/26（台灣時間）</span></div>
+<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜規劃後回饋問卷</span><span class="vv">v1.3 ・ 2026/09/29（台灣時間）</span></div>
 <div id="gate">
 <p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
 <h2>回饋問卷【客戶版】阿志與太太</h2><p class="sub">請輸入密碼檢視。</p>
@@ -87,7 +87,7 @@ p.sub{color:var(--sub);font-size:14px;margin:4px 0}
 
 <div id="doc">
 <div class="hud"><span class="pc" id="pct">0 / 0</span><span class="bar"><i id="pbar"></i></span>
-<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<button type="button" id="out">登出</button></div>
 <div class="wrap">
 <h1>聽完之後，想聽聽你們怎麼想</h1>
 <p class="sub" id="stamp"></p>
@@ -156,7 +156,6 @@ function init(){
  function save(){try{localStorage.setItem(DKEY,JSON.stringify(st));}catch(e){}}
  function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},2800);}
  $('stamp').textContent='更新於 2026/09/20（台灣時間）｜財顧芸整理';
- $('print').onclick=function(){window.print();};
  $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
 
  function mine(q){return q.who==='both'||q.who===who;}

@@ -231,7 +231,7 @@ p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;c
 @media print{.flow{break-inside:avoid}}
 
 </style></head><body>
-<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜資金分配說明</span><span class="vv">v2.2 ・ 2026/09/27（台灣時間）</span></div>
+<div class="vband"><span class="vk">客戶版</span><span class="vn">阿志案｜資金分配說明</span><span class="vv">v2.3 ・ 2026/09/29（台灣時間）</span></div>
 <div id="gate">
 <p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
 <h2>資金分配【客戶版】阿志</h2><p class="sub">請輸入密碼檢視。</p>
@@ -242,7 +242,7 @@ p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;c
 
 <div id="doc">
 <div class="hud"><span class="t">阿志｜錢每個月分幾份、各自流去哪</span>
-<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<button type="button" id="out">登出</button></div>
 <div class="wrap">
 
 <h1>三個水庫，一個水桶</h1>
@@ -528,7 +528,6 @@ if(ok())show();
 var inited=false;
 function init(){
  if(inited)return;inited=true;
- $('print').onclick=function(){window.print();};
  $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
  function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);
   t._h=setTimeout(function(){t.style.display='none';},2600);}

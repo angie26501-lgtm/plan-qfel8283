@@ -105,7 +105,7 @@ p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;c
 .foldall button{font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--deep);border-radius:999px;padding:7px 15px}
 .foldall button:hover{background:var(--mist);border-color:var(--deep)}
 </style></head><body>
-<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜我要做的事（簡單版）</span><span class="vv">v1.1 ・ 2026/09/25（台灣時間）</span></div>
+<div class="vband" style="background:#e7f2ea;color:#1f4a2c;border-bottom-color:#3d7a55"><span class="vk">客戶版</span><span class="vn">阿志案｜我要做的事（簡單版）</span><span class="vv">v1.2 ・ 2026/09/29（台灣時間）</span></div>
 <div id="gate">
 <p style="font-family:'Noto Serif TC',serif;color:#b7791f;font-size:14px;margin:0">財顧芸｜馥芸財富學苑</p>
 <h2>待辦清單【客戶版】阿志（簡單版）</h2><p class="sub">請輸入密碼檢視。</p>
@@ -115,7 +115,7 @@ p.closing{text-align:center;font-family:"Noto Serif TC",serif;font-size:16.5px;c
 <button type="button" id="go" style="width:100%">進入</button></div>
 <div id="doc">
 <div class="hud"><span class="pc" id="pct">0 / 5</span><span class="bar"><i id="pbar"></i></span><span class="nx" id="nextup"></span>
-<button type="button" id="print">列印</button><button type="button" id="out">登出</button></div>
+<button type="button" id="out">登出</button></div>
 <div class="wrap">
 <h1>阿志，這 5 件事麻煩你</h1><p class="sub" id="stamp"></p>
 <div class="intro"><b>怎麼用這一頁</b><ul><li>做完一件就把<b>左邊的框打勾</b>，會自動記下完成日期。</li><li>每一件下面都有<b>「看詳細說明」</b>，需要的時候點開就好，不需要就讓它收著。</li><li>最下面有一顆<b>「複製進度回報給財顧芸」</b>，按一下貼到 LINE、<b>確認內容沒問題再傳給我</b>，我再幫你記錄，你不用自己整理。</li><li>打勾只存在<b>你打開這一頁的那台裝置</b>裡。換手機或換電腦打開會是空白的，那是正常的——<b>重點是傳給我，我這邊會留紀錄</b>。</li></ul></div>
@@ -157,7 +157,6 @@ function init(){
  if(inited)return;inited=true;
  $('stamp').textContent='更新於 2026/09/20（台灣時間）｜財顧芸整理';
  $('out').onclick=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
- $('print').onclick=function(){window.print();};
  if(SIMPLE){
   $('fopen').onclick=function(){[].forEach.call(document.querySelectorAll('details.fold'),function(d){d.open=true;});};
   $('fclose').onclick=function(){[].forEach.call(document.querySelectorAll('details.fold'),function(d){d.open=false;});};
