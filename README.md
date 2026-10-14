@@ -1,16 +1,24 @@
-# 阿志的人生財務設計藍圖
+# Personal planning documents
 
-客戶（化名「阿志」）的規劃文件組。單檔離線 HTML，資料內嵌、不連外部資源。
+Single-file offline HTML. All assets are embedded; nothing loads from an
+external resource.
 
-入口：`index.html`（自動跳轉到 `阿志-總目錄.html`）
-密碼：`0421`（半形數字）
+Entry point: `index.html`
 
-**所有檔案必須放在同一個資料夾**——彼此之間是相對連結。
+**Keep every file in the same folder** — they link to each other with
+relative paths.
 
-## 隱私
+## Access
 
-- 全部使用化名，兩份附錄的保險公司原始文件已遮蔽真實姓名與出生日期。
-- 每一頁都有 `noindex` 標記，並附 `robots.txt`，不會被搜尋引擎收錄。
-- 密碼保護是前端遮蔽，不是加密。請勿將連結公開張貼。
+These pages are behind a front-end password gate. The password is given to
+the reader separately and is deliberately **not** recorded anywhere in this
+repository.
 
-最後更新：2026/09/25
+## Privacy
+
+- Every page carries a `noindex` tag, and `robots.txt` covers the whole
+  folder, so search engines do not index it.
+- The gate is front-end masking, not encryption. Do not post the link
+  publicly.
+
+Last updated: 2026-10-14
